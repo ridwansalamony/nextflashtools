@@ -1,0 +1,20 @@
+{
+  "name": "nextflashtools",
+  "version": "1.0.0",
+  "description": "Created by Ridwan Salamony EDP Awhost",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tailwindcss -i ./public/src/css/input.css -o ./public/dist/css/output.css --watch",
+    "build": "npx tailwindcss -i ./public/src/css/input.css -o ./public/dist/css/output.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "flowbite": "^1.8.1"
+  }
+}
