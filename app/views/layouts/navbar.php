@@ -1,19 +1,19 @@
 <nav class="bg-white border-gray-200 fixed z-50 w-full">
-    <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="<?= BASEURL; ?>" class="flex items-center">
-            <img src="<?= BASEURL; ?>src/img/flash.png" class="h-8 mr-3" alt="Flas Tools Logo" />
+            <img src="<?= BASEURL; ?>public/src/img/flash.png" class="h-8 mr-3" alt="Flas Tools Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap">FLASH TOOLS</span>
         </a>
         <div class="flex items-center xl:order-2">
             <button type="button" class="flex mr-3 text-sm rounded-full xl:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                 <span class="sr-only">Open user menu</span>
-                <img class="w-8 h-8 rounded-full" src="https://ui-avatars.com/api/?name=Ridwan+Salamony" alt="user photo">
+                <img class="w-8 h-8 rounded-full" src="https://ui-avatars.com/api/?name=<?= $data['user'] ?>" alt="User Avatar">
             </button>
             <!-- Dropdown menu -->
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900">Bonnie Green</span>
-                    <span class="block text-sm  text-gray-500 truncate">name@flowbite.com</span>
+                    <span class="block text-sm text-gray-900"><?= $data['user']; ?></span>
+                    <span class="block text-sm  text-gray-500 truncate">awhost@gmail.com</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
@@ -30,12 +30,12 @@
         </div>
 
         <div class="items-center justify-between hidden w-full xl:flex xl:w-auto xl:order-1" id="navbar-user">
-            <ul class="flex flex-col font-medium p-4 xl:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 xl:flex-row xl:space-x-8 xl:mt-0 xl:border-0 xl:bg-white">
+            <ul class="flex flex-col font-medium p-4 xl:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 xl:flex-row xl:space-x-4 xl:mt-0 xl:border-0 xl:bg-white">
                 <li>
-                    <a href="<?= BASEURL; ?>" class="block py-2 pl-3 pr-4  <?= $data['title'] == 'Beranda' ? 'xl:bg-transparent xl:text-primary text-white bg-primary rounded' : '' ?> xl:p-0" aria-current="page">Beranda</a>
+                    <a href="<?= BASEURL; ?>" class="block py-2 pl-3 pr-4  <?= $data['title'] == 'Beranda' ? 'xl:text-primary text-white bg-primary rounded' : '' ?> xl:p-0 xl:hover:text-primary xl:bg-transparent" aria-current="page">Beranda</a>
                 </li>
                 <li>
-                    <a href="<?= BASEURL; ?>store" class="block py-2 pl-3 pr-4 <?= $data['title'] == 'Daftar Toko' ? 'xl:bg-transparent xl:text-primary text-white bg-primary rounded' : '' ?> xl:p-0">Daftar Toko</a>
+                    <a href="<?= BASEURL; ?>store" class="block py-2 pl-3 pr-4  <?= $data['title'] == 'Daftar Toko' ? 'xl:text-primary text-white bg-primary rounded' : '' ?> xl:p-0 xl:hover:text-primary xl:bg-transparent">Daftar Toko</a>
                 </li>
                 <li>
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar1" class="flex items-center justify-between w-full py-2 pl-3 pr-4  text-gray-700 border-b border-gray-100 hover:bg-gray-50 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary xl:p-0 xl:w-auto">Tutupan Ulang <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">

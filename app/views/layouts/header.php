@@ -12,7 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Tailwind CSS -->
-    <link href="<?= BASEURL; ?>dist/css/output.css" rel="stylesheet">
+    <link href="<?= BASEURL; ?>public/dist/css/output.css" rel="stylesheet">
+
+    <!-- Datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css" />
 </head>
 
 <body>

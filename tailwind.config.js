@@ -7,7 +7,8 @@ module.exports = {
         manrope: "Manrope",
     },
     colors: {
-        primary: "#E3A62F",
+        primary: "#4B030A",
+        secondary: "#6E0717",
         background: "#F3F4F7",
     },
     },
