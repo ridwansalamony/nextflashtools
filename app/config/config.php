@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL', 'http://localhost:8080/nextflashtools/');
+define('BASEURL', 'http://localhost/nextflashtools/');
 
 // Database
 define('DB_HOST', 'localhost');
