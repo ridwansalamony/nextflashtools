@@ -6,7 +6,7 @@
         </div>
 
         <table id="tablex" class="w-full table-auto overflow-hidden">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <thead class="uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         No
@@ -25,7 +25,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-base text-gray-600">
                 <?php $no = 1; ?>
                 <?php foreach ($data['store'] as $item) : ?>
                     <tr class="bg-white border-b hover:bg-gray-50">
