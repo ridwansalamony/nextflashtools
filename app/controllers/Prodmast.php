@@ -17,9 +17,15 @@ class Prodmast extends Controller
         if (isset($_POST['submit'])) {
             date_default_timezone_set('Asia/Jakarta');
 
-            $toko = $this->model('StoreModel')->getStore();
+            try {
+                $toko = $this->model('StoreModel')->getStore();
+            } catch (Exception $e) {
+                Flasher::setFlash("<span class='font-semibold'>FORMAT SALAH</span>, Harap masukkan dengan benar!", "<span class='font-semibold'>CONTOH : 'TXXX','FXXX'</span>", 'red');
+                header('Location: ' . BASEURL . 'prodmast');
+                exit;
+            }
 
-            if ($toko > 0) {
+            if ($toko) {
                 $user = DB_USER_TOKO;
                 $name = DB_NAME_TOKO;
                 if ($_POST['pass'] === 'old') {
@@ -67,6 +73,7 @@ class Prodmast extends Controller
                         'status' => $data['status']
                     );
                 }
+                $conn = null;
                 $data['title'] = 'Update Prodmast';
                 $data['user'] = $this->model('UserModel')->getUser();
                 $data['result'] = $result;
@@ -74,6 +81,9 @@ class Prodmast extends Controller
                 $this->view('layouts/navbar', $data);
                 $this->view('prodmast/index', $data);
                 $this->view('layouts/footer');
+            } else {
+                Flasher::setFlash("<span class='font-semibold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                header('Location: ' . BASEURL . 'prodmast');
             }
         } else {
             header('Location: ' . BASEURL . 'prodmast');
