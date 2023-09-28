@@ -31,4 +31,23 @@ class Store extends Controller
             exit;
         }
     }
+
+    public function delete($toko)
+    {
+        if (isset($toko)) {
+            try {
+                $this->model('StoreModel')->deleteStore($toko);
+                Flasher::setFlash('Data <span class="font-semibold">BERHASIL</span>', 'dihapus dari table!', 'green');
+                header('Location: ' . BASEURL . 'store');
+                exit;
+            } catch (Exception $e) {
+                Flasher::setFlash('Data <span class="font-semibold">GAGAL</span>', 'dihapus dari table!', 'red');
+                header('Location: ' . BASEURL . 'store');
+                exit;
+            }
+        } else {
+            header('Location: ' . BASEURL . 'store');
+            exit;
+        }
+    }
 }

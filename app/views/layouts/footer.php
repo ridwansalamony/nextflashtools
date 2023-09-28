@@ -17,4 +17,7 @@
 <!-- Main JS -->
 <script src="<?= BASEURL; ?>public/src/js/main.js"></script>
 
+<!-- Sweetalert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>

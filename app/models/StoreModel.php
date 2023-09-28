@@ -37,4 +37,14 @@ class StoreModel
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function deleteStore($toko)
+    {
+        $query = "DELETE FROM daftar_toko WHERE toko = :toko";
+
+        $this->db->query($query);
+        $this->db->bind('toko', $toko);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }

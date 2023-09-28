@@ -46,7 +46,7 @@
                         </td>
                         <td class="px-6 py-4 text-right">
                             <a href="#" class="bg-blue-100 hover:bg-blue-200 text-info font-semibold mr-2 px-2.5 py-0.5 rounded hover:text-info border border-blue-400 inline-flex items-center justify-center">Edit</a>
-                            <a href="#" class="bg-red-100 hover:bg-red-200 text-secondary font-semibold mr-2 px-2.5 py-0.5 rounded hover:text-primary border border-red-400 inline-flex items-center justify-center">Hapus</a>
+                            <a href="<?= BASEURL ?>store/delete/<?= $item['toko'] ?>" class="bg-red-100 hover:bg-red-200 text-secondary font-semibold mr-2 px-2.5 py-0.5 rounded hover:text-primary border border-red-400 inline-flex items-center justify-center sweetalert-confirm">Hapus</a>
                         </td>
                     </tr>
                     <?php $no++; ?>
