@@ -16,11 +16,12 @@ class Store extends Controller
     public function add()
     {
         if (isset($_POST['submit'])) {
-            if ($this->model('StoreModel')->addStore($_POST) > 0) {
+            try {
+                $this->model('StoreModel')->addStore($_POST);
                 Flasher::setFlash('berhasil', 'ditambahkan ke table', 'green');
                 header('Location: ' . BASEURL . 'store');
                 exit;
-            } else {
+            } catch (Exception $e) {
                 Flasher::setFlash('gagal', 'ditambahkan ke table', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
