@@ -4,7 +4,7 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">Update Prodmast Joss</h1>
+            <h1 class="text-2xl font-semibold uppercase">Update PRODMAST JOSS</h1>
         </div>
         <form action="<?= BASEURL; ?>prodmast/update" method="POST">
             <div class="form grid grid-cols-1 gap-4">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="w-1/2 mx-auto">
                     <button id="submit" type="submit" name="submit" class="w-full bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 focus:outline-none">
-                        Update Prodmast
+                        Proses
                     </button>
 
                     <button id="loading" class="w-full bg-gray-300 text-primary font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 hidden" disabled>
@@ -72,15 +72,15 @@
                 <tbody class="text-base text-gray-600">
                     <?php if (isset($data['result'])) : ?>
                         <?php foreach ($data['result'] as $item) : ?>
-                            <tr class="border-b hover:bg-gray-50 <?= $item['status'] ? 'bg-green-200' : 'bg-red-200' ?>">
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
+                            <tr class="border-b hover:bg-gray-50 text-lg <?= $item['status'] ? 'bg-green-200' : 'bg-red-200' ?>">
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
                                     <?= $item['kode']; ?>
                                 </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
                                     <?= $item['nama']; ?>
                                 </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
-                                    <?= $item['status'] ? 'Berhasil' : 'Gagal'; ?>
+                                <td class="px-6 py-4 font-bold whitespace-nowrap text-center">
+                                    <?= $item['status'] ? 'BERHASIL' : 'GAGAL'; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -36,8 +36,12 @@ class Prodmast extends Controller
 
                 $tahun = substr(date('y'), 1);
                 $bulan = $_POST['bulan'];
+                $bln = date('m');
                 $tanggal1 = date('d');
                 $tanggal2 = date('Y-m-d');
+                $tanggal3 = date("Y-m-d h:i:s");
+                $at1 = "TrPr@@@@";
+                $at2 = "[TrPr@@@@31129.csv]";
 
                 foreach ($toko as $item) {
                     $ip = $item['induk'];
@@ -55,13 +59,18 @@ class Prodmast extends Controller
                         $conn = new PDO($dsn, $user, $pass, $option);
                         $querydt = "UPDATE const SET `desc`='$tahun$bulan$tanggal1' WHERE rkey IN ('dta','dt_')";
                         $querytmt = "UPDATE const SET `period`='$tanggal2', period1='$tanggal2' WHERE rkey='tmt'";
+                        $querytrpr1 = "DELETE FROM log_monitor WHERE jenis=7 AND waktureport LIKE '$tanggal2'";
+                        $querytrpr2 = "INSERT INTO log_monitor VALUES('$tanggal3','7','monitoring ; $at1$tanggal1$bln$tahun$at2')";
 
                         $stmt1 = $conn->prepare($querydt);
-
                         $stmt2 = $conn->prepare($querytmt);
+                        $stmt3 = $conn->prepare($querytrpr1);
+                        $stmt4 = $conn->prepare($querytrpr2);
 
                         $stmt1->execute();
                         $stmt2->execute();
+                        $stmt3->execute();
+                        $stmt4->execute();
                         $data['status'] = true;
                     } catch (PDOException $e) {
                         $data['status'] = false;
@@ -72,8 +81,9 @@ class Prodmast extends Controller
                         'nama' => $nama,
                         'status' => $data['status']
                     );
+
+                    $conn = null;
                 }
-                $conn = null;
                 $data['title'] = 'Update Prodmast';
                 $data['user'] = $this->model('UserModel')->getUser();
                 $data['result'] = $result;

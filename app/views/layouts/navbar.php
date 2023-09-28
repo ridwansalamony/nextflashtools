@@ -196,10 +196,7 @@
                     <div id="dropdownNavbar7" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
                         <ul class="py-2 text-sm mt-2 text-gray-700" aria-labelledby="dropdownLargeButton">
                             <li>
-                                <a href="<?= BASEURL; ?>prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == 'Update Prodmast' ? 'bg-primary text-white' : '' ?> <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">DT,DT_/TMT Bulan 1-9</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">TRPR New</a>
+                                <a href="<?= BASEURL; ?>prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == 'Update Prodmast' ? 'bg-primary text-white' : '' ?> <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">DT,DT_/TMT and TRPR</a>
                             </li>
                         </ul>
                     </div>
