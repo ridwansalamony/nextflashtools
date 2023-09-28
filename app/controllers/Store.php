@@ -17,11 +17,17 @@ class Store extends Controller
     {
         if (isset($_POST['submit'])) {
             if ($this->model('StoreModel')->addStore($_POST) > 0) {
+                Flasher::setFlash('berhasil', 'ditambahkan ke table', 'green');
+                header('Location: ' . BASEURL . 'store');
+                exit;
+            } else {
+                Flasher::setFlash('gagal', 'ditambahkan ke table', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }
         } else {
             header('Location: ' . BASEURL . 'store');
+            exit;
         }
     }
 }

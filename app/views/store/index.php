@@ -1,5 +1,8 @@
 <section class="wrapper pt-24 pb-[100px]">
     <main class="content bg-white max-w-screen-xl mx-auto rounded-md py-6 px-4 xl:px-20">
+
+        <?php Flasher::flash(); ?>
+
         <div class="flex justify-between border-b-2 mb-4">
             <h1 class="text-2xl font-semibold uppercase">Daftar Toko</h1>
             <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button" class="bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">Tambah Toko</button>
