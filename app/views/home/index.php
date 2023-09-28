@@ -2,26 +2,26 @@
     <main class="content bg-white max-w-screen-xl mx-auto rounded-md">
         <div id="default-carousel" class="relative w-full" data-carousel="slide">
             <!-- Carousel wrapper -->
-            <div class="relative h-52 overflow-hidden rounded-md md:h-[520px]">
+            <div class="relative h-52 overflow-hidden rounded-md md:h-[400px]">
                 <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <!-- <img src="https://source.unsplash.com/1280x720?computer" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> -->
+                    <img src="<?= BASEURL; ?>public/src/img/banner1.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
                 <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <!-- <img src="https://source.unsplash.com/1280x720?laptop" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> -->
+                    <img src="<?= BASEURL; ?>public/src/img/banner2.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
                 <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <!-- <img src="https://source.unsplash.com/1280x720?design" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> -->
+                    <img src="<?= BASEURL; ?>public/src/img/banner3.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
                 <!-- Item 4 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <!-- <img src="https://source.unsplash.com/1280x720?lifestyle" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> -->
+                    <img src="<?= BASEURL; ?>public/src/img/banner4.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
                 <!-- Item 5 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <!-- <img src="https://source.unsplash.com/1280x720?database" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."> -->
+                    <img src="<?= BASEURL; ?>public/src/img/banner5.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                 </div>
             </div>
             <!-- Slider indicators -->
@@ -50,7 +50,5 @@
                 </span>
             </button>
         </div>
-        <div class="flex h-52">
-            <h1 class="text-4xl lg:text-8xl font-bold text-center m-auto">Welcome to <span class="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">Bandung City</span></h1>
-        </div>
+        <h1 class="text-4xl py-20 lg:text-8xl font-bold text-center">Welcome to <span class="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">Bandung City</span></h1>
     </main>
