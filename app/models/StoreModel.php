@@ -24,4 +24,17 @@ class StoreModel
         $this->db->query($query);
         return $this->db->result();
     }
+
+    public function addStore($data)
+    {
+        $query = "INSERT INTO daftar_toko VALUES (:toko, :nama, :induk)";
+
+        $this->db->query($query);
+        $this->db->bind('toko', $data['kode_toko']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('induk', $data['induk']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }

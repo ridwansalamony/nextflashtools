@@ -12,4 +12,16 @@ class Store extends Controller
         $this->view('store/index', $data);
         $this->view('layouts/footer');
     }
+
+    public function add()
+    {
+        if (isset($_POST['submit'])) {
+            if ($this->model('StoreModel')->addStore($_POST) > 0) {
+                header('Location: ' . BASEURL . 'store');
+                exit;
+            }
+        } else {
+            header('Location: ' . BASEURL . 'store');
+        }
+    }
 }
