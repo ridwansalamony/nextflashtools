@@ -18,11 +18,11 @@ class Store extends Controller
         if (isset($_POST['submit'])) {
             try {
                 $this->model('StoreModel')->addStore($_POST);
-                Flasher::setFlash('berhasil', 'ditambahkan ke table', 'green');
+                Flasher::setFlash('BERHASIL', 'ditambahkan ke table!', 'green');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('gagal', 'ditambahkan ke table', 'red');
+                Flasher::setFlash('GAGAL', 'ditambahkan ke table!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }
