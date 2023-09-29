@@ -89,7 +89,6 @@ class Prodmast extends Controller
                         $data['status'] = true;
                     } catch (PDOException $e) {
                         $data['status'] = false;
-                        exit;
                     }
 
                     $result[] = array(

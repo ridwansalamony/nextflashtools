@@ -102,13 +102,12 @@ class Closing extends Controller
                             }
                         }
                     }
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> $kode", "Silahkan tutupan harian ulang", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
                     header('Location: ' . BASEURL . 'closing/daily');
                     $conn = null;
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'closing/daily');
-                    exit;
                 }
             }
         } else {
@@ -175,17 +174,93 @@ class Closing extends Controller
                     $stmt2->execute();
                     $stmt3->execute();
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> $kode", " Silahkan tutupan bulanan ulang", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
                     header('Location: ' . BASEURL . 'closing/monthly');
                     $conn = null;
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'closing/monthly');
-                    exit;
                 }
             }
         } else {
             header('Location: ' . BASEURL . 'closing/monthly');
+            exit;
+        }
+    }
+
+    public function initial()
+    {
+        $data['title'] = 'Tutupan Ulang';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('closing/initial');
+        $this->view('layouts/footer');
+    }
+
+    public function initialup()
+    {
+        if (isset($_POST['submit'])) {
+            date_default_timezone_set('Asia/Jakarta');
+
+            $tanggal_initial = $_POST['tanggal_initial'];
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash("<span class='font-bold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                header('Location: ' . BASEURL . 'closing/initial');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $initial = "SELECT * FROM initial WHERE tanggal='$tanggal_initial'";
+                    $stmt1 = $conn->prepare($initial);
+                    $stmt1->execute();
+
+                    $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$result) {
+                        Flasher::setFlash("<span class='font-bold'>TANGGAL INITIAL TIDAK ADA!</span>", "Masukkan tanggal yang valid", 'red');
+                        header('Location: ' . BASEURL . 'closing/initial');
+                        exit;
+                    } else {
+                        // Update recid C
+                        $recid = "UPDATE initial SET recid='C' WHERE tanggal='$tanggal_initial'";
+
+                        $stmt2 = $conn->prepare($recid);
+
+                        $stmt2->execute();
+                    }
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info'>$kode</span>", "Update recid C initial", 'blue');
+                    header('Location: ' . BASEURL . 'closing/initial');
+                    $conn = null;
+                } catch (PDOException $e) {
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'closing/initial');
+                }
+            }
+        } else {
+            header('Location: ' . BASEURL . 'closing/initial');
             exit;
         }
     }

@@ -50,10 +50,10 @@
                             </li>
                             <!-- <li>
                                 <a href="<?= BASEURL; ?>closing/backup" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Backup Bulanan</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Initial C</a>
                             </li> -->
+                            <li>
+                                <a href="<?= BASEURL; ?>closing/initial" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Initial C</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
