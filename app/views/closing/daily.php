@@ -4,14 +4,14 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">Update PRODMAST JOSS</h1>
+            <h1 class="text-2xl font-semibold uppercase">Tutupan Harian Ulang</h1>
         </div>
-        <form action="<?= BASEURL; ?>prodmast/update" method="POST">
+        <form action="<?= BASEURL; ?>daily/update" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo">
                 </div>
-                <div class="w-1/2 mx-auto flex gap-2">
+                <div class="lg:w-1/2 mx-auto flex gap-2">
                     <div class="w-full">
                         <!-- <label for="pass" class="block text-lg font-medium text-center">Pilih Password</label> -->
                         <select id="pass" name="pass" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
@@ -21,20 +21,21 @@
                     </div>
 
                     <div class="w-full">
-                        <!-- <label for="bulan" class="block text-lg font-medium text-center">Pilih Bulan Prodmast</label> -->
-                        <select id="bulan" name="bulan" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
-                            <option value="<?= substr(date('m'), 1); ?>">Bulan 1-9</option>
-                            <option value="A">Bulan 10</option>
-                            <option value="B">Bulan 11</option>
-                            <option value="C">Bulan 12</option>
-                        </select>
+                        <div class="relative max-w-sm">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                </svg>
+                            </div>
+                            <input datepicker type="date" name="tanggal_initial" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full pl-10 p-2.5 " required>
+                        </div>
                     </div>
                 </div>
-                <div class="w-1/2 mx-auto">
+                <div class="w-full md:w-1/2 mx-auto">
                     <!-- <label for="kode_toko" class="block text-lg font-medium text-center">Masukkan Kode Toko </label> -->
-                    <input type="text" name="kode_toko" id="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Pisah dengan kutip dan koma : 'kode','kode' dst ..." required>
+                    <input type="text" name="kode_toko" id="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Kode Toko : TXXX" maxlength="4" required>
                 </div>
-                <div class="w-1/2 mx-auto">
+                <div class="w-full md:w-1/2 mx-auto">
                     <button type="submit" name="submit" id="submit" class="w-full bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 focus:outline-none">
                         Proses
                     </button>
@@ -54,7 +55,7 @@
             </div>
         </form>
 
-        <div class="my-20">
+        <!-- <div class="my-20">
             <table id="tablex" class="w-full table-auto overflow-hidden">
                 <thead class="uppercase bg-gray-50">
                     <tr>
@@ -101,5 +102,5 @@
                     <?php endif; ?>
                 </tbody>
             </table>
-        </div>
+        </div> -->
     </main>

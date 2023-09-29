@@ -25,6 +25,16 @@ class StoreModel
         return $this->db->result();
     }
 
+    public function getStoreByCode()
+    {
+        $kode = $_POST['kode_toko'];
+
+        $query = "SELECT * FROM daftar_toko WHERE toko = :kode";
+        $this->db->query($query);
+        $this->db->bind('kode', $kode);
+        return $this->db->single();
+    }
+
     public function addStore($data)
     {
         $query = "INSERT INTO daftar_toko VALUES (:toko, :nama, :induk)";

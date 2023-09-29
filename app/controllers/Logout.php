@@ -10,6 +10,7 @@ class Logout
             exit;
         }
     }
+
     public function index()
     {
         session_destroy();

@@ -13,8 +13,8 @@ class Prodmast extends Controller
 
     public function index()
     {
-        $data['title'] = 'Update Prodmast';
-        $data['user'] = $this->model('UserModel')->getUser();
+        $data['title'] = 'Transfer Data';
+        $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
         $this->view('prodmast/index');
@@ -93,8 +93,8 @@ class Prodmast extends Controller
 
                     $conn = null;
                 }
-                $data['title'] = 'Update Prodmast';
-                $data['user'] = $this->model('UserModel')->getUser();
+                $data['title'] = 'Transfer Data';
+                $data['user'] = $_SESSION['nama'];
                 $data['result'] = $result;
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
