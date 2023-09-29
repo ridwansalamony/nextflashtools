@@ -2,6 +2,14 @@
 
 class Guest extends Controller
 {
+    public function __construct()
+    {
+        if (isset($_SESSION['session_login'])) {
+            header('Location: ' . BASEURL);
+            exit;
+        }
+    }
+
     public function index()
     {
         session_destroy();

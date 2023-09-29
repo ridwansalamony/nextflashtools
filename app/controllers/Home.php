@@ -4,8 +4,8 @@ class Home extends Controller
 {
     public function __construct()
     {
-        if ($_SESSION['session_login'] != 'login') {
-            Flasher::setFlash('Silahkan Login terlebih dahulu', '', 'red');
+        if (!isset($_SESSION['session_login'])) {
+            Flasher::setFlash('Silahkan <span class"font-semibold">LOGIN</span> ', 'terlebih dahulu', 'red');
             header('Location: ' . BASEURL . 'guest');
             exit;
         }
