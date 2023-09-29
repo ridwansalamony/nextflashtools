@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="w-full md:w-1/2 mx-auto">
-                    <input type="text" name="plu" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Pisahkan dengan koma jika lebih dari 1 : 20xxxx,20xxxx" required>
+                    <input type="text" name="plu" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Pisahkan dengan koma jika lebih dari 1 PLU : 20xxxx,20xxxx" required>
                 </div>
 
                 <div class="w-full md:w-1/2 mx-auto">
