@@ -24,6 +24,7 @@ class Closing extends Controller
     public function daily()
     {
         $data['title'] = 'Tutupan Ulang';
+        $data['nav'] = 'Tutupan Harian';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
@@ -119,6 +120,7 @@ class Closing extends Controller
     public function monthly()
     {
         $data['title'] = 'Tutupan Ulang';
+        $data['nav'] = 'Tutupan Bulanan';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
@@ -191,6 +193,7 @@ class Closing extends Controller
     public function initial()
     {
         $data['title'] = 'Tutupan Ulang';
+        $data['nav'] = 'Initial C';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);

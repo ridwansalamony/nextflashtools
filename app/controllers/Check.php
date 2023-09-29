@@ -24,6 +24,7 @@ class Check extends Controller
     public function stmast()
     {
         $data['title'] = 'Check Data';
+        $data['nav'] = 'Stmast';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
