@@ -34,7 +34,11 @@ class Prodmast extends Controller
                 exit;
             }
 
-            if ($toko) {
+            if (!$toko) {
+                Flasher::setFlash("<span class='font-semibold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                header('Location: ' . BASEURL . 'prodmast');
+                exit;
+            } else {
                 $user = DB_USER_TOKO;
                 $name = DB_NAME_TOKO;
                 if ($_POST['pass'] === 'old') {
@@ -68,8 +72,8 @@ class Prodmast extends Controller
                         $conn = new PDO($dsn, $user, $pass, $option);
                         $querydt = "UPDATE const SET `desc`='$tahun$bulan$tanggal1' WHERE rkey IN ('dta','dt_')";
                         $querytmt = "UPDATE const SET `period`='$tanggal2', period1='$tanggal2' WHERE rkey='tmt'";
-                        $querytrpr1 = "DELETE FROM log_monitor WHERE jenis=7 AND waktureport LIKE '$tanggal2'";
-                        $querytrpr2 = "INSERT INTO log_monitor VALUES('$tanggal3','7','monitoring ; $at1$tanggal1$bln$tahun$at2')";
+                        $querytrpr1 = "DELETE FROM log_monitor WHERE jenis=7 AND waktureport LIKE '$tanggal2%'";
+                        $querytrpr2 = "INSERT INTO log_monitor VALUES('$tanggal3','7','Monitoring : $at1$tanggal1$bln$tahun$at2')";
 
                         $stmt1 = $conn->prepare($querydt);
                         $stmt2 = $conn->prepare($querytmt);
@@ -100,12 +104,10 @@ class Prodmast extends Controller
                 $this->view('layouts/navbar', $data);
                 $this->view('prodmast/index', $data);
                 $this->view('layouts/footer');
-            } else {
-                Flasher::setFlash("<span class='font-semibold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
-                header('Location: ' . BASEURL . 'prodmast');
             }
         } else {
             header('Location: ' . BASEURL . 'prodmast');
+            exit;
         }
     }
 }
