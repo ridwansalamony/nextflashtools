@@ -5,7 +5,7 @@ class Prodmast extends Controller
     public function __construct()
     {
         if (!isset($_SESSION['session_login'])) {
-            Flasher::setFlash('Silahkan <span class"font-semibold">LOGIN</span> ', 'terlebih dahulu', 'red');
+            Flasher::setFlash('Silahkan <span class="font-bold">LOGIN</span> ', 'terlebih dahulu', 'red');
             header('Location: ' . BASEURL . 'guest');
             exit;
         }
@@ -29,13 +29,13 @@ class Prodmast extends Controller
             try {
                 $toko = $this->model('StoreModel')->getStore();
             } catch (Exception $e) {
-                Flasher::setFlash("<span class='font-semibold'>FORMAT SALAH</span>, Harap masukkan dengan benar!", "<span class='font-semibold'>CONTOH : 'TXXX','FXXX'</span>", 'red');
+                Flasher::setFlash("<span class='font-bold'>FORMAT SALAH</span>, Harap masukkan dengan benar!", "<span class='font-bold'>CONTOH : 'TXXX','FXXX'</span>", 'red');
                 header('Location: ' . BASEURL . 'prodmast');
                 exit;
             }
 
             if (!$toko) {
-                Flasher::setFlash("<span class='font-semibold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                Flasher::setFlash("<span class='font-bold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
                 header('Location: ' . BASEURL . 'prodmast');
                 exit;
             } else {
@@ -52,14 +52,15 @@ class Prodmast extends Controller
                 $bln = date('m');
                 $tanggal1 = date('d');
                 $tanggal2 = date('Y-m-d');
-                $tanggal3 = date("Y-m-d h:i:s");
-                $at1 = "TrPr@@@@";
-                $at2 = "[TrPr@@@@31129.csv]";
+                $tanggal3 = date("Y-m-d H:i:s");
 
                 foreach ($toko as $item) {
                     $ip = $item['induk'];
                     $kode = $item['toko'];
                     $nama = $item['nama'];
+
+                    $at1 = 'TrPr' . $kode . '';
+                    $at2 = '[TrPr' . $kode . '' . $tanggal1 . $bln . $tahun . '.csv]';
 
                     // Eksekusi
                     $dsn = "mysql:host=$ip;dbname=$name";
@@ -75,6 +76,7 @@ class Prodmast extends Controller
                         $querytrpr1 = "DELETE FROM log_monitor WHERE jenis=7 AND waktureport LIKE '$tanggal2%'";
                         $querytrpr2 = "INSERT INTO log_monitor VALUES('$tanggal3','7','Monitoring : $at1$tanggal1$bln$tahun$at2')";
 
+
                         $stmt1 = $conn->prepare($querydt);
                         $stmt2 = $conn->prepare($querytmt);
                         $stmt3 = $conn->prepare($querytrpr1);
@@ -87,6 +89,7 @@ class Prodmast extends Controller
                         $data['status'] = true;
                     } catch (PDOException $e) {
                         $data['status'] = false;
+                        exit;
                     }
 
                     $result[] = array(

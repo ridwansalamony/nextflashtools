@@ -5,7 +5,7 @@ class Closing extends Controller
     public function __construct()
     {
         if (!isset($_SESSION['session_login'])) {
-            Flasher::setFlash('Silahkan <span class"font-semibold">LOGIN</span> ', 'terlebih dahulu', 'red');
+            Flasher::setFlash('Silahkan <span class="font-bold">LOGIN</span> ', 'terlebih dahulu', 'red');
             header('Location: ' . BASEURL . 'guest');
             exit;
         }
@@ -42,7 +42,7 @@ class Closing extends Controller
             $toko = $this->model('StoreModel')->getStoreByCode();
 
             if (!$toko) {
-                Flasher::setFlash("<span class='font-semibold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                Flasher::setFlash("<span class='font-bold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
                 header('Location: ' . BASEURL . 'closing/daily');
                 exit;
             } else {
@@ -74,7 +74,7 @@ class Closing extends Controller
                     $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
                     if (!$result) {
-                        Flasher::setFlash("<span class='font-semibold'>TANGGAL INITIAL TIDAK ADA!</span>", "Masukkan tanggal yang valid", 'red');
+                        Flasher::setFlash("<span class='font-bold'>TANGGAL INITIAL TIDAK ADA!</span>", "Masukkan tanggal yang valid", 'red');
                         header('Location: ' . BASEURL . 'closing/daily');
                         exit;
                     } else {
@@ -96,23 +96,96 @@ class Closing extends Controller
                                 $stmt2->execute();
                                 $stmt3->execute();
                             } else {
-                                Flasher::setFlash("Station <span class='font-semibold'>$station</span> Shift <span class='font-semibold'>$shift</span> ", "Belum tutupan shift / aktual kas", 'red');
+                                Flasher::setFlash("Station <span class='font-bold'>$station</span> Shift <span class='font-bold'>$shift</span> ", "Belum tutupan shift / aktual kas", 'red');
                                 header('Location: ' . BASEURL . 'closing/daily');
                                 exit;
                             }
                         }
                     }
-                    Flasher::setFlash("<span class='font-semibold'>PROSES BERHASIL</span> Toko $kode", "Silahkan tutupan harian ulang", 'green');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> $kode", "Silahkan tutupan harian ulang", 'blue');
                     header('Location: ' . BASEURL . 'closing/daily');
                     $conn = null;
-                    exit;
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-semibold'>PROSES GAGAL</span>", "Koneksi toko $kode Down!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'closing/daily');
+                    exit;
                 }
             }
         } else {
             header('Location: ' . BASEURL . 'closing/daily');
+            exit;
+        }
+    }
+
+    public function monthly()
+    {
+        $data['title'] = 'Tutupan Ulang';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('closing/monthly');
+        $this->view('layouts/footer');
+    }
+
+    public function monthlyup()
+    {
+        if (isset($_POST['submit'])) {
+            date_default_timezone_set('Asia/Jakarta');
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+            $kode = $_POST['kode_toko'];
+            $periode = $_POST['periode'];
+            $prd = date('Ym') - 1;
+
+            if (!$toko) {
+                Flasher::setFlash("<span class='font-bold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                header('Location: ' . BASEURL . 'closing/monthly');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $drop = "DROP TABLE $kode$periode";
+                    $update1 = "UPDATE const SET docno='0',rdocno='0' WHERE rkey='LPB'";
+                    $update2 = "UPDATE const SET docno='$prd' WHERE rkey='PRD'";
+
+                    $stmt1 = $conn->prepare($drop);
+                    $stmt2 = $conn->prepare($update1);
+                    $stmt3 = $conn->prepare($update2);
+
+                    $stmt1->execute();
+                    $stmt2->execute();
+                    $stmt3->execute();
+
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> $kode", " Silahkan tutupan bulanan ulang", 'blue');
+                    header('Location: ' . BASEURL . 'closing/monthly');
+                    $conn = null;
+                } catch (PDOException $e) {
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'closing/monthly');
+                    exit;
+                }
+            }
+        } else {
+            header('Location: ' . BASEURL . 'closing/monthly');
             exit;
         }
     }

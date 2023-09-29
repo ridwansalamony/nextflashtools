@@ -29,7 +29,7 @@ class Guest extends Controller
                 header('Location: ' . BASEURL);
                 exit;
             } else {
-                Flasher::setFlash('NIK / Password <span class="font-semibold">SALAH</span>,', ' Silahkan coba lagi', 'red');
+                Flasher::setFlash('NIK / Password <span class="font-bold">SALAH</span>,', ' Silahkan coba lagi', 'red');
                 header('Location: ' . BASEURL . 'guest');
                 exit;
             }

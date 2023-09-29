@@ -5,7 +5,7 @@ class Store extends Controller
     public function __construct()
     {
         if (!isset($_SESSION['session_login'])) {
-            Flasher::setFlash('Silahkan <span class"font-semibold">LOGIN</span> ', 'terlebih dahulu', 'red');
+            Flasher::setFlash('Silahkan <span class="font-bold">LOGIN</span> ', 'terlebih dahulu', 'red');
             header('Location: ' . BASEURL . 'guest');
             exit;
         }
@@ -27,11 +27,11 @@ class Store extends Controller
         if (isset($_POST['submit'])) {
             try {
                 $this->model('StoreModel')->addStore($_POST);
-                Flasher::setFlash('Data <span class="font-semibold">BERHASIL</span>', 'ditambahkan ke table!', 'green');
+                Flasher::setFlash('Data <span class="font-bold">BERHASIL</span>', 'ditambahkan ke table!', 'green');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('Data <span class="font-semibold">GAGAL</span>', 'ditambahkan ke table!', 'red');
+                Flasher::setFlash('Data <span class="font-bold">GAGAL</span>', 'ditambahkan ke table!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }
@@ -46,11 +46,11 @@ class Store extends Controller
         if (isset($toko)) {
             try {
                 $this->model('StoreModel')->deleteStore($toko);
-                Flasher::setFlash('Data <span class="font-semibold">BERHASIL</span>', 'dihapus dari table!', 'green');
+                Flasher::setFlash('Data <span class="font-bold">BERHASIL</span>', 'dihapus dari table!', 'green');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('Data <span class="font-semibold">GAGAL</span>', 'dihapus dari table!', 'red');
+                Flasher::setFlash('Data <span class="font-bold">GAGAL</span>', 'dihapus dari table!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }

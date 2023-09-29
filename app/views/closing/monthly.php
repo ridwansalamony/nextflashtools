@@ -4,9 +4,9 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">Update PRODMAST JOSS</h1>
+            <h1 class="text-2xl font-semibold uppercase">Tutupan BulanaN Ulang</h1>
         </div>
-        <form action="<?= BASEURL; ?>prodmast/update" method="POST">
+        <form action="<?= BASEURL; ?>closing/monthlyup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="md:w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo" width="200">
@@ -20,16 +20,11 @@
                     </div>
 
                     <div class="w-full">
-                        <select name="bulan" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
-                            <option value="<?= substr(date('m'), 1); ?>">Bulan 1-9</option>
-                            <option value="A">Bulan 10</option>
-                            <option value="B">Bulan 11</option>
-                            <option value="C">Bulan 12</option>
-                        </select>
+                        <input type="number" name="periode" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Periode bulan(yymm) : 2301" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" required>
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 mx-auto">
-                    <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Pisah dengan kutip dan koma : 'kode','kode' dst ..." required>
+                    <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Kode Toko : TXXX" maxlength="4" required>
                 </div>
                 <div class="w-full md:w-1/2 mx-auto">
                     <button type="submit" name="submit" id="submit" class="w-full bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 focus:outline-none">
@@ -50,53 +45,4 @@
                 </div>
             </div>
         </form>
-
-        <div class="my-20">
-            <table id="tablex" class="w-full table-auto overflow-hidden">
-                <thead class="uppercase bg-gray-50">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Kode Toko
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Nama Toko
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Status
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="text-base text-gray-600">
-                    <?php if (isset($data['result'])) : ?>
-                        <?php foreach ($data['result'] as $item) : ?>
-                            <tr class="border-b hover:bg-gray-50 text-lg <?= $item['status'] ? 'bg-green-200' : 'bg-red-200' ?>">
-                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['kode']; ?>
-                                </td>
-                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['nama']; ?>
-                                </td>
-                                <td class="px-6 py-4 font-bold whitespace-nowrap text-center">
-                                    <?= $item['status'] ? 'BERHASIL' : 'GAGAL'; ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <tr class="border-b hover:bg-gray-50">
-                            <td>
-
-                            </td>
-
-                            <td>
-                                <p class="text-center p-4 text-lg">Tidak ada data</p>
-                            </td>
-
-                            <td>
-
-                            </td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
     </main>

@@ -5,7 +5,7 @@ class Home extends Controller
     public function __construct()
     {
         if (!isset($_SESSION['session_login'])) {
-            Flasher::setFlash('Silahkan <span class"font-semibold">LOGIN</span> ', 'terlebih dahulu', 'red');
+            Flasher::setFlash('Silahkan <span class="font-bold">LOGIN</span> ', 'terlebih dahulu', 'red');
             header('Location: ' . BASEURL . 'guest');
             exit;
         }

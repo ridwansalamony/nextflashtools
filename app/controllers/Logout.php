@@ -5,7 +5,7 @@ class Logout
     public function __construct()
     {
         if (!isset($_SESSION['session_login'])) {
-            Flasher::setFlash('Silahkan <span class"font-semibold">LOGIN</span> ', 'terlebih dahulu', 'red');
+            Flasher::setFlash('Silahkan <span class="font-bold">LOGIN</span> ', 'terlebih dahulu', 'red');
             header('Location: ' . BASEURL . 'guest');
             exit;
         }
@@ -15,7 +15,7 @@ class Logout
     {
         session_destroy();
         session_start();
-        Flasher::setFlash('Berhasil <span class="font-semibold">LOGOUT</span>', ' Silahkan login kembali', 'green');
+        Flasher::setFlash('Berhasil <span class="font-bold">LOGOUT</span>', ' Silahkan login kembali', 'blue');
         header('Location: ' . BASEURL . 'guest');
     }
 }
