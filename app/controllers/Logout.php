@@ -1,6 +1,6 @@
 <?php
 
-class Home extends Controller
+class Logout
 {
     public function __construct()
     {
@@ -10,14 +10,11 @@ class Home extends Controller
             exit;
         }
     }
-
     public function index()
     {
-        $data['title'] = 'Beranda';
-        $data['user'] = $_SESSION['nama'];
-        $this->view('layouts/header', $data);
-        $this->view('layouts/navbar', $data);
-        $this->view('home/index');
-        $this->view('layouts/footer');
+        session_destroy();
+        session_start();
+        Flasher::setFlash('Berhasil <span class="font-semibold">LOGOUT</span>', ' Silahkan login kembali', 'green');
+        header('Location: ' . BASEURL . 'guest');
     }
 }

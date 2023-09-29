@@ -35,7 +35,7 @@
                     <input type="text" name="kode_toko" id="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Pisah dengan kutip dan koma : 'kode','kode' dst ..." required>
                 </div>
                 <div class="w-1/2 mx-auto">
-                    <button id="submit" type="submit" name="submit" class="w-full bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 focus:outline-none">
+                    <button type="submit" name="submit" class="w-full bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 focus:outline-none">
                         Proses
                     </button>
 

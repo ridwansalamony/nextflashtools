@@ -2,6 +2,15 @@
 
 class Prodmast extends Controller
 {
+    public function __construct()
+    {
+        if ($_SESSION['session_login'] != 'login') {
+            Flasher::setFlash('Silahkan Login terlebih dahulu', '', 'red');
+            header('Location: ' . BASEURL . 'guest');
+            exit;
+        }
+    }
+
     public function index()
     {
         $data['title'] = 'Update Prodmast';
