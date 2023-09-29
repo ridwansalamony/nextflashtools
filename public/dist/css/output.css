@@ -1290,6 +1290,10 @@ input:checked + .toggle-bg {
   min-height: 100vh;
 }
 
+.min-h-full {
+  min-height: 100%;
+}
+
 .w-1\/2 {
   width: 50%;
 }

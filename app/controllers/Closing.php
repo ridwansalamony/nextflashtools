@@ -13,7 +13,7 @@ class Closing extends Controller
 
     public function index()
     {
-        $data['title'] = 'Tutupan Ulang';
+        $data['title'] = 'Beranda';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
