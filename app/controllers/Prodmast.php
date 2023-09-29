@@ -53,6 +53,7 @@ class Prodmast extends Controller
                 $tanggal1 = date('d');
                 $tanggal2 = date('Y-m-d');
                 $tanggal3 = date("Y-m-d H:i:s");
+                $kategori = 'Transfer Data';
 
                 foreach ($toko as $item) {
                     $ip = $item['induk'];
@@ -74,7 +75,7 @@ class Prodmast extends Controller
                         $querydt = "UPDATE const SET `desc`='$tahun$bulan$tanggal1' WHERE rkey IN ('dta','dt_')";
                         $querytmt = "UPDATE const SET `period`='$tanggal2', period1='$tanggal2' WHERE rkey='tmt'";
                         $querytrpr1 = "DELETE FROM log_monitor WHERE jenis=7 AND waktureport LIKE '$tanggal2%'";
-                        $querytrpr2 = "INSERT INTO log_monitor VALUES('$tanggal3','7','Monitoring : $at1$tanggal1$bln$tahun$at2')";
+                        $querytrpr2 = "INSERT INTO log_monitor VALUES ('$tanggal3','7','Monitoring : $at1$tanggal1$bln$tahun$at2')";
 
 
                         $stmt1 = $conn->prepare($querydt);
@@ -91,6 +92,8 @@ class Prodmast extends Controller
                         $data['status'] = false;
                     }
 
+                    $this->model('SniperModel')->addSniper($kode, $data['status'], $tanggal3, $kategori);
+
                     $result[] = array(
                         'kode' => $kode,
                         'nama' => $nama,
@@ -99,6 +102,7 @@ class Prodmast extends Controller
 
                     $conn = null;
                 }
+
                 $data['title'] = 'Transfer Data';
                 $data['user'] = $_SESSION['nama'];
                 $data['result'] = $result;
