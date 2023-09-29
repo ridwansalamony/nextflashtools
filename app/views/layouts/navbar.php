@@ -41,7 +41,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar1" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700" aria-labelledby="dropdownLargeButton">
+                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="<?= BASEURL; ?>closing/daily" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Harian' ? 'bg-primary text-white' : '' ?>">Tutupan Harian Ulang</a>
                             </li>
@@ -59,7 +59,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar2" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700" aria-labelledby="dropdownLargeButton">
+                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="<?= BASEURL ?>check/mstran" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Mstran' ? 'bg-primary text-white' : '' ?>">Mstran</a>
                             </li>
@@ -89,7 +89,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar3" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700" aria-labelledby="dropdownLargeButton">
+                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Semua Toko</a>
                             </li>
@@ -104,7 +104,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar4" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700" aria-labelledby="dropdownLargeButton">
+                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Devisiasi</a>
                             </li>
@@ -125,7 +125,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar5" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700" aria-labelledby="dropdownLargeButton">
+                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">EDC Setting</a>
                             </li>
@@ -176,7 +176,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar6" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700" aria-labelledby="dropdownLargeButton">
+                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Setting Simulasi</a>
                             </li>
@@ -191,7 +191,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar7" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700" aria-labelledby="dropdownLargeButton">
+                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
                                 <a href="<?= BASEURL; ?>prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == 'Transfer Data' ? 'bg-primary text-white' : '' ?> <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">DT,DT_/TMT and TRPR</a>
                             </li>
