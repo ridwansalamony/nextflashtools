@@ -26,6 +26,14 @@ class Prodmast extends Controller
         if (isset($_POST['submit'])) {
             date_default_timezone_set('Asia/Jakarta');
 
+            $tahun = substr(date('y'), 1);
+            $bulan = $_POST['bulan'];
+            $bln = date('m');
+            $tanggal1 = date('d');
+            $tanggal2 = date('Y-m-d');
+            $tanggal3 = date("Y-m-d H:i:s");
+            $kategori = 'Transfer Data';
+
             try {
                 $toko = $this->model('StoreModel')->getStore();
             } catch (Exception $e) {
@@ -35,7 +43,7 @@ class Prodmast extends Controller
             }
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'prodmast');
                 exit;
             } else {
@@ -46,14 +54,6 @@ class Prodmast extends Controller
                 } else {
                     $pass = DB_PASS_TOKO_NEW;
                 }
-
-                $tahun = substr(date('y'), 1);
-                $bulan = $_POST['bulan'];
-                $bln = date('m');
-                $tanggal1 = date('d');
-                $tanggal2 = date('Y-m-d');
-                $tanggal3 = date("Y-m-d H:i:s");
-                $kategori = 'Transfer Data';
 
                 foreach ($toko as $item) {
                     $ip = $item['induk'];
