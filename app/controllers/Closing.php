@@ -43,7 +43,7 @@ class Closing extends Controller
             $toko = $this->model('StoreModel')->getStoreByCode();
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'closing/daily');
                 exit;
             } else {
@@ -103,11 +103,11 @@ class Closing extends Controller
                             }
                         }
                     }
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
                     header('Location: ' . BASEURL . 'closing/daily');
                     $conn = null;
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", 'Koneksi <span class="font-bold text-info">' . $kode . '</span> down / Pass SQL Salah!', 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", 'Koneksi <span class="font-bold text-info uppercase">' . $kode . '</span> down / Pass SQL Salah!', 'red');
                     header('Location: ' . BASEURL . 'closing/daily');
                 }
             }
@@ -139,7 +139,7 @@ class Closing extends Controller
             $prd = date('Ym') - 1;
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'closing/monthly');
                 exit;
             } else {
@@ -176,11 +176,11 @@ class Closing extends Controller
                     $stmt2->execute();
                     $stmt3->execute();
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
                     header('Location: ' . BASEURL . 'closing/monthly');
                     $conn = null;
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'closing/monthly');
                 }
             }
@@ -211,7 +211,7 @@ class Closing extends Controller
             $toko = $this->model('StoreModel')->getStoreByCode();
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'closing/initial');
                 exit;
             } else {
@@ -254,11 +254,11 @@ class Closing extends Controller
 
                         $stmt2->execute();
                     }
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info'>$kode</span>", "Update recid C initial", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Update recid C initial", 'blue');
                     header('Location: ' . BASEURL . 'closing/initial');
                     $conn = null;
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'closing/initial');
                 }
             }

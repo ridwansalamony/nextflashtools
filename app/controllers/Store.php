@@ -27,11 +27,11 @@ class Store extends Controller
         if (isset($_POST['submit'])) {
             try {
                 $this->model('StoreModel')->addStore($_POST);
-                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span>', 'berhasil ditambahkan!', 'green');
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil ditambahkan!', 'green');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span>', 'sudah terdaftar!', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'sudah terdaftar!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }
@@ -46,11 +46,11 @@ class Store extends Controller
         if (isset($toko)) {
             try {
                 $this->model('StoreModel')->deleteStore($toko);
-                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span>', 'berhasil dihapus!', 'green');
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil dihapus!', 'green');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span>', 'gagal dihapus!', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'gagal dihapus!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }
