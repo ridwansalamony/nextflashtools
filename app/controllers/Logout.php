@@ -15,7 +15,7 @@ class Logout
     {
         session_destroy();
         session_start();
-        Flasher::setFlash('Berhasil <span class="font-bold">LOGOUT</span>', ' Silahkan login kembali', 'green');
+        Flasher::setFlash('Berhasil <span class="font-bold">LOGOUT</span>', ' Silahkan login kembali', 'blue');
         header('Location: ' . BASEURL . 'guest');
     }
 }
