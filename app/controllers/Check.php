@@ -531,4 +531,95 @@ class Check extends Controller
             header('Location: ' . BASEURL . 'check/supmast');
         }
     }
+
+    public function passtoko()
+    {
+        $data['title'] = 'Check Data';
+        $data['nav'] = 'Passtoko';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('check/passtoko');
+        $this->view('layouts/footer');
+    }
+
+    public function passtokoup()
+    {
+        if (isset($_POST['submit'])) {
+            $nik = $_POST['nik'];
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'check/passtoko');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $supmast = "SELECT * FROM passtoko WHERE nik in ($nik)";
+
+                    $stmt = $conn->prepare($supmast);
+
+                    $stmt->execute();
+
+                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$result) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> NIK tersebut tidak ada!', 'Masukkan NIK yang valid / Tambah NIK di menu Jutsu', 'red');
+                        header('Location: ' . BASEURL . 'check/passtoko');
+                        exit;
+                    } else {
+                        foreach ($result as $item) {
+                            $nik = $item['NIK'];
+                            $nama = $item['NAMA'];
+                            $jabatan = $item['JABATAN'];
+                            $password = $item['PASS'];
+
+                            $result[] = array(
+                                'nik' => $nik,
+                                'nama' => $nama,
+                                'jabatan' => $jabatan,
+                                'password' => $password,
+                            );
+                            $conn = null;
+                        }
+
+                        $data['title'] = 'Check Data';
+                        $data['nav'] = 'Passtoko';
+                        $data['user'] = $_SESSION['nama'];
+                        $data['result'] = $result;
+                        $this->view('layouts/header', $data);
+                        $this->view('layouts/navbar', $data);
+                        $this->view('check/passtoko', $data);
+                        $this->view('layouts/footer');
+                    }
+                } catch (PDOException $e) {
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'check/passtoko');
+                }
+            }
+        } else {
+            header('Location: ' . BASEURL . 'check/passtoko');
+        }
+    }
 }

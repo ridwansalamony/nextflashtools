@@ -76,7 +76,7 @@
                                 <a href="<?= BASEURL ?>check/supmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Supmast' ? 'bg-primary text-white' : '' ?>">Supmast</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Passtoko</a>
+                                <a href="<?= BASEURL ?>check/passtoko" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Passtoko' ? 'bg-primary text-white' : '' ?>">Passtoko</a>
                             </li>
                         </ul>
                     </div>
