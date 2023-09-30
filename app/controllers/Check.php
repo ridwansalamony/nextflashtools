@@ -42,7 +42,7 @@ class Check extends Controller
             $toko = $this->model('StoreModel')->getStoreByCode();
 
             if (!$toko) {
-                Flasher::setFlash("<span class='font-bold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'check/mstran');
                 exit;
             } else {
@@ -76,7 +76,7 @@ class Check extends Controller
                     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     if (!$result) {
-                        Flasher::setFlash("<span class='font-bold'>DATA TIDAK ADA!</span>", "Masukkan DATA yang valid", 'red');
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data mstran tidak ada!', 'Masukkan data yang valid', 'red');
                         header('Location: ' . BASEURL . 'check/mstran');
                         exit;
                     } else {
@@ -137,7 +137,7 @@ class Check extends Controller
             $toko = $this->model('StoreModel')->getStoreByCode();
 
             if (!$toko) {
-                Flasher::setFlash("<span class='font-bold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'check/stmast');
                 exit;
             } else {
@@ -171,7 +171,7 @@ class Check extends Controller
                     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     if (!$result) {
-                        Flasher::setFlash("<span class='font-bold'>PLU TERSEBUT TIDAK ADA!</span>", "Masukkan PLU yang valid", 'red');
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> PLU tersebut tidak ada!', 'Masukkan PLU yang valid', 'red');
                         header('Location: ' . BASEURL . 'check/stmast');
                         exit;
                     } else {

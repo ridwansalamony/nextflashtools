@@ -21,8 +21,9 @@
 <body>
     <section class="fullpage bg-background font-manrope min-h-screen text-gray-800 text-lg">
         <main class="min-h-screen flex px-4">
-            <div class="bg-white max-w-md m-auto w-full rounded shadow flex flex-col items-center gap-5 py-4">
+            <div class="bg-white max-w-md m-auto w-full rounded shadow flex flex-col items-center gap-5 py-4 px-2">
                 <?php Flasher::flash() ?>
+
                 <img src="<?= BASEURL; ?>public/src/img/flash.png" alt="" width="80">
                 <form action="<?= BASEURL; ?>guest/login" method="POST" class="w-full max-w-sm">
                     <div class="min-w-full flex flex-col gap-2 px-6">

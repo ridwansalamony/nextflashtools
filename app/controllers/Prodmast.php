@@ -29,13 +29,13 @@ class Prodmast extends Controller
             try {
                 $toko = $this->model('StoreModel')->getStore();
             } catch (Exception $e) {
-                Flasher::setFlash("<span class='font-bold'>FORMAT SALAH</span>, Harap masukkan dengan benar!", "<span class='font-bold'>CONTOH : 'TXXX','FXXX'</span>", 'red');
+                Flasher::setFlash("<span class='font-bold'>FORMAT SALAH!</span> Harap masukkan dengan benar!", "<span class='font-bold'>CONTOH : 'TXXX','FXXX'</span>", 'red');
                 header('Location: ' . BASEURL . 'prodmast');
                 exit;
             }
 
             if (!$toko) {
-                Flasher::setFlash("<span class='font-bold'>KODE TOKO TIDAK ADA!</span>", "Silahkan tambah di menu daftar toko", 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'prodmast');
                 exit;
             } else {
