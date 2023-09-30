@@ -436,4 +436,99 @@ class Check extends Controller
             header('Location: ' . BASEURL . 'check/stmast');
         }
     }
+
+    public function supmast()
+    {
+        $data['title'] = 'Check Data';
+        $data['nav'] = 'Supmast';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('check/supmast');
+        $this->view('layouts/footer');
+    }
+
+    public function supmastup()
+    {
+        if (isset($_POST['submit'])) {
+            $kode_supplier = $_POST['kode_supplier'];
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'check/supmast');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $supmast = "SELECT * FROM supmast WHERE supco in ('$kode_supplier')";
+
+                    $stmt = $conn->prepare($supmast);
+
+                    $stmt->execute();
+
+                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$result) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> SUPPLIER tersebut tidak ada!', 'Masukkan SUPPLIER yang valid', 'red');
+                        header('Location: ' . BASEURL . 'check/supmast');
+                        exit;
+                    } else {
+                        foreach ($result as $item) {
+                            $supco = $item['SUPCO'];
+                            $nama = $item['NAMA'];
+                            $jadwal = $item['JADWAL'];
+                            $datang = $item['DATANG'];
+                            $pb_oto = $item['PB_OTO'];
+                            $new_bkl = $item['NEW_BKL'];
+
+                            $result[] = array(
+                                'supco' => $supco,
+                                'nama' => $nama,
+                                'jadwal' => $jadwal,
+                                'datang' => $datang,
+                                'pb_oto' => $pb_oto,
+                                'new_bkl' => $new_bkl,
+                            );
+                            $conn = null;
+                        }
+
+                        $data['title'] = 'Check Data';
+                        $data['nav'] = 'Supmast';
+                        $data['user'] = $_SESSION['nama'];
+                        $data['result'] = $result;
+                        $this->view('layouts/header', $data);
+                        $this->view('layouts/navbar', $data);
+                        $this->view('check/supmast', $data);
+                        $this->view('layouts/footer');
+                    }
+                } catch (PDOException $e) {
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'check/supmast');
+                }
+            }
+        } else {
+            header('Location: ' . BASEURL . 'check/supmast');
+        }
+    }
 }
