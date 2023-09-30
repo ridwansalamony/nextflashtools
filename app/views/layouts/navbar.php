@@ -88,10 +88,10 @@
                     <div id="dropdownNavbar3" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
                         <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Semua Toko</a>
+                                <a href="<?= BASEURL; ?>manual/all" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'All Toko' ? 'bg-primary text-white' : '' ?>">Semua Toko</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Beberapa Toko</a>
+                                <a href="<?= BASEURL; ?>manual/all" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Part Toko' ? 'bg-primary text-white' : '' ?>">Beberapa Toko</a>
                             </li>
                         </ul>
                     </div>
