@@ -91,7 +91,7 @@
                                 <a href="<?= BASEURL; ?>manual/all" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'All Toko' ? 'bg-primary text-white' : '' ?>">Semua Toko</a>
                             </li>
                             <li>
-                                <a href="<?= BASEURL; ?>manual/all" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Part Toko' ? 'bg-primary text-white' : '' ?>">Beberapa Toko</a>
+                                <a href="<?= BASEURL; ?>manual/part" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Part Toko' ? 'bg-primary text-white' : '' ?>">Beberapa Toko</a>
                             </li>
                         </ul>
                     </div>

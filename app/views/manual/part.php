@@ -5,7 +5,7 @@
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
             <h1 class="text-2xl font-semibold uppercase">QUERY MANUAL UNTUK SEMUA TOKO</h1>
-            <h2 class="text-lg font-medium text-red-500">"Hati-hati dalam eksekusi <span class="font-bold uppercase text-gray-800">QUERY!</span> Karna berdampak ke semua toko yang terdaftar!"</h2>
+            <h2 class="text-lg font-medium text-red-500">"Hati-hati dalam eksekusi <span class="font-bold uppercase text-gray-800">QUERY!</span> Karna berdampak ke toko yang terdaftar!"</h2>
         </div>
         <form action="<?= BASEURL; ?>manual/allup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
@@ -20,6 +20,11 @@
                         </select>
                     </div>
                 </div>
+
+                <div class="w-full md:w-1/2 mx-auto">
+                    <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Pisah dengan kutip dan koma : 'kode','kode' dst ..." required>
+                </div>
+
                 <div class="w-full md:w-1/2 mx-auto">
                     <textarea name="query" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" rows="4" placeholder="Masukkan QUERY" required></textarea>
                 </div>
