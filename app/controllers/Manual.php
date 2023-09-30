@@ -38,10 +38,10 @@ class Manual extends Controller
             $tanggal = date("Y-m-d H:i:s");
             $kategori = 'Transfer Data';
 
-            $toko = $this->model('StoreModel')->getStore();
+            $toko = $this->model('StoreModel')->getAllStore();
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko tidak ada di Daftar Toko!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'manual/all');
                 exit;
             } else {
