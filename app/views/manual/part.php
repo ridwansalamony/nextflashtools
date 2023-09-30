@@ -4,7 +4,7 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">QUERY MANUAL UNTUK SEMUA TOKO</h1>
+            <h1 class="text-2xl font-semibold uppercase">QUERY MANUAL UNTUK BEBERAPA TOKO</h1>
             <h2 class="text-lg font-medium text-red-500">"Hati-hati dalam eksekusi <span class="font-bold uppercase text-gray-800">QUERY!</span> Karna berdampak ke toko yang terdaftar!"</h2>
         </div>
         <form action="<?= BASEURL; ?>manual/allup" method="POST">

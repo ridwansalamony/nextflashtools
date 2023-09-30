@@ -24,6 +24,7 @@ class Manual extends Controller
     public function all()
     {
         $data['title'] = 'Manual Query';
+        $data['nav'] = 'All Toko';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
@@ -89,6 +90,7 @@ class Manual extends Controller
                 }
 
                 $data['title'] = 'Manual Query';
+                $data['nav'] = 'All Toko';
                 $data['user'] = $_SESSION['nama'];
                 $data['result'] = $result;
                 $this->view('layouts/header', $data);
@@ -105,6 +107,7 @@ class Manual extends Controller
     public function part()
     {
         $data['title'] = 'Manual Query';
+        $data['nav'] = 'Part Toko';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
@@ -176,6 +179,7 @@ class Manual extends Controller
                 }
 
                 $data['title'] = 'Manual Query';
+                $data['nav'] = 'Part Toko';
                 $data['user'] = $_SESSION['nama'];
                 $data['result'] = $result;
                 $this->view('layouts/header', $data);
