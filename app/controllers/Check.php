@@ -37,7 +37,7 @@ class Check extends Controller
         if (isset($_POST['submit'])) {
             $plu = $_POST['plu'];
             $npb = $_POST['npb'];
-            $tanggal_proses = $_POST['tanggal_proses'];
+            $tanggal = $_POST['tanggal_proses'];
 
             $toko = $this->model('StoreModel')->getStoreByCode();
 
@@ -67,7 +67,7 @@ class Check extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    $mstran = "SELECT * FROM mstran WHERE prdcd LIKE '%$plu%' AND invno LIKE '%$npb%' AND bukti_tgl LIKE '%$tanggal_proses%' ORDER BY bukti_tgl DESC";
+                    $mstran = "SELECT * FROM mstran WHERE prdcd LIKE '%$plu%' AND invno LIKE '%$npb%' AND bukti_tgl LIKE '%$tanggal%' ORDER BY bukti_tgl DESC";
 
                     $stmt = $conn->prepare($mstran);
 
@@ -115,6 +115,111 @@ class Check extends Controller
             }
         } else {
             header('Location: ' . BASEURL . 'check/mstran');
+        }
+    }
+
+    public function mtran()
+    {
+        $data['title'] = 'Check Data';
+        $data['nav'] = 'Mtran';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('check/mtran');
+        $this->view('layouts/footer');
+    }
+
+    public function mtranup()
+    {
+        if (isset($_POST['submit'])) {
+            $plu = $_POST['plu'];
+            $shift = $_POST['shift'];
+            $station = $_POST['station'];
+            $struk = $_POST['struk'];
+            $tanggal = $_POST['tanggal_proses'];
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'check/mtran');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $mstran = "SELECT * FROM mtran WHERE plu LIKE '%$plu%' AND docnoenc LIKE '%$struk%' AND shift LIKE '%$shift%' AND station LIKE '%$station%' AND tanggal LIKE '%$tanggal%' ORDER BY tanggal DESC";
+
+                    $stmt = $conn->prepare($mstran);
+
+                    $stmt->execute();
+
+                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$result) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data mtran tidak ada!', 'Masukkan data yang valid', 'red');
+                        header('Location: ' . BASEURL . 'check/mtran');
+                        exit;
+                    } else {
+                        foreach ($result as $item) {
+                            $plu = $item['PLU'];
+                            $shift = $item['SHIFT'];
+                            $station = $item['STATION'];
+                            $struk = $item['DOCNOENC'];
+                            $qty = $item['QTY'];
+                            $price = $item['PRICE'];
+                            $gross = $item['GROSS'];
+                            $tanggal = $item['TANGGAL'];
+                            $jam = $item['JAM'];
+
+                            $result[] = array(
+                                'plu' => $plu,
+                                'shift' => $shift,
+                                'station' => $station,
+                                'struk' => $struk,
+                                'qty' => $qty,
+                                'price' => $price,
+                                'gross' => $gross,
+                                'tanggal' => $tanggal,
+                                'jam' => $jam,
+                            );
+                            $conn = null;
+                        }
+
+                        $data['title'] = 'Check Data';
+                        $data['nav'] = 'Mtran';
+                        $data['user'] = $_SESSION['nama'];
+                        $data['result'] = $result;
+                        $this->view('layouts/header', $data);
+                        $this->view('layouts/navbar', $data);
+                        $this->view('check/mtran', $data);
+                        $this->view('layouts/footer');
+                    }
+                } catch (PDOException $e) {
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'check/mtran');
+                }
+            }
+        } else {
+            header('Location: ' . BASEURL . 'check/mtran');
         }
     }
 
