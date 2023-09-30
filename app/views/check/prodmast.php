@@ -4,9 +4,9 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">Cek Data Stmast</h1>
+            <h1 class="text-2xl font-semibold uppercase">Cek Data Prodmast</h1>
         </div>
-        <form action="<?= BASEURL; ?>check/stmastup" method="POST">
+        <form action="<?= BASEURL; ?>check/prodmastup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="md:w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo" width="200">
@@ -55,25 +55,52 @@
                             Recid
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Prdcd
+                            KET
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Qty
+                            CAT_COD
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Min
+                            PRDCD
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Max
+                            MERK
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Begbal
+                            NAMA
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Lcost
+                            SIZE
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Spd
+                            ACOST
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            LCOST
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            RCOST
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            PRICE
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            CTGR
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            SUPCO
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            PTAG
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            REORDER
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            FLAGPROD
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            STATUS RETUR
                         </th>
                     </tr>
                 </thead>
@@ -85,25 +112,52 @@
                                     <?= $item['recid']; ?>
                                 </td>
                                 <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['ket']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['cat']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
                                     <?= $item['prdcd']; ?>
                                 </td>
                                 <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['qty']; ?>
+                                    <?= $item['merk']; ?>
                                 </td>
                                 <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['min']; ?>
+                                    <?= $item['nama']; ?>
                                 </td>
                                 <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['max']; ?>
+                                    <?= $item['size']; ?>
                                 </td>
                                 <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['begbal']; ?>
+                                    <?= $item['acost']; ?>
                                 </td>
                                 <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
                                     <?= $item['lcost']; ?>
                                 </td>
                                 <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['spd']; ?>
+                                    <?= $item['rcost']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['price']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['ctgr']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['supco']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['ptag']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['reorder']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['flagprod']; ?>
+                                </td>
+                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
+                                    <?= $item['status']; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

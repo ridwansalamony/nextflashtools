@@ -67,7 +67,7 @@
                                 <a href="<?= BASEURL ?>check/mtran" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Mtran' ? 'bg-primary text-white' : '' ?>">Mtran</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Prodmast</a>
+                                <a href="<?= BASEURL ?>check/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Prodmast' ? 'bg-primary text-white' : '' ?>">Prodmast</a>
                             </li>
                             <li>
                                 <a href="<?= BASEURL ?>check/stmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Stmast' ? 'bg-primary text-white' : '' ?>">Stmast</a>

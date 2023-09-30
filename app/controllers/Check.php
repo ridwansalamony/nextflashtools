@@ -166,9 +166,9 @@ class Check extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    $mstran = "SELECT * FROM mtran WHERE plu LIKE '%$plu%' AND docnoenc LIKE '%$struk%' AND shift LIKE '%$shift%' AND station LIKE '%$station%' AND tanggal LIKE '%$tanggal%' ORDER BY tanggal DESC";
+                    $mtran = "SELECT * FROM mtran WHERE plu LIKE '%$plu%' AND docnoenc LIKE '%$struk%' AND shift LIKE '%$shift%' AND station LIKE '%$station%' AND tanggal LIKE '%$tanggal%' ORDER BY tanggal DESC";
 
-                    $stmt = $conn->prepare($mstran);
+                    $stmt = $conn->prepare($mtran);
 
                     $stmt->execute();
 
@@ -220,6 +220,121 @@ class Check extends Controller
             }
         } else {
             header('Location: ' . BASEURL . 'check/mtran');
+        }
+    }
+
+    public function prodmast()
+    {
+        $data['title'] = 'Check Data';
+        $data['nav'] = 'Prodmast';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('check/prodmast');
+        $this->view('layouts/footer');
+    }
+
+    public function prodmastup()
+    {
+        if (isset($_POST['submit'])) {
+            $plu = $_POST['plu'];
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'check/prodmast');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $prodmast = "SELECT * FROM prodmast WHERE prdcd in ($plu)";
+
+                    $stmt = $conn->prepare($prodmast);
+
+                    $stmt->execute();
+
+                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$result) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> PLU tersebut tidak ada!', 'Masukkan PLU yang valid', 'red');
+                        header('Location: ' . BASEURL . 'check/prodmast');
+                        exit;
+                    } else {
+                        foreach ($result as $item) {
+                            $recid = $item['RECID'];
+                            $ket = $item['KET'];
+                            $cat = $item['CAT_COD'];
+                            $prdcd = $item['PRDCD'];
+                            $merk = $item['MERK'];
+                            $nama = $item['NAMA'];
+                            $size = $item['SIZE'];
+                            $acost = $item['ACOST'];
+                            $lcost = $item['LCOST'];
+                            $rcost = $item['RCOST'];
+                            $price = $item['PRICE'];
+                            $ctgr = $item['CTGR'];
+                            $supco = $item['SUPCO'];
+                            $reorder = $item['REORDER'];
+                            $flagprod = $item['FLAGPROD'];
+                            $status = $item['STATUS_RETUR'];
+
+                            $result[] = array(
+                                'recid' => $recid,
+                                'ket' => $ket,
+                                'cat' => $cat,
+                                'prdcd' => $prdcd,
+                                'merk' => $merk,
+                                'nama' => $nama,
+                                'size' => $size,
+                                'acost' => $acost,
+                                'lcost' => $lcost,
+                                'rcost' => $rcost,
+                                'price' => $price,
+                                'ctgr' => $ctgr,
+                                'supco' => $supco,
+                                'reorder' => $reorder,
+                                'flagprod' => $flagprod,
+                                'status' => $status,
+                            );
+                            $conn = null;
+                        }
+
+                        $data['title'] = 'Check Data';
+                        $data['nav'] = 'Prodmast';
+                        $data['user'] = $_SESSION['nama'];
+                        $data['result'] = $result;
+                        $this->view('layouts/header', $data);
+                        $this->view('layouts/navbar', $data);
+                        $this->view('check/prodmast', $data);
+                        $this->view('layouts/footer');
+                    }
+                } catch (PDOException $e) {
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'check/prodmast');
+                }
+            }
+        } else {
+            header('Location: ' . BASEURL . 'check/prodmast');
         }
     }
 

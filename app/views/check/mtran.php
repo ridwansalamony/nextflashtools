@@ -71,7 +71,7 @@
             </div>
         </form>
         <div class="my-20">
-            <table id="tablex" class="w-full table-auto overflow-hidden">
+            <table id="tablex" class="display nowrap" style="width: 100%;">
                 <thead class="uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">

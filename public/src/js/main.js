@@ -1,5 +1,8 @@
 $(document).ready(function () {
-    $('#tablex').DataTable();
+    $('#tablex').DataTable({
+      responsive: true,
+      scrollX: true
+    });
 });
 
 $("form").submit(function(){
