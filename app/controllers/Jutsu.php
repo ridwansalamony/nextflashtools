@@ -465,4 +465,84 @@ class Jutsu extends Controller
             exit;
         }
     }
+
+    public function recalculate()
+    {
+        $data['title'] = 'New Jutsu';
+        $data['nav'] = 'Hitung Ulang Stock';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('jutsu/recalculate');
+        $this->view('layouts/footer');
+    }
+
+    public function recalculateup()
+    {
+        if (isset($_POST['submit'])) {
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "NEW JUTSU";
+            $action = "UPDATE REDOCNO 0 CONST RKEY HUM";
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'jutsu/recalculate');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $update = "UPDATE const SET rdocno='0' WHERE rkey='HUM'";
+
+                    $stmt1 = $conn->prepare($update);
+
+                    $stmt1->execute();
+
+                    $data['status'] = true;
+
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close program lalu coba kembali hitung ulang stock", 'blue');
+                    header('Location: ' . BASEURL . 'jutsu/recalculate');
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'jutsu/recalculate');
+                }
+
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
+
+                $data['title'] = 'New Jutsu';
+                $data['nav'] = 'Hitung Ulang Stock';
+                $data['user'] = $_SESSION['nama'];
+                $this->view('layouts/header', $data);
+                $this->view('layouts/navbar', $data);
+                $this->view('jutsu/recalculate', $data);
+                $this->view('layouts/footer');
+            }
+        } else {
+            header('Location: ' . BASEURL . 'jutsu/recalculate');
+            exit;
+        }
+    }
 }

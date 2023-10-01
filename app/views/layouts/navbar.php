@@ -139,10 +139,7 @@
                                 <a href="<?= BASEURL; ?>jutsu/openbkl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Open BKL' ? 'bg-primary text-white' : '' ?>">Open BKL</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Hitung Ulang Stock</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Finger</a>
+                                <a href="<?= BASEURL; ?>jutsu/recalculate" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Hitung Ulang Stock' ? 'bg-primary text-white' : '' ?>">Hitung Ulang Stock</a>
                             </li>
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Setting 24 Jam</a>
