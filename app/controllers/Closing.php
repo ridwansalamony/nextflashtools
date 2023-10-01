@@ -35,9 +35,10 @@ class Closing extends Controller
     public function dailyup()
     {
         if (isset($_POST['submit'])) {
-            date_default_timezone_set('Asia/Jakarta');
-
             $tanggal_initial = $_POST['tanggal_initial'];
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "TUTUPAN HARIAN ULANG";
+            $action = "UPDATE INITIAL RECID P DAN UPDATE CONST PERIOD1 RKEY CON";
             $tanggal_con = date('Y-m-d', strtotime("$tanggal_initial -1 day", strtotime(date("Y-m-d"))));
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -96,16 +97,19 @@ class Closing extends Controller
 
                                 $stmt2->execute();
                                 $stmt3->execute();
+
+                                $data['status'] = true;
                             } else {
                                 Flasher::setFlash("Station <span class='font-bold'>$station</span> Shift <span class='font-bold'>$shift</span> ", "Belum tutupan shift / aktual kas", 'red');
                                 header('Location: ' . BASEURL . 'closing/daily');
                                 exit;
                             }
                         }
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
+                        header('Location: ' . BASEURL . 'closing/daily');
+                        $conn = null;
                     }
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
-                    header('Location: ' . BASEURL . 'closing/daily');
-                    $conn = null;
+                    $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
                 } catch (PDOException $e) {
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", 'Koneksi <span class="font-bold text-info uppercase">' . $kode . '</span> down / Pass SQL Salah!', 'red');
                     header('Location: ' . BASEURL . 'closing/daily');
@@ -131,12 +135,13 @@ class Closing extends Controller
     public function monthlyup()
     {
         if (isset($_POST['submit'])) {
-            date_default_timezone_set('Asia/Jakarta');
-
-            $toko = $this->model('StoreModel')->getStoreByCode();
-            $kode = $_POST['kode_toko'];
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "TUTUPAN BULANAN ULANG";
+            $action = "DROP TABLE KODETOKO+PERIODE, UPDATE CONST DOCNO O RKEY LPB, UPDATE CONST DOCNO RKEY PRD";
             $periode = $_POST['periode'];
             $prd = date('Ym') - 1;
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -176,6 +181,8 @@ class Closing extends Controller
                     $stmt2->execute();
                     $stmt3->execute();
 
+                    $data['status'] = true;
+
                     Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
                     header('Location: ' . BASEURL . 'closing/monthly');
                     $conn = null;
@@ -183,6 +190,7 @@ class Closing extends Controller
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'closing/monthly');
                 }
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
             }
         } else {
             header('Location: ' . BASEURL . 'closing/monthly');
@@ -204,8 +212,10 @@ class Closing extends Controller
     public function initialup()
     {
         if (isset($_POST['submit'])) {
-            date_default_timezone_set('Asia/Jakarta');
 
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "INITIAL C";
+            $action = "UPDATE INITIAL RECID C";
             $tanggal_initial = $_POST['tanggal_initial'];
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -253,6 +263,8 @@ class Closing extends Controller
                         $stmt2 = $conn->prepare($recid);
 
                         $stmt2->execute();
+
+                        $data['status'] = true;
                     }
                     Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Update recid C initial", 'blue');
                     header('Location: ' . BASEURL . 'closing/initial');
@@ -261,6 +273,7 @@ class Closing extends Controller
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'closing/initial');
                 }
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
             }
         } else {
             header('Location: ' . BASEURL . 'closing/initial');

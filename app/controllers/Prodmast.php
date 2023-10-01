@@ -24,15 +24,14 @@ class Prodmast extends Controller
     public function update()
     {
         if (isset($_POST['submit'])) {
-            date_default_timezone_set('Asia/Jakarta');
-
             $tahun = substr(date('y'), 1);
             $bulan = $_POST['bulan'];
             $bln = date('m');
             $tanggal1 = date('d');
             $tanggal2 = date('Y-m-d');
-            $tanggal3 = date("Y-m-d H:i:s");
-            $kategori = 'Transfer Data';
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "TRANSFER DATA";
+            $action = "UPDATE DTA,DT_,TMT DAN TRPR (LOG_MONITOR)";
 
             try {
                 $toko = $this->model('StoreModel')->getStore();
@@ -75,7 +74,7 @@ class Prodmast extends Controller
                         $querydt = "UPDATE const SET `desc`='$tahun$bulan$tanggal1' WHERE rkey IN ('dta','dt_')";
                         $querytmt = "UPDATE const SET `period`='$tanggal2', period1='$tanggal2' WHERE rkey='tmt'";
                         $querytrpr1 = "DELETE FROM log_monitor WHERE jenis=7 AND waktureport LIKE '$tanggal2%'";
-                        $querytrpr2 = "INSERT INTO log_monitor VALUES ('$tanggal3','7','Monitoring : $at1$tanggal1$bln$tahun$at2')";
+                        $querytrpr2 = "INSERT INTO log_monitor VALUES ('$tanggal_action','7','Monitoring : $at1$tanggal1$bln$tahun$at2')";
 
 
                         $stmt1 = $conn->prepare($querydt);
@@ -92,7 +91,7 @@ class Prodmast extends Controller
                         $data['status'] = false;
                     }
 
-                    $this->model('SniperModel')->addSniper($kode, $data['status'], $tanggal3, $kategori);
+                    $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                     $result[] = array(
                         'kode' => $kode,

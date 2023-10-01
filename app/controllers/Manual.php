@@ -36,8 +36,9 @@ class Manual extends Controller
     {
         if (isset($_POST['submit'])) {
             $query = $_POST['query'];
-            $tanggal = date("Y-m-d H:i:s");
-            $kategori = 'Manual Query All Toko';
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "MANUAL QUERY ALL TOKO";
+            $action = "QUERY MANUAL UNTUK SEMUA TOKO YANG DI INPUT USER";
 
             $toko = $this->model('StoreModel')->getAllStore();
 
@@ -78,7 +79,7 @@ class Manual extends Controller
                         $data['status'] = false;
                     }
 
-                    $this->model('SniperModel')->addSniper($kode, $data['status'], $tanggal, $kategori);
+                    $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                     $result[] = array(
                         'kode' => $kode,
@@ -119,8 +120,9 @@ class Manual extends Controller
     {
         if (isset($_POST['submit'])) {
             $query = $_POST['query'];
-            $tanggal = date("Y-m-d H:i:s");
-            $kategori = 'Manual Query Part Toko';
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "MANUAL QUERY PART TOKO";
+            $action = "QUERY MANUAL UNTUK BEBERAPA TOKO YANG DI INPUT USER";
 
             try {
                 $toko = $this->model('StoreModel')->getStore();
@@ -167,7 +169,7 @@ class Manual extends Controller
                         $data['status'] = false;
                     }
 
-                    $this->model('SniperModel')->addSniper($kode, $data['status'], $tanggal, $kategori);
+                    $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                     $result[] = array(
                         'kode' => $kode,
