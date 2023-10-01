@@ -144,6 +144,9 @@
                             <li>
                                 <a href="<?= BASEURL; ?>jutsu/setting24" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Setting 24' ? 'bg-primary text-white' : '' ?>">Setting 24 Jam</a>
                             </li>
+                            <li>
+                                <a href="<?= BASEURL; ?>jutsu/custdisplay" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Customer Display' ? 'bg-primary text-white' : '' ?>">Customer Display</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

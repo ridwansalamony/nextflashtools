@@ -626,4 +626,85 @@ class Jutsu extends Controller
             exit;
         }
     }
+
+    public function custdisplay()
+    {
+        $data['title'] = 'New Jutsu';
+        $data['nav'] = 'Customer Display';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('jutsu/custdisplay');
+        $this->view('layouts/footer');
+    }
+
+    public function custdisplayup()
+    {
+        if (isset($_POST['submit'])) {
+            $setting = $_POST['setting'];
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "NEW JUTSU";
+            $action = "UPDATE DOCNO DAN RDOCNO DI TABLE CONST";
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'jutsu/custdisplay');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $update = "UPDATE const SET docno='$setting', rdocno='$setting' WHERE rkey='CCD'";
+
+                    $stmt1 = $conn->prepare($update);
+
+                    $stmt1->execute();
+
+                    $data['status'] = true;
+
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir coba kembali", 'blue');
+                    header('Location: ' . BASEURL . 'jutsu/custdisplay');
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'jutsu/custdisplay');
+                }
+
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
+
+                $data['title'] = 'New Jutsu';
+                $data['nav'] = 'Customer Display';
+                $data['user'] = $_SESSION['nama'];
+                $this->view('layouts/header', $data);
+                $this->view('layouts/navbar', $data);
+                $this->view('jutsu/custdisplay', $data);
+                $this->view('layouts/footer');
+            }
+        } else {
+            header('Location: ' . BASEURL . 'jutsu/custdisplay');
+            exit;
+        }
+    }
 }
