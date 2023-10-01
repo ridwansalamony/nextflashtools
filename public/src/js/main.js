@@ -3,6 +3,34 @@ $(document).ready(function () {
       responsive: true,
       scrollX: true
     });
+
+    $('.tambah-toko').click(function() {
+      $('.modal-label').html('Tambah Toko');
+
+      $('#kode_toko').val('');
+      $('#nama').val('');
+      $('#induk').val('');
+    });
+
+    $('.edit-toko').click(function() {
+      $('.modal-label').html('Edit Toko');
+      $('.form-modal').attr('action', 'http://localhost/nextflashtools/store/edit');
+
+      const code = $(this).data('code');
+
+      $.ajax({
+        url: 'http://localhost/nextflashtools/store/getEdit',
+        data: {kode_toko : code},
+        method: 'POST',
+        dataType: 'JSON',
+        success: function(data) {
+          $('#kode_toko').val(data.toko);
+          $('#nama').val(data.nama);
+          $('#induk').val(data.induk);
+        }
+      });
+      return false;
+    });
 });
 
 $("form").submit(function(){

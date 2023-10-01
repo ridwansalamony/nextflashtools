@@ -5,7 +5,7 @@
 
         <div class="flex justify-between border-b-2 mb-4">
             <h1 class="text-2xl font-semibold uppercase">Daftar Toko</h1>
-            <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button" class="bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">Tambah Toko</button>
+            <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button" class="bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none tambah-toko">Tambah Toko</button>
         </div>
 
         <table id="tablex" class="display nowrap" style="width: 100%;">
@@ -45,7 +45,7 @@
                             <?= $item['induk']; ?>
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="#" class="bg-blue-100 hover:bg-blue-200 text-info font-semibold mr-2 px-2.5 py-0.5 rounded hover:text-info border border-blue-400 inline-flex items-center justify-center">Edit</a>
+                            <a href="#" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" data-code="<?= $item['toko'] ?>" class="bg-blue-100 hover:bg-blue-200 text-info font-semibold mr-2 px-2.5 py-0.5 rounded hover:text-info border border-blue-400 inline-flex items-center justify-center edit-toko">Edit</a>
                             <a href="<?= BASEURL ?>store/delete/<?= $item['toko'] ?>" class="bg-red-100 hover:bg-red-200 text-secondary font-semibold mr-2 px-2.5 py-0.5 rounded hover:text-primary border border-red-400 inline-flex items-center justify-center sweetalert-confirm">Hapus</a>
                         </td>
                     </tr>
@@ -67,21 +67,21 @@
                     <span class="sr-only">Close modal</span>
                 </button>
                 <div class="px-6 py-6 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium">Tambah Toko</h3>
-                    <form class="space-y-6" action="<?= BASEURL; ?>store/add" method="POST">
+                    <h3 class="modal-label mb-4 text-xl font-medium"></h3>
+                    <form class="form-modal space-y-6" action="<?= BASEURL; ?>store/add" method="POST">
                         <div>
                             <label for="kode_toko" class="block mb-2 text-sm font-medium ">Kode Toko</label>
-                            <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="TXXX or FXXX" maxlength="4" required>
+                            <input id="kode_toko" type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 font-bold text-primary text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="TXXX or FXXX" maxlength="4" required>
                         </div>
                         <div>
                             <label for="nama" class="block mb-2 text-sm font-medium ">Nama Toko</label>
-                            <input type="text" name="nama" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="KUBANG JAYA 88" maxlength="50" required>
+                            <input id="nama" type="text" name="nama" class="bg-gray-50 border border-gray-300 font-bold text-primary text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="KUBANG JAYA 88" maxlength="50" required>
                         </div>
                         <div>
                             <label for="induk" class="block mb-2 text-sm font-medium ">IP Induk</label>
-                            <input type="text" name="induk" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="10.56.xx.xx" maxlength="20" required>
+                            <input id="induk" type="text" name="induk" class="bg-gray-50 border border-gray-300 font-bold text-primary text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="10.56.xx.xx" maxlength="20" required>
                         </div>
-                        <button type="submit" name="submit" class="w-full text-white bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah</button>
+                        <button type="submit" name="submit" class="w-full text-white bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-lg px-5 py-2.5 text-center">Proses</button>
                     </form>
                 </div>
             </div>

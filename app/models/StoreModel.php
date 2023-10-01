@@ -57,4 +57,18 @@ class StoreModel
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function editStore($data)
+    {
+        $query = "UPDATE daftar_toko SET toko = :toko, nama = :nama, induk = :induk WHERE toko = :tokox";
+
+        $this->db->query($query);
+        $this->db->bind('toko', $data['kode_toko']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('induk', $data['induk']);
+        $this->db->bind('tokox', $data['kode_toko']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }

@@ -41,16 +41,40 @@ class Store extends Controller
         }
     }
 
-    public function delete($toko)
+    public function delete($toko = null)
     {
-        if (isset($toko)) {
+        if (!$toko) {
+            header('Location: ' . BASEURL . 'store');
+            exit;
+        } else {
             try {
                 $this->model('StoreModel')->deleteStore($toko);
-                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil dihapus!', 'blue');
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $toko . '</span>', 'berhasil dihapus!', 'blue');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'gagal dihapus!', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $toko . '</span>', 'gagal dihapus!', 'red');
+                header('Location: ' . BASEURL . 'store');
+                exit;
+            }
+        }
+    }
+
+    public function getEdit()
+    {
+        echo json_encode($this->model('StoreModel')->getStoreByCode());
+    }
+
+    public function edit()
+    {
+        if (isset($_POST['submit'])) {
+            try {
+                $this->model('StoreModel')->editStore($_POST);
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil diubah!', 'blue');
+                header('Location: ' . BASEURL . 'store');
+                exit;
+            } catch (Exception $e) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'sudah terdaftar!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }
