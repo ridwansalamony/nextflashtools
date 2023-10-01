@@ -164,7 +164,7 @@ class Closing extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    $drop = "DROP TABLE $kode$periode";
+                    $drop = "DROP TABLE IF EXISTS $kode$periode";
                     $update1 = "UPDATE const SET docno='0',rdocno='0' WHERE rkey='LPB'";
                     $update2 = "UPDATE const SET docno='$prd' WHERE rkey='PRD'";
 
