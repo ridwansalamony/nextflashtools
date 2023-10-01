@@ -133,10 +133,7 @@
                                 <a href="<?= BASEURL; ?>jutsu/beritaacara" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Berita Acara' ? 'bg-primary text-white' : '' ?>">Hapus Berita Acara</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Hapus Stockol_id</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Tambah NIK Toko</a>
+                                <a href="<?= BASEURL; ?>jutsu/addnik" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tambah NIK' ? 'bg-primary text-white' : '' ?>">Tambah NIK Toko</a>
                             </li>
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Ubah PKM</a>

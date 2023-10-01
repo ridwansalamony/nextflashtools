@@ -286,4 +286,89 @@ class Jutsu extends Controller
             exit;
         }
     }
+
+    public function addnik()
+    {
+        $data['title'] = 'New Jutsu';
+        $data['nav'] = 'Tambah NIK';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('jutsu/addnik');
+        $this->view('layouts/footer');
+    }
+
+    public function addnikup()
+    {
+        if (isset($_POST['submit'])) {
+            $nik = $_POST['nik'];
+            $nama = $_POST['nama'];
+            $password = $_POST['password'];
+            $initial = $_POST['initial'];
+            $jabatan = $_POST['jabatan'];
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "NEW JUTSU";
+            $action = "INSERT NIK BARU DI TABLE PASSTOKO";
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'jutsu/addnik');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $insert = "INSERT INTO passtoko (nik,nama,pass,jabatan,initial) VALUES ('$nik','$nama','$password','$jabatan','$initial')";
+
+                    $stmt = $conn->prepare($insert);
+
+                    $stmt->execute();
+
+                    $data['status'] = true;
+
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Data toko sudah ditambahkan di passtoko", 'blue');
+                    header('Location: ' . BASEURL . 'jutsu/addnik');
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'jutsu/addnik');
+                }
+
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
+
+                $data['title'] = 'New Jutsu';
+                $data['nav'] = 'Tambah NIK';
+                $data['user'] = $_SESSION['nama'];
+                $this->view('layouts/header', $data);
+                $this->view('layouts/navbar', $data);
+                $this->view('jutsu/addnik', $data);
+                $this->view('layouts/footer');
+            }
+        } else {
+            header('Location: ' . BASEURL . 'jutsu/addnik');
+            exit;
+        }
+    }
 }
