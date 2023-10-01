@@ -142,51 +142,48 @@ class Jutsu extends Controller
                     $pass = DB_PASS_TOKO_NEW;
                 }
 
-                foreach ($toko as $item) {
-                    $ip = $item['induk'];
-                    $kode = $item['toko'];
-                    $nama = $item['nama'];
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
 
-                    // Eksekusi
-                    $dsn = "mysql:host=$ip;dbname=$name";
-                    $option = [
-                        PDO::ATTR_PERSISTENT => true,
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-                    ];
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
 
-                    try {
-                        $conn = new PDO($dsn, $user, $pass, $option);
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
 
-                        $tip = "SELECT * FROM const WHERE rkey='TIP'";
-                        $stmt1 = $conn->prepare($tip);
-                        $stmt1->execute();
+                    $tip = "SELECT * FROM const WHERE rkey='TIP'";
+                    $stmt1 = $conn->prepare($tip);
+                    $stmt1->execute();
 
-                        $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                    $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-                        if (!$result) {
-                            Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Table const rkey=TIP tidak ada!', 'Silahkan load table dahulu', 'red');
-                            header('Location: ' . BASEURL . 'jutsu/stationapka');
-                            exit;
-                        } else {
-                            $query = "UPDATE const SET `desc`='$station' WHERE rkey='TIP'";
-                            $stmt2 = $conn->prepare($query);
-                            $stmt2->execute();
+                    if (!$result) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Table const rkey=TIP tidak ada!', 'Silahkan load table dahulu', 'red');
+                        header('Location: ' . BASEURL . 'jutsu/stationapka');
+                        exit;
+                    } else {
+                        $query = "UPDATE const SET `desc`='$station' WHERE rkey='TIP'";
+                        $stmt2 = $conn->prepare($query);
+                        $stmt2->execute();
 
-                            $data['status'] = true;
+                        $data['status'] = true;
 
-                            Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir lalu coba kembali", 'blue');
-                            header('Location: ' . BASEURL . 'jutsu/stationapka');
-                        }
-                    } catch (PDOException $e) {
-                        $data['status'] = false;
-                        Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir lalu coba kembali", 'blue');
                         header('Location: ' . BASEURL . 'jutsu/stationapka');
                     }
-
-                    $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
-
-                    $conn = null;
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'jutsu/stationapka');
                 }
+
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
 
                 $data['title'] = 'New Jutsu';
                 $data['nav'] = 'Station APKA';

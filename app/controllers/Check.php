@@ -91,8 +91,9 @@ class Check extends Controller
                                 'bukti' => $bukti,
                                 'tanggal' => $tanggal,
                             );
-                            $conn = null;
                         }
+
+                        $conn = null;
 
                         $data['title'] = 'Check Data';
                         $data['nav'] = 'Mstran';
@@ -196,8 +197,9 @@ class Check extends Controller
                                 'tanggal' => $tanggal,
                                 'jam' => $jam,
                             );
-                            $conn = null;
                         }
+
+                        $conn = null;
 
                         $data['title'] = 'Check Data';
                         $data['nav'] = 'Mtran';
@@ -311,8 +313,9 @@ class Check extends Controller
                                 'flagprod' => $flagprod,
                                 'status' => $status,
                             );
-                            $conn = null;
                         }
+
+                        $conn = null;
 
                         $data['title'] = 'Check Data';
                         $data['nav'] = 'Prodmast';
@@ -410,8 +413,9 @@ class Check extends Controller
                                 'lcost' => $lcost,
                                 'spd' => $spd,
                             );
-                            $conn = null;
                         }
+
+                        $conn = null;
 
                         $data['title'] = 'Check Data';
                         $data['nav'] = 'Stmast';
@@ -505,8 +509,9 @@ class Check extends Controller
                                 'pb_oto' => $pb_oto,
                                 'new_bkl' => $new_bkl,
                             );
-                            $conn = null;
                         }
+
+                        $conn = null;
 
                         $data['title'] = 'Check Data';
                         $data['nav'] = 'Supmast';
@@ -596,8 +601,9 @@ class Check extends Controller
                                 'jabatan' => $jabatan,
                                 'password' => $password,
                             );
-                            $conn = null;
                         }
+
+                        $conn = null;
 
                         $data['title'] = 'Check Data';
                         $data['nav'] = 'Passtoko';

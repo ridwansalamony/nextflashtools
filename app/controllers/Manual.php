@@ -76,6 +76,8 @@ class Manual extends Controller
 
                     $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
+                    $conn = null;
+
                     $result[] = array(
                         'kode' => $kode,
                         'nama' => $nama,
@@ -165,6 +167,8 @@ class Manual extends Controller
                     }
 
                     $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                    $conn = null;
 
                     $result[] = array(
                         'kode' => $kode,
