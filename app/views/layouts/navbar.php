@@ -136,10 +136,7 @@
                                 <a href="<?= BASEURL; ?>jutsu/addnik" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tambah NIK' ? 'bg-primary text-white' : '' ?>">Tambah NIK Toko</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Ubah PKM</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Open BKL</a>
+                                <a href="<?= BASEURL; ?>jutsu/openbkl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Open BKL' ? 'bg-primary text-white' : '' ?>">Open BKL</a>
                             </li>
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Hitung Ulang Stock</a>
@@ -149,21 +146,6 @@
                             </li>
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Setting 24 Jam</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar6" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == '1' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Simulasi<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
-                    <div id="dropdownNavbar6" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Setting Simulasi</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['title'] == '1' ? 'bg-primary text-white' : '' ?>">Cek Simulasi</a>
                             </li>
                         </ul>
                     </div>

@@ -371,4 +371,98 @@ class Jutsu extends Controller
             exit;
         }
     }
+
+    public function openbkl()
+    {
+        $data['title'] = 'New Jutsu';
+        $data['nav'] = 'Open BKL';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('jutsu/openbkl');
+        $this->view('layouts/footer');
+    }
+
+    public function openbklup()
+    {
+        if (isset($_POST['submit'])) {
+            $kode_supplier = $_POST['kode_supplier'];
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "NEW JUTSU";
+            $action = "UPDATE DATANG, JADWAL, PB OTO, NEW BKL DI TABLE SUPMAST";
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'jutsu/openbkl');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $supmast = "SELECT * FROM supmast WHERE supco='$kode_supplier'";
+
+                    $stmt1 = $conn->prepare($supmast);
+
+                    $stmt1->execute();
+
+                    $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$result) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> SUPPLIER tersebut tidak ada!', 'Masukkan SUPPLIER yang valid', 'red');
+                        header('Location: ' . BASEURL . 'check/supmast');
+                        exit;
+                    } else {
+                        $update = "UPDATE supmast SET datang='YYYYYYY', jadwal='YYYYYYY', pb_oto='', new_bkl='' WHERE supco='$kode_supplier'";
+                        $stmt1 = $conn->prepare($update);
+                        $stmt1->execute();
+
+                        $data['status'] = true;
+
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode_supplier</span>", "Sudah di open, silahkan proses", 'blue');
+                        header('Location: ' . BASEURL . 'jutsu/openbkl');
+                    }
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'jutsu/openbkl');
+                }
+
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
+
+                $data['title'] = 'New Jutsu';
+                $data['nav'] = 'Open BKL';
+                $data['user'] = $_SESSION['nama'];
+                $data['result'] = $result;
+                $this->view('layouts/header', $data);
+                $this->view('layouts/navbar', $data);
+                $this->view('jutsu/openbkl', $data);
+                $this->view('layouts/footer');
+            }
+        } else {
+            header('Location: ' . BASEURL . 'jutsu/openbkl');
+            exit;
+        }
+    }
 }
