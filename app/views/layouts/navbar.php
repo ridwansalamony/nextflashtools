@@ -142,7 +142,7 @@
                                 <a href="<?= BASEURL; ?>jutsu/recalculate" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Hitung Ulang Stock' ? 'bg-primary text-white' : '' ?>">Hitung Ulang Stock</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Setting 24 Jam</a>
+                                <a href="<?= BASEURL; ?>jutsu/setting24" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Setting 24' ? 'bg-primary text-white' : '' ?>">Setting 24 Jam</a>
                             </li>
                         </ul>
                     </div>
