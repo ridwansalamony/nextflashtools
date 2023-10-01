@@ -38,12 +38,11 @@ class Pb extends Controller
 
             $toko = $this->model('StoreModel')->getStoreByCode();
 
-            $kode = $_POST['kode_toko'];
             $picnot = $_POST['picnot'];
             $docno = $_POST['npb'];
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $kode . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'pb/reopenpb');
                 exit;
             } else {
