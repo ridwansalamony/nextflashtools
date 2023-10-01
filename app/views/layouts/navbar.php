@@ -109,7 +109,7 @@
                                 <a href="<?= BASEURL; ?>pb/reopenpbx" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Reopen Cek' ? 'bg-primary text-white' : '' ?>">Buka Ulang Cek Barang</a>
                             </li>
                             <li>
-                                <a href="<?= BASEURL; ?>pb/error" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Error PB' ? 'bg-primary text-white' : '' ?>">Error HR PBSL</a>
+                                <a href="<?= BASEURL; ?>pb/errorpbsl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Error PBSL' ? 'bg-primary text-white' : '' ?>">Error HR PBSL</a>
                             </li>
                         </ul>
                     </div>
