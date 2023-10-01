@@ -103,7 +103,6 @@ class Closing extends Controller
                         Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
                         header('Location: ' . BASEURL . 'closing/daily');
                     }
-                    $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
                 } catch (PDOException $e) {
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", 'Koneksi <span class="font-bold text-info uppercase">' . $kode . '</span> down / Pass SQL Salah!', 'red');
                     header('Location: ' . BASEURL . 'closing/daily');

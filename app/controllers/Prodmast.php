@@ -13,7 +13,12 @@ class Prodmast extends Controller
 
     public function index()
     {
-        header('Location: ' . BASEURL);
+        $data['title'] = 'Transfer Data';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('prodmast/index', $data);
+        $this->view('layouts/footer');
     }
 
     public function update()
