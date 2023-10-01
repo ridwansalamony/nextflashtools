@@ -127,13 +127,13 @@
                                 <a href="<?= BASEURL; ?>jutsu/timeoutedc" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Timeout EDC' ? 'bg-primary text-white' : '' ?>">Timeout EDC</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Station Apka</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Hapus Stockol_id</a>
+                                <a href="<?= BASEURL; ?>jutsu/stationapka" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Station APKA' ? 'bg-primary text-white' : '' ?>">Setting Station APKA</a>
                             </li>
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Hapus Berita Acara</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Hapus Stockol_id</a>
                             </li>
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == '1' ? 'bg-primary text-white' : '' ?>">Tambah NIK Toko</a>
