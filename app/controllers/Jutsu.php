@@ -199,4 +199,91 @@ class Jutsu extends Controller
             exit;
         }
     }
+
+    public function beritaacara()
+    {
+        $data['title'] = 'New Jutsu';
+        $data['nav'] = 'Berita Acara';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('jutsu/beritaacara');
+        $this->view('layouts/footer');
+    }
+
+    public function beritaacaraup()
+    {
+        if (isset($_POST['submit'])) {
+            $year = date('Y');
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "NEW JUTSU";
+            $action = "DROP TABLE BCK_BERITAACARA JIKA ADA, CREATE TABLE BACKUP BERITA ACARA, DELETE TABLE BERITA ACARA DIBAWAH TAHUN $year";
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'jutsu/beritaacara');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $drop = "DROP TABLE TABLE IF EXIST bck_beritaacara";
+                    $create = "CREATE TABLE bck_beritaacara SELECT * FROM beritaacara";
+                    $delete = "DELETE FROM beritaacara WHERE YEAR(tglba) < $year";
+
+                    $stmt1 = $conn->prepare($drop);
+                    $stmt2 = $conn->prepare($create);
+                    $stmt3 = $conn->prepare($delete);
+
+                    $stmt1->execute();
+                    $stmt2->execute();
+                    $stmt3->execute();
+
+                    $data['status'] = true;
+
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Berita acara sudah dihapus", 'blue');
+                    header('Location: ' . BASEURL . 'jutsu/beritaacara');
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'jutsu/beritaacara');
+                }
+
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
+
+                $data['title'] = 'New Jutsu';
+                $data['nav'] = 'Berita Acara';
+                $data['user'] = $_SESSION['nama'];
+                $this->view('layouts/header', $data);
+                $this->view('layouts/navbar', $data);
+                $this->view('jutsu/beritaacara', $data);
+                $this->view('layouts/footer');
+            }
+        } else {
+            header('Location: ' . BASEURL . 'jutsu/beritaacara');
+            exit;
+        }
+    }
 }
