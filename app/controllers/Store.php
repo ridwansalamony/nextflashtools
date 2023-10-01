@@ -27,7 +27,7 @@ class Store extends Controller
         if (isset($_POST['submit'])) {
             try {
                 $this->model('StoreModel')->addStore($_POST);
-                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil ditambahkan!', 'green');
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil ditambahkan!', 'blue');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
@@ -46,7 +46,7 @@ class Store extends Controller
         if (isset($toko)) {
             try {
                 $this->model('StoreModel')->deleteStore($toko);
-                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil dihapus!', 'green');
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil dihapus!', 'blue');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
