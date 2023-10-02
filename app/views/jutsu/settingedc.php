@@ -4,10 +4,9 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">QUERY MANUAL UNTUK BEBERAPA TOKO</h1>
-            <h2 class="text-lg font-medium text-red-500">"Hati-hati dalam eksekusi <span class="font-bold uppercase text-gray-800">QUERY!</span> Karna berdampak ke toko yang terdaftar!"</h2>
+            <h1 class="text-2xl font-semibold uppercase">SETTING EDC</h1>
         </div>
-        <form action="<?= BASEURL; ?>manual/partup" method="POST">
+        <form action="<?= BASEURL; ?>jutsu/settingedcup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="md:w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo" width="200">
@@ -19,15 +18,18 @@
                             <option value="new">Pass SQL 2023-New</option>
                         </select>
                     </div>
+                    <div class="w-full">
+                        <select name="status" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+                            <option value="Y">Online</option>
+                            <option value="N">Offline</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="w-full md:w-1/2 mx-auto">
-                    <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Pisah dengan kutip dan koma : 'kode','kode' dst ..." required>
+                    <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Kode Toko: TXXX" maxlength="4" required>
                 </div>
 
-                <div class="w-full md:w-1/2 mx-auto">
-                    <textarea name="query" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" rows="4" placeholder="Masukkan QUERY" required></textarea>
-                </div>
                 <div class="w-full md:w-1/2 mx-auto">
                     <button type="submit" name="submit" id="submit" class="w-full bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 focus:outline-none">
                         Proses
@@ -47,39 +49,4 @@
                 </div>
             </div>
         </form>
-
-        <div class="my-20">
-            <table id="tablex" class="display nowrap" style="width: 100%;">
-                <thead class="uppercase bg-gray-50">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Kode Toko
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Nama Toko
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Status
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="text-base text-gray-600">
-                    <?php if (isset($data['result'])) : ?>
-                        <?php foreach ($data['result'] as $item) : ?>
-                            <tr class="border-b hover:bg-gray-50 text-lg <?= $item['status'] ? 'bg-green-200' : 'bg-red-200' ?>">
-                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['kode']; ?>
-                                </td>
-                                <td class="px-6 py-4 font-medium whitespace-nowrap text-center">
-                                    <?= $item['nama']; ?>
-                                </td>
-                                <td class="px-6 py-4 font-bold whitespace-nowrap text-center">
-                                    <?= $item['status'] ? 'BERHASIL' : 'GAGAL'; ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
     </main>

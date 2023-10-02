@@ -62,20 +62,20 @@ class Check extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    $mstran = "SELECT * FROM mstran WHERE prdcd LIKE '%$plu%' AND invno LIKE '%$npb%' AND bukti_tgl LIKE '%$tanggal%' ORDER BY bukti_tgl DESC";
+                    $mstran = "SELECT * FROM mstran WHERE prdcd LIKE '%$plu%' AND invno LIKE '%$npb%' AND bukti_tgl LIKE '%$tanggal%'";
 
                     $stmt = $conn->prepare($mstran);
 
                     $stmt->execute();
 
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (!$result) {
+                    if (!$data) {
                         Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data mstran tidak ada!', 'Masukkan data yang valid', 'red');
                         header('Location: ' . BASEURL . 'check/mstran');
                         exit;
                     } else {
-                        foreach ($result as $item) {
+                        foreach ($data as $item) {
                             $npb = $item['INVNO'];
                             $prdcd = $item['PRDCD'];
                             $rtype = $item['RTYPE'];
@@ -168,14 +168,14 @@ class Check extends Controller
 
                     $stmt->execute();
 
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (!$result) {
+                    if (!$data) {
                         Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data mtran tidak ada!', 'Masukkan data yang valid', 'red');
                         header('Location: ' . BASEURL . 'check/mtran');
                         exit;
                     } else {
-                        foreach ($result as $item) {
+                        foreach ($data as $item) {
                             $plu = $item['PLU'];
                             $shift = $item['SHIFT'];
                             $station = $item['STATION'];
@@ -270,14 +270,14 @@ class Check extends Controller
 
                     $stmt->execute();
 
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (!$result) {
+                    if (!$data) {
                         Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> PLU tersebut tidak ada!', 'Masukkan PLU yang valid', 'red');
                         header('Location: ' . BASEURL . 'check/prodmast');
                         exit;
                     } else {
-                        foreach ($result as $item) {
+                        foreach ($data as $item) {
                             $recid = $item['RECID'];
                             $ket = $item['KET'];
                             $cat = $item['CAT_COD'];
@@ -386,14 +386,14 @@ class Check extends Controller
 
                     $stmt->execute();
 
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (!$result) {
+                    if (!$data) {
                         Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> PLU tersebut tidak ada!', 'Masukkan PLU yang valid', 'red');
                         header('Location: ' . BASEURL . 'check/stmast');
                         exit;
                     } else {
-                        foreach ($result as $item) {
+                        foreach ($data as $item) {
                             $recid = $item['RECID'];
                             $prdcd = $item['PRDCD'];
                             $qty = $item['QTY'];
@@ -486,14 +486,14 @@ class Check extends Controller
 
                     $stmt->execute();
 
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (!$result) {
+                    if (!$data) {
                         Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> SUPPLIER tersebut tidak ada!', 'Masukkan SUPPLIER yang valid', 'red');
                         header('Location: ' . BASEURL . 'check/supmast');
                         exit;
                     } else {
-                        foreach ($result as $item) {
+                        foreach ($data as $item) {
                             $supco = $item['SUPCO'];
                             $nama = $item['NAMA'];
                             $jadwal = $item['JADWAL'];
@@ -582,18 +582,18 @@ class Check extends Controller
 
                     $stmt->execute();
 
-                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (!$result) {
+                    if (!$data) {
                         Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> NIK tersebut tidak ada!', 'Masukkan NIK yang valid / Tambah NIK di menu Jutsu', 'red');
                         header('Location: ' . BASEURL . 'check/passtoko');
                         exit;
                     } else {
-                        foreach ($result as $item) {
+                        foreach ($data as $item) {
                             $nik = $item['NIK'];
                             $nama = $item['NAMA'];
-                            $jabatan = $item['JABATAN'];
-                            $password = $item['PASS'];
+                            $jabatan = $item['Jabatan'];
+                            $password = $item['Pass'];
 
                             $result[] = array(
                                 'nik' => $nik,
@@ -602,6 +602,9 @@ class Check extends Controller
                                 'password' => $password,
                             );
                         }
+
+                        var_dump($result);
+                        exit;
 
                         $conn = null;
 

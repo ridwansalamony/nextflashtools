@@ -125,7 +125,7 @@ class Manual extends Controller
                 $toko = $this->model('StoreModel')->getStore();
             } catch (Exception $e) {
                 Flasher::setFlash("<span class='font-bold'>FORMAT SALAH!</span> Harap masukkan dengan benar!", "<span class='font-bold'>CONTOH : 'TXXX','FXXX'</span>", 'red');
-                header('Location: ' . BASEURL . 'prodmast');
+                header('Location: ' . BASEURL . 'manual/part');
                 exit;
             }
 

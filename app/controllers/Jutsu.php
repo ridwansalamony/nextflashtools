@@ -16,6 +16,97 @@ class Jutsu extends Controller
         header('Location: ' . BASEURL);
     }
 
+    public function settingedc()
+    {
+        $data['title'] = 'New Jutsu';
+        $data['nav'] = 'Setting EDC';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('jutsu/settingedc');
+        $this->view('layouts/footer');
+    }
+
+    public function settingedcup()
+    {
+        if (isset($_POST['submit'])) {
+            $status = $_POST['status'];
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "NEW JUTSU";
+            $action = "UPDATE JENIS DI TABLE CONST DESC EDC";
+
+            $toko = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'jutsu/settingedc');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    if ($status == 'Y') {
+                        $const = "UPDATE const SET jenis='$status' WHERE `desc` LIKE '%edc%'";
+                        $prog = "UPDATE program_setting SET nilai='$status' WHERE program LIKE '%edc%' AND jenis LIKE '%bca%'";
+                        $vir = "UPDATE vir_bacaprod SET filter='3' WHERE jenis='BTSPURONLINE'";
+                    } else {
+                        $const = "UPDATE const SET jenis='$status' WHERE `desc` LIKE '%edc%'";
+                        $prog = "UPDATE program_setting SET nilai='$status' WHERE program LIKE '%edc%' AND jenis LIKE '%bca%'";
+                        $vir = "UPDATE vir_bacaprod SET filter='50' WHERE jenis='BTSPURONLINE'";
+                    }
+
+                    $stmt1 = $conn->prepare($const);
+                    $stmt2 = $conn->prepare($prog);
+                    $stmt3 = $conn->prepare($vir);
+
+                    $stmt1->execute();
+                    $stmt2->execute();
+                    $stmt3->execute();
+
+                    $data['status'] = true;
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir dan coba kembali", 'blue');
+                    header('Location: ' . BASEURL . 'jutsu/settingedc');
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'jutsu/settingedc');
+                }
+
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
+
+                $data['title'] = 'New Jutsu';
+                $data['nav'] = 'Setting EDC';
+                $data['user'] = $_SESSION['nama'];
+                $this->view('layouts/header', $data);
+                $this->view('layouts/navbar', $data);
+                $this->view('jutsu/settingedc', $data);
+                $this->view('layouts/footer');
+            }
+        } else {
+            header('Location: ' . BASEURL . 'jutsu/settingedc');
+            exit;
+        }
+    }
     public function timeoutedc()
     {
         $data['title'] = 'New Jutsu';
@@ -35,13 +126,7 @@ class Jutsu extends Controller
             $kategori = "NEW JUTSU";
             $action = "UPDATE CONST DOCNO RKEY 'NEB','NEM','NEN','NET','NER'";
 
-            try {
-                $toko = $this->model('StoreModel')->getStore();
-            } catch (Exception $e) {
-                Flasher::setFlash("<span class='font-bold'>FORMAT SALAH!</span> Harap masukkan dengan benar!", "<span class='font-bold'>CONTOH : 'TXXX','FXXX'</span>", 'red');
-                header('Location: ' . BASEURL . 'jutsu/timeoutedc');
-                exit;
-            }
+            $toko = $this->model('StoreModel')->getStoreByCode();
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -55,48 +140,41 @@ class Jutsu extends Controller
                 } else {
                     $pass = DB_PASS_TOKO_NEW;
                 }
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
 
-                foreach ($toko as $item) {
-                    $ip = $item['induk'];
-                    $kode = $item['toko'];
-                    $nama = $item['nama'];
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
 
-                    // Eksekusi
-                    $dsn = "mysql:host=$ip;dbname=$name";
-                    $option = [
-                        PDO::ATTR_PERSISTENT => true,
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-                    ];
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
 
-                    try {
-                        $conn = new PDO($dsn, $user, $pass, $option);
+                    $query = "UPDATE const SET docno='$timeout' WHERE rkey IN ('NEB','NEM','NEN','NET','NER')";
 
-                        $query = "UPDATE const SET docno='$timeout' WHERE rkey IN ('NEB','NEM','NEN','NET','NER')";
+                    $stmt1 = $conn->prepare($query);
 
-                        $stmt1 = $conn->prepare($query);
+                    $stmt1->execute();
 
-                        $stmt1->execute();
-
-                        $data['status'] = true;
-                    } catch (PDOException $e) {
-                        $data['status'] = false;
-                    }
-
-                    $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
-
-                    $result[] = array(
-                        'kode' => $kode,
-                        'nama' => $nama,
-                        'status' => $data['status']
-                    );
-
-                    $conn = null;
+                    $data['status'] = true;
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir dan coba kembali", 'blue');
+                    header('Location: ' . BASEURL . 'jutsu/timeoutedc');
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    header('Location: ' . BASEURL . 'jutsu/timeoutedc');
                 }
+
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
 
                 $data['title'] = 'New Jutsu';
                 $data['nav'] = 'Timeout EDC';
                 $data['user'] = $_SESSION['nama'];
-                $data['result'] = $result;
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
                 $this->view('jutsu/timeoutedc', $data);
