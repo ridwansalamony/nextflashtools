@@ -30,6 +30,9 @@ class Pb extends Controller
     public function reopenpbup()
     {
         if (isset($_POST['submit'])) {
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "PB";
+            $action = "UPDATE PICNOT DI TABLE NPB_H";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
 
@@ -62,19 +65,35 @@ class Pb extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    $query = "UPDATE npb_h SET picnot='$picnot' WHERE docno='$docno'";
+                    $select = "SELECT * FROM npb_h WHERE docno='$docno'";
 
-                    $stmt1 = $conn->prepare($query);
+                    $stmt1 = $conn->prepare($select);
 
                     $stmt1->execute();
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan proses ulang PB", 'blue');
-                    header('Location: ' . BASEURL . 'pb/reopenpb');
-                    $conn = null;
+                    $data = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$data) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> DOCNO tersebut tidak ada / belum di proses!', 'Masukkan DOCNO yang valid', 'red');
+                        header('Location: ' . BASEURL . 'pb/reopenpb');
+                        exit;
+                    } else {
+                        $update = "UPDATE npb_h SET picnot='$picnot' WHERE docno='$docno'";
+
+                        $stmt2 = $conn->prepare($update);
+
+                        $stmt2->execute();
+
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan proses ulang PB", 'blue');
+                        header('Location: ' . BASEURL . 'pb/reopenpb');
+                    }
                 } catch (PDOException $e) {
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'pb/reopenpb');
                 }
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
             }
         } else {
             header('Location: ' . BASEURL . 'pb/reopenpb');
@@ -96,6 +115,9 @@ class Pb extends Controller
     public function reopenpbxup()
     {
         if (isset($_POST['submit'])) {
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "PB";
+            $action = "UPDATE RECID DI TABLE DCPBOX_PLO";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
 
@@ -128,19 +150,34 @@ class Pb extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    $query = "UPDATE dcpbox_plu SET recid='$picnot' WHERE docno='$docno'";
+                    $select = "SELECT * FROM dcpbox_plu WHERE docno='$docno'";
 
-                    $stmt1 = $conn->prepare($query);
+                    $stmt1 = $conn->prepare($select);
 
                     $stmt1->execute();
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan buka ulang Program Cek Barang dan coba lagi", 'blue');
-                    header('Location: ' . BASEURL . 'pb/reopenpbx');
-                    $conn = null;
+                    $data = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$data) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> DOCNO tersebut tidak ada / belum di proses!', 'Masukkan DOCNO yang valid', 'red');
+                        header('Location: ' . BASEURL . 'pb/reopenpbx');
+                        exit;
+                    } else {
+                        $update = "UPDATE dcpbox_plu SET recid='$picnot' WHERE docno='$docno'";
+
+                        $stmt2 = $conn->prepare($update);
+
+                        $stmt2->execute();
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan proses ulang PB", 'blue');
+                        header('Location: ' . BASEURL . 'pb/reopenpbx');
+                    }
                 } catch (PDOException $e) {
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'pb/reopenpbx');
                 }
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
             }
         } else {
             header('Location: ' . BASEURL . 'pb/reopenpbx');
@@ -162,9 +199,9 @@ class Pb extends Controller
     public function errorpbslup()
     {
         if (isset($_POST['submit'])) {
-
-            $tanggal = date("Y-m-d H:i:s");
-            $kategori = 'Error PBSL';
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "PB";
+            $action = "ERROR HR PBSL";
 
             try {
                 $toko = $this->model('StoreModel')->getStore();
@@ -212,7 +249,7 @@ class Pb extends Controller
                         $data['status'] = false;
                     }
 
-                    $this->model('SniperModel')->addSniper($kode, $data['status'], $tanggal, $kategori);
+                    $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                     $result[] = array(
                         'kode' => $kode,
