@@ -87,10 +87,10 @@ class Jutsu extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir dan coba kembali", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir dan coba kembali", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
@@ -163,10 +163,10 @@ class Jutsu extends Controller
                     $stmt1->execute();
 
                     $data['status'] = true;
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir dan coba kembali", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir dan coba kembali", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
@@ -251,11 +251,11 @@ class Jutsu extends Controller
 
                         $data['status'] = true;
 
-                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir lalu coba kembali", 'blue');
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir lalu coba kembali", 'blue');
                     }
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
@@ -338,10 +338,10 @@ class Jutsu extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Berita acara sudah dihapus", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Berita acara sudah dihapus", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
@@ -421,10 +421,10 @@ class Jutsu extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Data toko sudah ditambahkan di passtoko", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Data toko sudah ditambahkan di passtoko", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
@@ -511,11 +511,11 @@ class Jutsu extends Controller
 
                         $data['status'] = true;
 
-                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode_supplier</span>", "Sudah di open, silahkan proses", 'blue');
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode_supplier</span>", "Sudah di open, silahkan proses", 'blue');
                     }
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
@@ -591,10 +591,10 @@ class Jutsu extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close program lalu coba kembali hitung ulang stock", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close program lalu coba kembali hitung ulang stock", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
@@ -670,10 +670,10 @@ class Jutsu extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Sudah diupdate tok24 dan hari24", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Sudah diupdate tok24 dan hari24", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
@@ -749,10 +749,10 @@ class Jutsu extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir coba kembali", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Close pos kasir coba kembali", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);

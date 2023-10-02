@@ -100,7 +100,7 @@ class Closing extends Controller
                                 exit;
                             }
                         }
-                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
                     }
                 } catch (PDOException $e) {
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", 'Koneksi <span class="font-bold text-info uppercase">' . $kode . '</span> down / Pass SQL Salah!', 'red');
@@ -179,7 +179,7 @@ class Closing extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
                 } catch (PDOException $e) {
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
@@ -261,9 +261,9 @@ class Closing extends Controller
 
                         $data['status'] = true;
                     }
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL</span> <span class='font-bold text-info uppercase'>$kode</span>", "Update recid C initial", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Update recid C initial", 'blue');
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
