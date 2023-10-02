@@ -63,14 +63,18 @@ class Jutsu extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    if ($status == 'Y') {
-                        $const = "UPDATE const SET jenis='$status' WHERE `desc` LIKE '%edc%'";
-                        $prog = "UPDATE program_setting SET nilai='$status' WHERE program LIKE '%edc%' AND jenis LIKE '%bca%'";
+                    if ($status == 'on') {
+                        $const = "UPDATE const SET jenis='Y' WHERE `desc` LIKE '%edc%'";
+                        $prog = "UPDATE program_setting SET nilai='Y' WHERE program LIKE '%edc%' AND jenis LIKE '%bca%'";
                         $vir = "UPDATE vir_bacaprod SET filter='3' WHERE jenis='BTSPURONLINE'";
+                    } elseif ($status == 'off') {
+                        $const = "UPDATE const SET jenis='N' WHERE `desc` LIKE '%edc%'";
+                        $prog = "UPDATE program_setting SET nilai='N' WHERE program LIKE '%edc%' AND jenis LIKE '%bca%'";
+                        $vir = "UPDATE vir_bacaprod SET filter='10' WHERE jenis='BTSPURONLINE'";
                     } else {
-                        $const = "UPDATE const SET jenis='$status' WHERE `desc` LIKE '%edc%'";
-                        $prog = "UPDATE program_setting SET nilai='$status' WHERE program LIKE '%edc%' AND jenis LIKE '%bca%'";
-                        $vir = "UPDATE vir_bacaprod SET filter='50' WHERE jenis='BTSPURONLINE'";
+                        $const = "UPDATE const SET jenis='N' WHERE rkey='PCO'";
+                        $prog = "UPDATE program_setting SET nilai='N' WHERE program LIKE '%edc%' AND jenis LIKE '%bca%'";
+                        $vir = "UPDATE vir_bacaprod SET filter='3' WHERE jenis='BTSPURONLINE'";
                     }
 
                     $stmt1 = $conn->prepare($const);
