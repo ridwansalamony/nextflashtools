@@ -122,4 +122,104 @@ class Load extends Controller
             exit;
         }
     }
+
+    public function virbacaprod()
+    {
+        $data['title'] = 'Load Data';
+        $data['nav'] = 'Virbacaprod';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('load/virbacaprod', $data);
+        $this->view('layouts/footer');
+    }
+
+    public function virbacaprodup()
+    {
+        if (isset($_POST['submit'])) {
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "LOAD DATA";
+            $action = "LOAD ULANG TABLE VIRBACAPROD";
+
+            $toko = $this->model('StoreModel')->getStore();
+            $t9t7 = $this->model('StoreModel')->getStoreByCode();
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'load/prodmast');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                foreach ($t9t7 as $key) {
+                    $t9t7_ip = $key['induk'];
+                }
+
+                // Koneksi toko yang mau di ambil datanya
+                $dsn = "mysql:host=$t9t7_ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $t9t7_conn = new PDO($dsn, $user, DB_PASS_TOKO_OLD, $option);
+
+                    $queryget = "SELECT * FROM vir_bacaprod";
+
+                    var_dump($queryget);
+                    exit;
+
+                    $data['status'] = true;
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                }
+
+
+
+                // foreach ($toko as $item) {
+                //     $ip = $item['induk'];
+                //     $kode = $item['toko'];
+
+                //     // Eksekusi
+                //     $dsn = "mysql:host=$ip;dbname=$name";
+                //     $option = [
+                //         PDO::ATTR_PERSISTENT => true,
+                //         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                //     ];
+
+                //     try {
+                //         $conn = new PDO($dsn, $user, $pass, $option);
+
+
+
+                //         $data['status'] = true;
+                //     } catch (PDOException $e) {
+                //         $data['status'] = false;
+                //     }
+
+                //     $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                //     $conn = null;
+                // }
+
+                $data['title'] = 'Load Data';
+                $data['nav'] = 'Virbacaprod';
+                $data['user'] = $_SESSION['nama'];
+                $this->view('layouts/header', $data);
+                $this->view('layouts/navbar', $data);
+                $this->view('load/virbacaprod', $data);
+                $this->view('layouts/footer');
+            }
+        } else {
+            header('Location: ' . BASEURL . 'load/virbacaprod');
+            exit;
+        }
+    }
 }
