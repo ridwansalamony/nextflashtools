@@ -80,7 +80,7 @@ class Closing extends Controller
                             $shift = $item['SHIFT'];
                             $station = $item['STATION'];
 
-                            if ($kas_aktual > 0) {
+                            if ($kas_aktual > -1) {
                                 // Update recid P
                                 $recid = "UPDATE initial SET recid='P' WHERE tanggal='$tanggal_initial' AND kas_aktual > -1";
 
