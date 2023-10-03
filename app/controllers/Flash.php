@@ -117,7 +117,7 @@ class Flash extends Controller
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/timeoutedc');
+        $this->view('flash/timeoutedc');
         $this->view('layouts/footer');
     }
 
@@ -133,7 +133,7 @@ class Flash extends Controller
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/timeoutedc');
+                header('Location: ' . BASEURL . 'flash/timeoutedc');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -178,11 +178,11 @@ class Flash extends Controller
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/timeoutedc', $data);
+                $this->view('flash/timeoutedc', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/timeoutedc');
+            header('Location: ' . BASEURL . 'flash/timeoutedc');
             exit;
         }
     }
@@ -194,7 +194,7 @@ class Flash extends Controller
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/stationapka');
+        $this->view('flash/stationapka');
         $this->view('layouts/footer');
     }
 
@@ -210,7 +210,7 @@ class Flash extends Controller
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/stationapka');
+                header('Location: ' . BASEURL . 'flash/stationapka');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -242,7 +242,7 @@ class Flash extends Controller
 
                     if (!$result) {
                         Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Table const rkey=TIP tidak ada!', 'Silahkan load table dahulu', 'red');
-                        header('Location: ' . BASEURL . 'jutsu/stationapka');
+                        header('Location: ' . BASEURL . 'flash/stationapka');
                         exit;
                     } else {
                         $query = "UPDATE const SET `desc`='$station' WHERE rkey='TIP'";
@@ -268,11 +268,11 @@ class Flash extends Controller
                 $data['result'] = $result;
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/stationapka', $data);
+                $this->view('flash/stationapka', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/stationapka');
+            header('Location: ' . BASEURL . 'flash/stationapka');
             exit;
         }
     }
@@ -284,7 +284,7 @@ class Flash extends Controller
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/beritaacara');
+        $this->view('flash/beritaacara');
         $this->view('layouts/footer');
     }
 
@@ -300,7 +300,7 @@ class Flash extends Controller
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/beritaacara');
+                header('Location: ' . BASEURL . 'flash/beritaacara');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -353,11 +353,11 @@ class Flash extends Controller
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/beritaacara', $data);
+                $this->view('flash/beritaacara', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/beritaacara');
+            header('Location: ' . BASEURL . 'flash/beritaacara');
             exit;
         }
     }
@@ -369,7 +369,7 @@ class Flash extends Controller
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/addnik');
+        $this->view('flash/addnik');
         $this->view('layouts/footer');
     }
 
@@ -389,7 +389,7 @@ class Flash extends Controller
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/addnik');
+                header('Location: ' . BASEURL . 'flash/addnik');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -436,11 +436,11 @@ class Flash extends Controller
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/addnik', $data);
+                $this->view('flash/addnik', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/addnik');
+            header('Location: ' . BASEURL . 'flash/addnik');
             exit;
         }
     }
@@ -452,7 +452,7 @@ class Flash extends Controller
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/openbkl');
+        $this->view('flash/openbkl');
         $this->view('layouts/footer');
     }
 
@@ -468,7 +468,7 @@ class Flash extends Controller
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/openbkl');
+                header('Location: ' . BASEURL . 'flash/openbkl');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -528,11 +528,11 @@ class Flash extends Controller
                 $data['result'] = $result;
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/openbkl', $data);
+                $this->view('flash/openbkl', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/openbkl');
+            header('Location: ' . BASEURL . 'flash/openbkl');
             exit;
         }
     }
@@ -544,7 +544,7 @@ class Flash extends Controller
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/recalculate');
+        $this->view('flash/recalculate');
         $this->view('layouts/footer');
     }
 
@@ -559,7 +559,7 @@ class Flash extends Controller
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/recalculate');
+                header('Location: ' . BASEURL . 'flash/recalculate');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -606,11 +606,11 @@ class Flash extends Controller
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/recalculate', $data);
+                $this->view('flash/recalculate', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/recalculate');
+            header('Location: ' . BASEURL . 'flash/recalculate');
             exit;
         }
     }
@@ -622,7 +622,7 @@ class Flash extends Controller
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/setting24');
+        $this->view('flash/setting24');
         $this->view('layouts/footer');
     }
 
@@ -638,7 +638,7 @@ class Flash extends Controller
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/setting24');
+                header('Location: ' . BASEURL . 'flash/setting24');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -685,11 +685,11 @@ class Flash extends Controller
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/setting24', $data);
+                $this->view('flash/setting24', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/setting24');
+            header('Location: ' . BASEURL . 'flash/setting24');
             exit;
         }
     }
@@ -701,7 +701,7 @@ class Flash extends Controller
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/custdisplay');
+        $this->view('flash/custdisplay');
         $this->view('layouts/footer');
     }
 
@@ -717,7 +717,7 @@ class Flash extends Controller
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/custdisplay');
+                header('Location: ' . BASEURL . 'flash/custdisplay');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -764,11 +764,11 @@ class Flash extends Controller
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/custdisplay', $data);
+                $this->view('flash/custdisplay', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/custdisplay');
+            header('Location: ' . BASEURL . 'flash/custdisplay');
             exit;
         }
     }
