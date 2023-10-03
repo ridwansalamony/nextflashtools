@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $data['title']; ?> | Next Flash Tools</title>
 
+    <link rel="shortcut icon" href="<?= BASEURL; ?>public/src/img/favicon.ico" type="image/x-icon">
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
