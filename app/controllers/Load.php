@@ -160,6 +160,7 @@ class Load extends Controller
                 $ip = $toko['induk'];
                 $kode = $toko['toko'];
                 $t9t7_ip = $t9t7['induk'];
+                $t9t7_kode = $t9t7['toko'];
 
                 $dsn = "mysql:host=$ip;dbname=$name";
 
@@ -172,43 +173,42 @@ class Load extends Controller
                     // Koneksi ke toko sumber data
                     $t9t7_conn = new PDO("mysql:host=$t9t7_ip;dbname=$name", $user, DB_PASS_TOKO_OLD, $option);
 
-                    $queryget = "SELECT * FROM vir_bacaprod INTO OUTFILE 'd:\\\anjjjj.frm'";
+                    $queryget = "SELECT * FROM vir_bacaprod";
 
                     $stmt1 = $t9t7_conn->prepare($queryget);
 
                     $stmt1->execute();
 
-                    // $virbacaprod = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                    $virbacaprod = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-                    // foreach ($virbacaprod as $vir) {
-                    //     $jenis = $vir['JENIS'];
-                    //     $filter = $vir['FILTER'];
-                    //     $ket = $vir['KET'];
-                    //     $program = $vir['program'];
-                    //     $recid = $vir['RECID'];
-                    //     $addtime = $vir['ADDTIME'];
-                    //     $updtime = $vir['UPDTIME'];
-                    //     $updid = $vir['UPDID'];
+                    foreach ($virbacaprod as $vir) {
+                        $file = fopen("d:\\ridwan\\virbacaprod.csv", "w");
 
-                    //     $insertvir = "INSERT IGNORE INTO vir_bacaprod VALUES ('$jenis', '$filter', '$ket', '$program', '$recid', '$addtime', '$updtime', '$updid')";
+                        fputcsv($file, $vir, '|');
 
-                    //     try {
-                    //         $conn = new PDO($dsn, $user, $pass, $option);
+                        fclose($file);
+                    }
+                } catch (PDOException $e1) {
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span> Koneksi ke toko sumber <span class='font-bold text-info uppercase'>$t9t7_kode</span> GAGAL!", "Periksa koneksi toko / IP toko di daftar toko", "red");
+                    header('Location: ' . BASEURL . 'load/virbacaprod');
+                    exit;
+                }
 
-                    //         $stmt2 = $conn->prepare($insertvir);
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
 
-                    //         $stmt2->execute();
-                    //     } catch (PDOException $e) {
-                    //         echo $e;
-                    //     }
+                    $insert = "LOAD DATA INFILE 'd:\\ridwan\\virbacaprod.csv INTO TABLE vir_bacaprod FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\\n'";
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Load ulang vir_bacaprod sukses!", 'blue');
+                    $stmt2 = $conn->prepare($insert);
+
+                    $stmt2->execute();
 
                     $data['status'] = true;
-                } catch (PDOException $e) {
-                    echo $e;
-                    // $data['status'] = false;
-                    // Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Gagal koneksi ke toko sumber!', 'Periksa koneksi toko / IP toko di daftar toko', 'red');
+
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Load ulang vir_bacaprod sukses!", 'blue');
+                } catch (PDOException $e2) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
