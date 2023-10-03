@@ -6,7 +6,7 @@
         <div class="flex justify-between border-b-2 mb-6 pb-2">
             <h1 class="text-2xl font-semibold uppercase">ERROR HR PBSL</h1>
         </div>
-        <form action="<?= BASEURL; ?>pb/errorpbslup" method="POST">
+        <form action="<?= BASEURL; ?>closing/errorpbslup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <h2 class="text-center text-lg font-medium text-red-500 uppercase">'tocs','t4lz','t8f1','tjtv','toyk','t5my','t9t7','twvr','tlu1','tlqq','tskp','toxv','tt5b','tyav','tuqf','tq8n','tqr8','t4l6'</h2>
                 <div class="md:w-1/6 mx-auto">

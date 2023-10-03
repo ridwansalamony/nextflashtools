@@ -52,7 +52,7 @@
                                 <a href="<?= BASEURL; ?>closing/initial" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Initial C' ? 'bg-primary text-white' : '' ?>">Initial C</a>
                             </li>
                             <li>
-                                <a href="<?= BASEURL; ?>pb/errorpbsl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Error PBSL' ? 'bg-primary text-white' : '' ?>">Error Harian PBSL</a>
+                                <a href="<?= BASEURL; ?>closing/errorpbsl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Error PBSL' ? 'bg-primary text-white' : '' ?>">Error Harian PBSL</a>
                             </li>
                         </ul>
                     </div>
