@@ -141,12 +141,12 @@ class Load extends Controller
             $kategori = "LOAD DATA";
             $action = "LOAD ULANG TABLE VIRBACAPROD";
 
-            $toko = $this->model('StoreModel')->getStore();
-            $t9t7 = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
+            $t9t7 = $this->model('StoreModel')->getStoreByCode('T9T7');
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'load/prodmast');
+                header('Location: ' . BASEURL . 'load/virbacaprod');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -157,57 +157,63 @@ class Load extends Controller
                     $pass = DB_PASS_TOKO_NEW;
                 }
 
-                foreach ($t9t7 as $key) {
-                    $t9t7_ip = $key['induk'];
-                }
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+                $t9t7_ip = $t9t7['induk'];
 
-                // Koneksi toko yang mau di ambil datanya
-                $dsn = "mysql:host=$t9t7_ip;dbname=$name";
+                $dsn = "mysql:host=$ip;dbname=$name";
+
                 $option = [
                     PDO::ATTR_PERSISTENT => true,
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
                 ];
 
                 try {
-                    $t9t7_conn = new PDO($dsn, $user, DB_PASS_TOKO_OLD, $option);
+                    // Koneksi ke toko sumber data
+                    $t9t7_conn = new PDO("mysql:host=$t9t7_ip;dbname=$name", $user, DB_PASS_TOKO_OLD, $option);
 
-                    $queryget = "SELECT * FROM vir_bacaprod";
+                    $queryget = "SELECT * FROM vir_bacaprod INTO OUTFILE 'd:\\\anjjjj.frm'";
 
-                    var_dump($queryget);
-                    exit;
+                    $stmt1 = $t9t7_conn->prepare($queryget);
+
+                    $stmt1->execute();
+
+                    // $virbacaprod = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
+                    // foreach ($virbacaprod as $vir) {
+                    //     $jenis = $vir['JENIS'];
+                    //     $filter = $vir['FILTER'];
+                    //     $ket = $vir['KET'];
+                    //     $program = $vir['program'];
+                    //     $recid = $vir['RECID'];
+                    //     $addtime = $vir['ADDTIME'];
+                    //     $updtime = $vir['UPDTIME'];
+                    //     $updid = $vir['UPDID'];
+
+                    //     $insertvir = "INSERT IGNORE INTO vir_bacaprod VALUES ('$jenis', '$filter', '$ket', '$program', '$recid', '$addtime', '$updtime', '$updid')";
+
+                    //     try {
+                    //         $conn = new PDO($dsn, $user, $pass, $option);
+
+                    //         $stmt2 = $conn->prepare($insertvir);
+
+                    //         $stmt2->execute();
+                    //     } catch (PDOException $e) {
+                    //         echo $e;
+                    //     }
+
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Load ulang vir_bacaprod sukses!", 'blue');
 
                     $data['status'] = true;
                 } catch (PDOException $e) {
-                    $data['status'] = false;
+                    echo $e;
+                    // $data['status'] = false;
+                    // Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Gagal koneksi ke toko sumber!', 'Periksa koneksi toko / IP toko di daftar toko', 'red');
                 }
 
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
-
-                // foreach ($toko as $item) {
-                //     $ip = $item['induk'];
-                //     $kode = $item['toko'];
-
-                //     // Eksekusi
-                //     $dsn = "mysql:host=$ip;dbname=$name";
-                //     $option = [
-                //         PDO::ATTR_PERSISTENT => true,
-                //         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-                //     ];
-
-                //     try {
-                //         $conn = new PDO($dsn, $user, $pass, $option);
-
-
-
-                //         $data['status'] = true;
-                //     } catch (PDOException $e) {
-                //         $data['status'] = false;
-                //     }
-
-                //     $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
-
-                //     $conn = null;
-                // }
+                $conn = null;
 
                 $data['title'] = 'Load Data';
                 $data['nav'] = 'Virbacaprod';
