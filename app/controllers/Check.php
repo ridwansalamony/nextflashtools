@@ -603,9 +603,6 @@ class Check extends Controller
                             );
                         }
 
-                        var_dump($result);
-                        exit;
-
                         $conn = null;
 
                         $data['title'] = 'Check Data';
