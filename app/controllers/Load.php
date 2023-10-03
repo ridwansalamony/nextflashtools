@@ -1,6 +1,6 @@
 <?php
 
-class Prodmast extends Controller
+class Load extends Controller
 {
     public function __construct()
     {
@@ -13,15 +13,21 @@ class Prodmast extends Controller
 
     public function index()
     {
-        $data['title'] = 'Transfer Data';
+        header('Location: ' . BASEURL);
+    }
+
+    public function prodmast()
+    {
+        $data['title'] = 'Load Data';
+        $data['nav'] = 'Prodmast';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('prodmast/index', $data);
+        $this->view('load/prodmast', $data);
         $this->view('layouts/footer');
     }
 
-    public function update()
+    public function prodmastup()
     {
         if (isset($_POST['submit'])) {
             $tahun = substr(date('y'), 1);
@@ -30,20 +36,20 @@ class Prodmast extends Controller
             $tanggal1 = date('d');
             $tanggal2 = date('Y-m-d');
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "TRANSFER DATA";
+            $kategori = "LOAD DATA";
             $action = "UPDATE DTA,DT_,TMT DAN TRPR (LOG_MONITOR)";
 
             try {
                 $toko = $this->model('StoreModel')->getStore();
             } catch (Exception $e) {
                 Flasher::setFlash("<span class='font-bold'>FORMAT SALAH!</span> Harap masukkan dengan benar!", "<span class='font-bold'>CONTOH : 'TXXX','FXXX'</span>", 'red');
-                header('Location: ' . BASEURL . 'prodmast');
+                header('Location: ' . BASEURL . 'load/prodmast');
                 exit;
             }
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'prodmast');
+                header('Location: ' . BASEURL . 'load/prodmast');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -102,16 +108,17 @@ class Prodmast extends Controller
                     $conn = null;
                 }
 
-                $data['title'] = 'Transfer Data';
+                $data['title'] = 'Load Data';
+                $data['nav'] = 'Prodmast';
                 $data['user'] = $_SESSION['nama'];
                 $data['result'] = $result;
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('prodmast/index', $data);
+                $this->view('load/prodmast', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'prodmast');
+            header('Location: ' . BASEURL . 'load/prodmast');
             exit;
         }
     }
