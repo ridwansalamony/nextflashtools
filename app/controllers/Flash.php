@@ -35,7 +35,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "UPDATE JENIS DI TABLE CONST DESC EDC";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -129,7 +129,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "UPDATE CONST DOCNO RKEY 'NEB','NEM','NEN','NET','NER'";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -206,7 +206,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "UPDATE CONST DOCNO RKEY TIP";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -296,7 +296,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "DROP TABLE BCK_BERITAACARA JIKA ADA, CREATE TABLE BACKUP BERITA ACARA, DELETE TABLE BERITA ACARA DIBAWAH TAHUN $year";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -385,7 +385,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "INSERT NIK BARU DI TABLE PASSTOKO";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -464,7 +464,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "UPDATE DATANG, JADWAL, PB OTO, NEW BKL DI TABLE SUPMAST";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -555,7 +555,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "UPDATE REDOCNO 0 CONST RKEY HUM";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -634,7 +634,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "UPDATE TOK24 DI TABLE TOKO";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -713,7 +713,7 @@ class Flash extends Controller
             $kategori = "FLASH";
             $action = "UPDATE DOCNO DAN RDOCNO DI TABLE CONST";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');

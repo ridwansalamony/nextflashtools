@@ -142,7 +142,7 @@ class Load extends Controller
             $action = "LOAD ULANG TABLE VIRBACAPROD";
 
             $toko = $this->model('StoreModel')->getStore();
-            $t9t7 = $this->model('StoreModel')->getStoreByCode();
+            $t9t7 = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');

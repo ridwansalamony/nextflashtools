@@ -34,7 +34,7 @@ class Pb extends Controller
             $kategori = "PB";
             $action = "UPDATE PICNOT DI TABLE NPB_H";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             $picnot = $_POST['picnot'];
             $docno = $_POST['npb'];
@@ -119,7 +119,7 @@ class Pb extends Controller
             $kategori = "PB";
             $action = "UPDATE RECID DI TABLE DCPBOX_PLO";
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             $picnot = $_POST['picnot'];
             $docno = $_POST['npb'];

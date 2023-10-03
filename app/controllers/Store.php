@@ -62,7 +62,7 @@ class Store extends Controller
 
     public function getEdit()
     {
-        echo json_encode($this->model('StoreModel')->getStoreByCode());
+        echo json_encode($this->model('StoreModel')->getStoreByCode($_POST['kode_toko']));
     }
 
     public function edit()

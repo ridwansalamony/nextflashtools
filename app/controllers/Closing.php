@@ -36,7 +36,7 @@ class Closing extends Controller
             $action = "UPDATE INITIAL RECID P DAN UPDATE CONST PERIOD1 RKEY CON";
             $tanggal_con = date('Y-m-d', strtotime("$tanggal_initial -1 day", strtotime(date("Y-m-d"))));
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -137,7 +137,7 @@ class Closing extends Controller
             $periode = $_POST['periode'];
             $prd = date('Ym') - 1;
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -213,7 +213,7 @@ class Closing extends Controller
             $action = "UPDATE INITIAL RECID C";
             $tanggal_initial = $_POST['tanggal_initial'];
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');

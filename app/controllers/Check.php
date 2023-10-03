@@ -34,7 +34,7 @@ class Check extends Controller
             $npb = $_POST['npb'];
             $tanggal = $_POST['tanggal_proses'];
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -134,7 +134,7 @@ class Check extends Controller
             $struk = $_POST['struk'];
             $tanggal = $_POST['tanggal_proses'];
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -236,7 +236,7 @@ class Check extends Controller
         if (isset($_POST['submit'])) {
             $plu = $_POST['plu'];
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -352,7 +352,7 @@ class Check extends Controller
         if (isset($_POST['submit'])) {
             $plu = $_POST['plu'];
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -452,7 +452,7 @@ class Check extends Controller
         if (isset($_POST['submit'])) {
             $kode_supplier = $_POST['kode_supplier'];
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
@@ -548,7 +548,7 @@ class Check extends Controller
         if (isset($_POST['submit'])) {
             $nik = $_POST['nik'];
 
-            $toko = $this->model('StoreModel')->getStoreByCode();
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
