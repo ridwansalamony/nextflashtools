@@ -84,7 +84,7 @@ class Pb extends Controller
 
                         $stmt2->execute();
 
-                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan proses ulang PB", 'blue');
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan buka ulang program", 'blue');
                         header('Location: ' . BASEURL . 'pb/reopenpb');
                     }
                 } catch (PDOException $e) {

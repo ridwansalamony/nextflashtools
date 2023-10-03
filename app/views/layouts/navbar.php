@@ -106,7 +106,7 @@
                     <div id="dropdownNavbar4" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
                         <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
-                                <a href="<?= BASEURL; ?>pb/reopenpb" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Reopen PB' ? 'bg-primary text-white' : '' ?>">Buka Ulang PB</a>
+                                <a href="<?= BASEURL; ?>pb/reopenpb" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Reopen PB' ? 'bg-primary text-white' : '' ?>">Buka Ulang PB/Listing</a>
                             </li>
                             <li>
                                 <a href="<?= BASEURL; ?>pb/reopenpbx" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Reopen Cek' ? 'bg-primary text-white' : '' ?>">Buka Ulang Cek Barang</a>
