@@ -585,7 +585,7 @@ class Check extends Controller
                     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     if (!$data) {
-                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> NIK tersebut tidak ada!', 'Masukkan NIK yang valid / Tambah NIK di menu Jutsu', 'red');
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> NIK tersebut tidak ada!', 'Masukkan NIK yang valid / Tambah NIK di menu Flash', 'red');
                         header('Location: ' . BASEURL . 'check/passtoko');
                         exit;
                     } else {
