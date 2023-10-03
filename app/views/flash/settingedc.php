@@ -4,9 +4,9 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">SETTING TIMEOUT EDC</h1>
+            <h1 class="text-2xl font-semibold uppercase">SETTING EDC</h1>
         </div>
-        <form action="<?= BASEURL; ?>jutsu/timeoutedcup" method="POST">
+        <form action="<?= BASEURL; ?>flash/settingedcup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="md:w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo" width="200">
@@ -19,16 +19,16 @@
                         </select>
                     </div>
                     <div class="w-full">
-                        <select name="timeout" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
-                            <option value="150">150 (Quick)</option>
-                            <option value="300">300 (Standart)</option>
-                            <option value="500">500 (Long)</option>
+                        <select name="status" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+                            <option value="on">Online</option>
+                            <option value="off">Offline</option>
+                            <option value="onoff">Online dan Offline</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="w-full md:w-1/2 mx-auto">
-                    <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Kode Toko : TXXX" maxlength="4" required>
+                    <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Kode Toko: TXXX" maxlength="4" required>
                 </div>
 
                 <div class="w-full md:w-1/2 mx-auto">

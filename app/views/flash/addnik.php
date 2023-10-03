@@ -6,7 +6,7 @@
         <div class="flex justify-between border-b-2 mb-6 pb-2">
             <h1 class="text-2xl font-semibold uppercase">Tambah NIK TOKO</h1>
         </div>
-        <form action="<?= BASEURL; ?>jutsu/addnikup" method="POST">
+        <form action="<?= BASEURL; ?>flash/addnikup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="md:w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo" width="200">

@@ -4,9 +4,10 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">OPEN BKL SUPPLIER</h1>
+            <h1 class="text-2xl font-semibold uppercase">Setting TOKO 24 JAM</h1>
+            <h2 class="text-lg font-medium text-red-500">"HARUS ACC ATASAN SPV/MGR EDP"</h2>
         </div>
-        <form action="<?= BASEURL; ?>jutsu/openbklup" method="POST">
+        <form action="<?= BASEURL; ?>flash/setting24up" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="md:w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo" width="200">
@@ -20,14 +21,15 @@
                     </div>
 
                     <div class="w-full">
-                        <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Kode Toko : TXXX" maxlength="4" required>
+                        <select name="setting" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+                            <option value="">Reguler</option>
+                            <option value="Y">24 Jam</option>
+                        </select>
                     </div>
                 </div>
-
                 <div class="w-full md:w-1/2 mx-auto">
-                    <input type="text" name="kode_supplier" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Kode Supplier : SXXX" maxlength="4" required>
+                    <input type="text" name="kode_toko" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Kode Toko : TXXX" maxlength="4" required>
                 </div>
-
                 <div class="w-full md:w-1/2 mx-auto">
                     <button type="submit" name="submit" id="submit" class="w-full bg-primary text-white  hover:bg-secondary focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 focus:outline-none">
                         Proses

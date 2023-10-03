@@ -1,6 +1,6 @@
 <?php
 
-class Jutsu extends Controller
+class Flash extends Controller
 {
     public function __construct()
     {
@@ -18,12 +18,12 @@ class Jutsu extends Controller
 
     public function settingedc()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Setting EDC';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('jutsu/settingedc');
+        $this->view('flash/settingedc');
         $this->view('layouts/footer');
     }
 
@@ -32,14 +32,14 @@ class Jutsu extends Controller
         if (isset($_POST['submit'])) {
             $status = $_POST['status'];
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "UPDATE JENIS DI TABLE CONST DESC EDC";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'jutsu/settingedc');
+                header('Location: ' . BASEURL . 'flash/settingedc');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -97,22 +97,22 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Setting EDC';
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('jutsu/settingedc', $data);
+                $this->view('flash/settingedc', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'jutsu/settingedc');
+            header('Location: ' . BASEURL . 'flash/settingedc');
             exit;
         }
     }
     public function timeoutedc()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Timeout EDC';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
@@ -126,7 +126,7 @@ class Jutsu extends Controller
         if (isset($_POST['submit'])) {
             $timeout = $_POST['timeout'];
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "UPDATE CONST DOCNO RKEY 'NEB','NEM','NEN','NET','NER'";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -173,7 +173,7 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Timeout EDC';
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
@@ -189,7 +189,7 @@ class Jutsu extends Controller
 
     public function stationapka()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Station APKA';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
@@ -203,7 +203,7 @@ class Jutsu extends Controller
         if (isset($_POST['submit'])) {
             $station = $_POST['station'];
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "UPDATE CONST DOCNO RKEY TIP";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -262,7 +262,7 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Station APKA';
                 $data['user'] = $_SESSION['nama'];
                 $data['result'] = $result;
@@ -279,7 +279,7 @@ class Jutsu extends Controller
 
     public function beritaacara()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Berita Acara';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
@@ -293,7 +293,7 @@ class Jutsu extends Controller
         if (isset($_POST['submit'])) {
             $year = date('Y');
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "DROP TABLE BCK_BERITAACARA JIKA ADA, CREATE TABLE BACKUP BERITA ACARA, DELETE TABLE BERITA ACARA DIBAWAH TAHUN $year";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -348,7 +348,7 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Berita Acara';
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
@@ -364,7 +364,7 @@ class Jutsu extends Controller
 
     public function addnik()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Tambah NIK';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
@@ -382,7 +382,7 @@ class Jutsu extends Controller
             $initial = $_POST['initial'];
             $jabatan = $_POST['jabatan'];
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "INSERT NIK BARU DI TABLE PASSTOKO";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -431,7 +431,7 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Tambah NIK';
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
@@ -447,7 +447,7 @@ class Jutsu extends Controller
 
     public function openbkl()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Open BKL';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
@@ -461,7 +461,7 @@ class Jutsu extends Controller
         if (isset($_POST['submit'])) {
             $kode_supplier = $_POST['kode_supplier'];
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "UPDATE DATANG, JADWAL, PB OTO, NEW BKL DI TABLE SUPMAST";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -522,7 +522,7 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Open BKL';
                 $data['user'] = $_SESSION['nama'];
                 $data['result'] = $result;
@@ -539,7 +539,7 @@ class Jutsu extends Controller
 
     public function recalculate()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Hitung Ulang Stock';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
@@ -552,7 +552,7 @@ class Jutsu extends Controller
     {
         if (isset($_POST['submit'])) {
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "UPDATE REDOCNO 0 CONST RKEY HUM";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -601,7 +601,7 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Hitung Ulang Stock';
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
@@ -617,7 +617,7 @@ class Jutsu extends Controller
 
     public function setting24()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Setting 24';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
@@ -631,7 +631,7 @@ class Jutsu extends Controller
         if (isset($_POST['submit'])) {
             $setting = $_POST['setting'];
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "UPDATE TOK24 DI TABLE TOKO";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -680,7 +680,7 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Setting 24';
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
@@ -696,7 +696,7 @@ class Jutsu extends Controller
 
     public function custdisplay()
     {
-        $data['title'] = 'New Jutsu';
+        $data['title'] = 'Flash';
         $data['nav'] = 'Customer Display';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
@@ -710,7 +710,7 @@ class Jutsu extends Controller
         if (isset($_POST['submit'])) {
             $setting = $_POST['setting'];
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "NEW JUTSU";
+            $kategori = "FLASH";
             $action = "UPDATE DOCNO DAN RDOCNO DI TABLE CONST";
 
             $toko = $this->model('StoreModel')->getStoreByCode();
@@ -759,7 +759,7 @@ class Jutsu extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'New Jutsu';
+                $data['title'] = 'Flash';
                 $data['nav'] = 'Customer Display';
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);

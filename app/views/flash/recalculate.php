@@ -7,7 +7,7 @@
             <h1 class="text-2xl font-semibold uppercase">HITUNG ULANG STOCK</h1>
             <h2 class="text-lg font-medium text-red-500">"Jika ada error : Sedang hitung ulang distation lain"</h2>
         </div>
-        <form action="<?= BASEURL; ?>jutsu/recalculateup" method="POST">
+        <form action="<?= BASEURL; ?>flash/recalculateup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="md:w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo" width="200">

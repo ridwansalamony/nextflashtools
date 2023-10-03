@@ -4,10 +4,10 @@
         <?php Flasher::flash(); ?>
 
         <div class="flex justify-between border-b-2 mb-6 pb-2">
-            <h1 class="text-2xl font-semibold uppercase">Setting TOKO 24 JAM</h1>
+            <h1 class="text-2xl font-semibold uppercase">Setting Station Apka</h1>
             <h2 class="text-lg font-medium text-red-500">"HARUS ACC ATASAN SPV/MGR EDP"</h2>
         </div>
-        <form action="<?= BASEURL; ?>jutsu/setting24up" method="POST">
+        <form action="<?= BASEURL; ?>flash/stationapkaup" method="POST">
             <div class="form grid grid-cols-1 gap-4">
                 <div class="md:w-1/6 mx-auto">
                     <img src="<?= BASEURL; ?>public/src/img/indomaret.png" alt="Indomaret Logo" width="200">
@@ -21,9 +21,10 @@
                     </div>
 
                     <div class="w-full">
-                        <select name="setting" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
-                            <option value="">Reguler</option>
-                            <option value="Y">24 Jam</option>
+                        <select name="station" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+                            <option value="01">Station 01</option>
+                            <option value="02">Station 02</option>
+                            <option value="03">Station 03</option>
                         </select>
                     </div>
                 </div>
