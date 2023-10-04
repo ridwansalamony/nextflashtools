@@ -66,7 +66,7 @@ class Load extends Controller
                     $nama = $item['nama'];
 
                     $at1 = 'TrPr' . $kode . '';
-                    $at2 = '[TrPr' . $kode . '' . $tanggal1 . $bln . $tahun . '.csv]';
+                    $at2 = '[TrPr' . $kode . '' . $tanggal1 . $bln . $tahun . '.CSV]';
 
                     // Eksekusi
                     $dsn = "mysql:host=$ip;dbname=$name";
