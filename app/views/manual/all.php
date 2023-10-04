@@ -69,7 +69,7 @@
                                     <?= $item['nama']; ?>
                                 </td>
                                 <td class="px-6 py-4 font-bold whitespace-nowrap text-center">
-                                    <?= $item['status'] ? 'BERHASIL' : 'GAGAL'; ?>
+                                    <?= $item['status'] ? '<span class="bg-green-100 text-green-800 text-lg font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">BERHASIL</span>' : '<span class="bg-red-100 text-red-800 text-lg font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">GAGAL</span>'; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
