@@ -21,13 +21,13 @@
 
                     <div class="w-full">
                         <select name="table" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
-                            <option value="vir_bacaprod">Virbacaprod</option>
+                            <option value="vir_bacaprod">Vir Bacaprod</option>
                             <option value="program_setting">Program Setting</option>
                             <option value="sysmenu">Sysmenu</option>
-                            <option value="bincard">Bincard</option>
                             <option value="vir_prefcell">Vir Prefcell</option>
-                            <option value="vir_callcntr">Vir Callcntr</option>
+                            <option value="bincard">Bincard</option>
                             <option value="plastik">Plastik</option>
+                            <option value="vir_callcntr">Vir Callcntr</option>
                             <option value="blnakt">Bln Akt</option>
                         </select>
                     </div>
