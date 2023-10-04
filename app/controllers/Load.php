@@ -137,15 +137,6 @@ class Load extends Controller
     public function virbacaprodup()
     {
         if (isset($_POST['submit'])) {
-            // $array = array(
-            //     array("toko" => "TOSD", "nama" => "NAMA", "induk" => "10.56.34.21"),
-            //     array("toko" => "TXDS", "nama" => "NAMA", "induk" => "10.56.34.22"),
-            // );
-            // $file = fopen("d:\\ridwan\\virbacaprod.csv", "w");
-            // foreach ($array as $tes) {
-            //     fputcsv($file, $tes, '|');
-            // }
-            // exit;
             $tanggal_action = date("Y-m-d H:i:s");
             $kategori = "LOAD DATA";
             $action = "LOAD ULANG TABLE VIRBACAPROD";
