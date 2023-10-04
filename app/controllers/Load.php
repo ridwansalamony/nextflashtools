@@ -48,7 +48,7 @@ class Load extends Controller
             }
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'load/prodmast');
                 exit;
             } else {
@@ -146,7 +146,7 @@ class Load extends Controller
             $t9t7 = $this->model('StoreModel')->getStoreByCode('T9T7');
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'load/table');
                 exit;
             } else {
@@ -189,7 +189,7 @@ class Load extends Controller
                     }
                     fclose($file);
                 } catch (PDOException $e1) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span> Koneksi ke toko sumber <span class='font-bold text-info uppercase'>$t9t7_kode</span> GAGAL!", "Periksa koneksi toko / IP toko di daftar toko", "red");
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span> Koneksi ke toko sumber <span class='font-bold text-warning uppercase'>$t9t7_kode</span> GAGAL!", "Periksa koneksi toko / IP toko di daftar toko", "red");
                     header('Location: ' . BASEURL . 'load/table');
                     exit;
                 }
@@ -206,10 +206,10 @@ class Load extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Load ulang data $table sukses!", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Load ulang data $table sukses!", 'blue');
                 } catch (PDOException $e2) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
 
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);

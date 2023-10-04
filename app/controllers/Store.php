@@ -27,11 +27,11 @@ class Store extends Controller
         if (isset($_POST['submit'])) {
             try {
                 $this->model('StoreModel')->addStore($_POST);
-                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil ditambahkan!', 'blue');
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-warning font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil ditambahkan!', 'blue');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'sudah terdaftar!', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'sudah terdaftar!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }
@@ -49,11 +49,11 @@ class Store extends Controller
         } else {
             try {
                 $this->model('StoreModel')->deleteStore($toko);
-                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $toko . '</span>', 'berhasil dihapus!', 'blue');
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-warning font-bold uppercase">' . $toko . '</span>', 'berhasil dihapus!', 'blue');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $toko . '</span>', 'gagal dihapus!', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold uppercase">' . $toko . '</span>', 'gagal dihapus!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }
@@ -70,11 +70,11 @@ class Store extends Controller
         if (isset($_POST['submit'])) {
             try {
                 $this->model('StoreModel')->editStore($_POST);
-                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil diubah!', 'blue');
+                Flasher::setFlash('<span class="font-bold">PROSES BERHASIL!</span> Data toko <span class="text-warning font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'berhasil diubah!', 'blue');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             } catch (Exception $e) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'sudah terdaftar!', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold uppercase">' . $_POST['kode_toko'] . '</span>', 'sudah terdaftar!', 'red');
                 header('Location: ' . BASEURL . 'store');
                 exit;
             }

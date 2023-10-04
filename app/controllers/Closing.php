@@ -39,7 +39,7 @@ class Closing extends Controller
             $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'closing/daily');
                 exit;
             } else {
@@ -101,11 +101,11 @@ class Closing extends Controller
                                 exit;
                             }
                         }
-                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
+                        Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Silahkan tutupan harian ulang", 'blue');
                     }
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", 'Koneksi <span class="font-bold text-info uppercase">' . $kode . '</span> down / Pass SQL Salah!', 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", 'Koneksi <span class="font-bold text-warning uppercase">' . $kode . '</span> down / Pass SQL Salah!', 'red');
                 }
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
@@ -142,7 +142,7 @@ class Closing extends Controller
             $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'closing/monthly');
                 exit;
             } else {
@@ -181,10 +181,10 @@ class Closing extends Controller
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
@@ -219,7 +219,7 @@ class Closing extends Controller
             $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'closing/initial');
                 exit;
             } else {
@@ -264,10 +264,10 @@ class Closing extends Controller
 
                         $data['status'] = true;
                     }
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Update recid C initial", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Update recid C initial", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
@@ -306,7 +306,7 @@ class Closing extends Controller
             }
 
             if (!$toko) {
-                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
                 header('Location: ' . BASEURL . 'closing/errorpbsl');
                 exit;
             } else {
