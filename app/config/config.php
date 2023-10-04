@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL', 'http://localhost/nextflashtools/');
+define('BASEURL', 'http://192.168.77.10:8080/nextflashtools/');
 
 // Database Awhost
 define('DB_HOST', 'localhost');

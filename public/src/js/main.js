@@ -14,12 +14,12 @@ $(document).ready(function () {
 
     $('.edit-toko').click(function() {
       $('.modal-label').html('Edit Toko');
-      $('.form-modal').attr('action', 'http://localhost/nextflashtools/store/edit');
+      $('.form-modal').attr('action', 'http://192.168.77.10:8080/nextflashtools/store/edit');
 
       const code = $(this).data('target');
 
       $.ajax({
-        url: 'http://localhost/nextflashtools/store/getEdit',
+        url: 'http://192.168.77.10:8080/nextflashtools/store/getEdit',
         data: {kode_toko : code},
         method: 'POST',
         dataType: 'JSON',

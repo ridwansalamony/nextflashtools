@@ -137,6 +137,15 @@ class Load extends Controller
     public function virbacaprodup()
     {
         if (isset($_POST['submit'])) {
+            // $array = array(
+            //     array("toko" => "TOSD", "nama" => "NAMA", "induk" => "10.56.34.21"),
+            //     array("toko" => "TXDS", "nama" => "NAMA", "induk" => "10.56.34.22"),
+            // );
+            // $file = fopen("d:\\ridwan\\virbacaprod.csv", "w");
+            // foreach ($array as $tes) {
+            //     fputcsv($file, $tes, '|');
+            // }
+            // exit;
             $tanggal_action = date("Y-m-d H:i:s");
             $kategori = "LOAD DATA";
             $action = "LOAD ULANG TABLE VIRBACAPROD";
@@ -166,7 +175,9 @@ class Load extends Controller
 
                 $option = [
                     PDO::ATTR_PERSISTENT => true,
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::MYSQL_ATTR_LOCAL_INFILE_DIRECTORY => true,
+                    PDO::MYSQL_ATTR_LOCAL_INFILE => true
                 ];
 
                 try {
@@ -181,13 +192,12 @@ class Load extends Controller
 
                     $virbacaprod = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
+                    $file = fopen("d:/ridwan/virbacaprod.csv", "w");
+
                     foreach ($virbacaprod as $vir) {
-                        $file = fopen("d:\\ridwan\\virbacaprod.csv", "w");
-
-                        fputcsv($file, $vir, '|');
-
-                        fclose($file);
+                        fputcsv($file, $vir);
                     }
+                    fclose($file);
                 } catch (PDOException $e1) {
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span> Koneksi ke toko sumber <span class='font-bold text-info uppercase'>$t9t7_kode</span> GAGAL!", "Periksa koneksi toko / IP toko di daftar toko", "red");
                     header('Location: ' . BASEURL . 'load/virbacaprod');
@@ -195,17 +205,15 @@ class Load extends Controller
                 }
 
                 try {
-                    $conn = new PDO($dsn, $user, $pass, $option);
+                    $conn = new mysqli($ip, $user, $pass, $name);
 
-                    $insert = "LOAD DATA INFILE 'd:\\ridwan\\virbacaprod.csv INTO TABLE vir_bacaprod FIELDS TERMINATED BY '|' ENCLOSED BY '\"' LINES TERMINATED BY '\\n'";
+                    $insert = "LOAD DATA LOCAL INFILE 'd:/ridwan/virbacaprod.csv' INTO TABLE vir_bacaprod FIELDS TERMINATED BY ',' ENCLOSED BY '\"'";
 
-                    $stmt2 = $conn->prepare($insert);
-
-                    $stmt2->execute();
+                    $conn->query($insert);
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Load ulang vir_bacaprod sukses!", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Load ulang virbacaprod sukses!", 'blue');
                 } catch (PDOException $e2) {
                     $data['status'] = false;
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');

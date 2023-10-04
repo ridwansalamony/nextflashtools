@@ -159,9 +159,9 @@
                             <li>
                                 <a href="<?= BASEURL; ?>load/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Prodmast' ? 'bg-primary text-white' : '' ?>">Transfer Data</a>
                             </li>
-                            <!-- <li>
+                            <li>
                                 <a href="<?= BASEURL; ?>load/virbacaprod" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Virbacaprod' ? 'bg-primary text-white' : '' ?>">Virbacaprod</a>
-                            </li> -->
+                            </li>
                         </ul>
                     </div>
                 </li>
