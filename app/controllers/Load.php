@@ -123,30 +123,31 @@ class Load extends Controller
         }
     }
 
-    public function virbacaprod()
+    public function table()
     {
         $data['title'] = 'Load Data';
-        $data['nav'] = 'Virbacaprod';
+        $data['nav'] = 'Table';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
-        $this->view('load/virbacaprod', $data);
+        $this->view('load/table', $data);
         $this->view('layouts/footer');
     }
 
-    public function virbacaprodup()
+    public function tableup()
     {
         if (isset($_POST['submit'])) {
             $tanggal_action = date("Y-m-d H:i:s");
             $kategori = "LOAD DATA";
-            $action = "LOAD ULANG TABLE VIRBACAPROD";
+            $action = "LOAD ULANG / INSERT DATA TABLE";
+            $table = $_POST['table'];
 
             $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
             $t9t7 = $this->model('StoreModel')->getStoreByCode('T9T7');
 
             if (!$toko) {
                 Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-info font-bold ">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
-                header('Location: ' . BASEURL . 'load/virbacaprod');
+                header('Location: ' . BASEURL . 'load/table');
                 exit;
             } else {
                 $user = DB_USER_TOKO;
@@ -162,8 +163,6 @@ class Load extends Controller
                 $t9t7_ip = $t9t7['induk'];
                 $t9t7_kode = $t9t7['toko'];
 
-                $dsn = "mysql:host=$ip;dbname=$name";
-
                 $option = [
                     PDO::ATTR_PERSISTENT => true,
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -175,36 +174,39 @@ class Load extends Controller
                     // Koneksi ke toko sumber data
                     $t9t7_conn = new PDO("mysql:host=$t9t7_ip;dbname=$name", $user, DB_PASS_TOKO_OLD, $option);
 
-                    $queryget = "SELECT * FROM vir_bacaprod";
+                    $query = "SELECT * FROM $table";
 
-                    $stmt1 = $t9t7_conn->prepare($queryget);
+                    $stmt1 = $t9t7_conn->prepare($query);
 
                     $stmt1->execute();
 
-                    $virbacaprod = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                    $datatable = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-                    $file = fopen("d:/ridwan/virbacaprod.csv", "w");
+                    $file = fopen("d:/ridwan/$table.csv", "w");
 
-                    foreach ($virbacaprod as $vir) {
-                        fputcsv($file, $vir);
+                    foreach ($datatable as $dat) {
+                        fputcsv($file, $dat);
                     }
                     fclose($file);
                 } catch (PDOException $e1) {
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span> Koneksi ke toko sumber <span class='font-bold text-info uppercase'>$t9t7_kode</span> GAGAL!", "Periksa koneksi toko / IP toko di daftar toko", "red");
-                    header('Location: ' . BASEURL . 'load/virbacaprod');
+                    header('Location: ' . BASEURL . 'load/table');
                     exit;
                 }
 
                 try {
                     $conn = new mysqli($ip, $user, $pass, $name);
 
-                    $insert = "LOAD DATA LOCAL INFILE 'd:/ridwan/virbacaprod.csv' INTO TABLE vir_bacaprod FIELDS TERMINATED BY ',' ENCLOSED BY '\"'";
+                    $delete = "DELETE FROM $table";
 
-                    $conn->query($insert);
+                    $load = "LOAD DATA LOCAL INFILE 'd:/ridwan/$table.csv' INTO TABLE $table FIELDS TERMINATED BY ',' ENCLOSED BY '\"'";
+
+                    $conn->query($delete);
+                    $conn->query($load);
 
                     $data['status'] = true;
 
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Load ulang virbacaprod sukses!", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-info uppercase'>$kode</span>", "Load ulang data $table sukses!", 'blue');
                 } catch (PDOException $e2) {
                     $data['status'] = false;
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-info uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
@@ -215,15 +217,15 @@ class Load extends Controller
                 $conn = null;
 
                 $data['title'] = 'Load Data';
-                $data['nav'] = 'Virbacaprod';
+                $data['nav'] = 'Table';
                 $data['user'] = $_SESSION['nama'];
                 $this->view('layouts/header', $data);
                 $this->view('layouts/navbar', $data);
-                $this->view('load/virbacaprod', $data);
+                $this->view('load/table', $data);
                 $this->view('layouts/footer');
             }
         } else {
-            header('Location: ' . BASEURL . 'load/virbacaprod');
+            header('Location: ' . BASEURL . 'load/table');
             exit;
         }
     }
