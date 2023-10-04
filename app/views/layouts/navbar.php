@@ -16,7 +16,7 @@
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
-                        <a href="<?= BASEURL; ?>logout" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white text-base">Sign out</a>
+                        <a href="<?= BASEURL; ?>logout" class="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white text-base">Logout</a>
                     </li>
                 </ul>
             </div>
