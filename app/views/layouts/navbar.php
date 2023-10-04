@@ -151,7 +151,10 @@
                     </div>
                 </li>
                 <li>
-                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar7" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'Load Data' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Load Data<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar7" class="flex items-center justify-between w-full py-2 pl-3 pr-4 relative <?= $data['title'] == 'Load Data' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">
+                        <img src="<?= BASEURL; ?>public/src/img/new-label.png" alt="Label New" width="40" class="absolute -top-3 -left-5">
+                        Load Data
+                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar7" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
@@ -160,7 +163,10 @@
                                 <a href="<?= BASEURL; ?>load/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Prodmast' ? 'bg-primary text-white' : '' ?>">Transfer Data</a>
                             </li>
                             <li>
-                                <a href="<?= BASEURL; ?>load/virbacaprod" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Virbacaprod' ? 'bg-primary text-white' : '' ?>">Virbacaprod</a>
+                                <a href="<?= BASEURL; ?>load/virbacaprod" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Virbacaprod' ? 'bg-primary text-white' : '' ?>">
+                                    Virbacaprod
+                                    <span class="ml-2 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">NEW!</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
