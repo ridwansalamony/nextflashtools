@@ -105,7 +105,7 @@ class Check extends Controller
                         $this->view('layouts/footer');
                     }
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'check/mstran');
                 }
             }
@@ -211,7 +211,7 @@ class Check extends Controller
                         $this->view('layouts/footer');
                     }
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'check/mtran');
                 }
             }
@@ -327,7 +327,7 @@ class Check extends Controller
                         $this->view('layouts/footer');
                     }
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'check/prodmast');
                 }
             }
@@ -427,7 +427,7 @@ class Check extends Controller
                         $this->view('layouts/footer');
                     }
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'check/stmast');
                 }
             }
@@ -523,7 +523,7 @@ class Check extends Controller
                         $this->view('layouts/footer');
                     }
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'check/supmast');
                 }
             }
@@ -615,7 +615,7 @@ class Check extends Controller
                         $this->view('layouts/footer');
                     }
                 } catch (PDOException $e) {
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning  uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                     header('Location: ' . BASEURL . 'check/passtoko');
                 }
             }

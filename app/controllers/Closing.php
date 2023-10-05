@@ -191,7 +191,7 @@ class Closing extends Controller
                     }
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", 'Koneksi <span class="font-bold text-warning uppercase">' . $kode . '</span> down / Pass SQL Salah!', 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", 'Koneksi <span class="font-bold text-warning uppercase">' . $kode . '</span> down / Pass SQL Salah!', 'red');
                 }
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
@@ -273,7 +273,7 @@ class Closing extends Controller
                     Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
-                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
