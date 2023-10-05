@@ -16,6 +16,92 @@ class Closing extends Controller
         header('Location: ' . BASEURL);
     }
 
+    public function shift()
+    {
+        $data['title'] = 'Tutupan Ulang';
+        $data['nav'] = 'Tutupan Shift';
+        $data['user'] = $_SESSION['nama'];
+        $this->view('layouts/header', $data);
+        $this->view('layouts/navbar', $data);
+        $this->view('closing/shift');
+        $this->view('layouts/footer');
+    }
+
+    public function shiftup()
+    {
+        if (isset($_POST['submit'])) {
+            $tanggal_action = date("Y-m-d H:i:s");
+            $kategori = "TUTUPAH SHIFT";
+            $action = "UPDATE INITIAL RECID P";
+            $tanggal_initial = $_POST['tanggal_initial'];
+            $shift = $_POST['shift'];
+            $station = $_POST['station'];
+
+            $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
+
+            if (!$toko) {
+                Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data toko <span class="text-warning font-bold uppercase">' . $_POST['kode_toko'] . '</span> tidak ada!', 'Silahkan tambah di menu Daftar Toko', 'red');
+                header('Location: ' . BASEURL . 'closing/shift');
+                exit;
+            } else {
+                $user = DB_USER_TOKO;
+                $name = DB_NAME_TOKO;
+                if ($_POST['pass'] === 'old') {
+                    $pass = DB_PASS_TOKO_OLD;
+                } else {
+                    $pass = DB_PASS_TOKO_NEW;
+                }
+
+                $ip = $toko['induk'];
+                $kode = $toko['toko'];
+
+                // Eksekusi
+                $dsn = "mysql:host=$ip;dbname=$name";
+                $option = [
+                    PDO::ATTR_PERSISTENT => true,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ];
+
+                try {
+                    $conn = new PDO($dsn, $user, $pass, $option);
+
+                    $initial = "SELECT * FROM initial WHERE tanggal='$tanggal_initial' AND recid=''";
+                    $stmt1 = $conn->prepare($initial);
+                    $stmt1->execute();
+
+                    $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (!$result) {
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Tanggal initial tidak ada!', 'Masukkan tanggal yang valid', 'red');
+                        header('Location: ' . BASEURL . 'closing/shift');
+                        exit;
+                    } else {
+                        // Update recid C
+                        $recid = "UPDATE initial SET recid='P' WHERE tanggal='$tanggal_initial' AND shift='$shift' AND station='$station'";
+
+                        $stmt2 = $conn->prepare($recid);
+
+                        $stmt2->execute();
+
+                        $data['status'] = true;
+                    }
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Update recid P initial Sukses!", 'blue');
+                } catch (PDOException $e) {
+                    $data['status'] = false;
+                    Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
+                }
+                $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
+
+                $conn = null;
+
+                header('Location: ' . BASEURL . 'closing/shift');
+            }
+        } else {
+            header('Location: ' . BASEURL . 'closing/shift');
+            exit;
+        }
+    }
+
     public function daily()
     {
         $data['title'] = 'Tutupan Ulang';
@@ -266,7 +352,7 @@ class Closing extends Controller
 
                         $data['status'] = true;
                     }
-                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Update recid C initial", 'blue');
+                    Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Update recid C initial Sukses!", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');

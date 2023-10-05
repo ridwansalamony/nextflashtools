@@ -37,141 +37,148 @@
                     <a href="<?= BASEURL; ?>store" class="block py-2 pl-3 pr-4 <?= $data['title'] == 'Daftar Toko' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0">Daftar Toko</a>
                 </li>
                 <li>
-                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar1" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'Tutupan Ulang' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Tutupan Ulang <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar1" class="flex items-center justify-between w-full py-2 pl-3 pr-4 relative <?= $data['title'] == 'Tutupan Ulang' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Tutupan
+                        <!-- <img src="<?= BASEURL; ?>public/src/img/new-label.png" alt="Label New" width="40" class="absolute -top-3 -left-5"> -->
+                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
                     <div id="dropdownNavbar1" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
                         <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="<?= BASEURL; ?>closing/daily" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Harian' ? 'bg-primary text-white' : '' ?>">Tutupan Harian Ulang</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>closing/monthly" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Bulanan' ? 'bg-primary text-white' : '' ?>">Tutupan Bulanan Ulang</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>closing/initial" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Initial C' ? 'bg-primary text-white' : '' ?>">Initial C</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>closing/errorpbsl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Error PBSL' ? 'bg-primary text-white' : '' ?>">Error Harian PBSL</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar2" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'Check Data' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Cek Data<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
-                    <div id="dropdownNavbar2" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="<?= BASEURL ?>check/mstran" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Mstran' ? 'bg-primary text-white' : '' ?>">Mstran</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL ?>check/mtran" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Mtran' ? 'bg-primary text-white' : '' ?>">Mtran</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL ?>check/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Prodmast' ? 'bg-primary text-white' : '' ?>">Prodmast</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL ?>check/stmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Stmast' ? 'bg-primary text-white' : '' ?>">Stmast</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL ?>check/supmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Supmast' ? 'bg-primary text-white' : '' ?>">Supmast</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL ?>check/passtoko" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Passtoko' ? 'bg-primary text-white' : '' ?>">Passtoko</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar3" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'Manual Query' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Manual Query<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
-                    <div id="dropdownNavbar3" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="<?= BASEURL; ?>manual/all" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'All Toko' ? 'bg-primary text-white' : '' ?>">Semua Toko</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>manual/part" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Part Toko' ? 'bg-primary text-white' : '' ?>">Beberapa Toko</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar4" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'PB' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">PB<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
-                    <div id="dropdownNavbar4" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="<?= BASEURL; ?>pb/reopenpb" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Reopen PB' ? 'bg-primary text-white' : '' ?>">Buka Ulang PB/Listing</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>pb/reopenpbx" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Reopen Cek' ? 'bg-primary text-white' : '' ?>">Buka Ulang Cek Barang</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar5" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'Flash' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Flash<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
-                    <div id="dropdownNavbar5" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/settingedc" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Setting EDC' ? 'bg-primary text-white' : '' ?>">EDC Setting</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/timeoutedc" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Timeout EDC' ? 'bg-primary text-white' : '' ?>">Timeout EDC</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/stationapka" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Station APKA' ? 'bg-primary text-white' : '' ?>">Setting Station APKA</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/beritaacara" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Berita Acara' ? 'bg-primary text-white' : '' ?>">Hapus Berita Acara</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/addnik" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tambah NIK' ? 'bg-primary text-white' : '' ?>">Tambah NIK Toko</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/openbkl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Open BKL' ? 'bg-primary text-white' : '' ?>">Open BKL</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/recalculate" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Hitung Ulang Stock' ? 'bg-primary text-white' : '' ?>">Hitung Ulang Stock</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/setting24" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Setting 24' ? 'bg-primary text-white' : '' ?>">Setting 24 Jam</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>flash/custdisplay" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Customer Display' ? 'bg-primary text-white' : '' ?>">Customer Display</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar7" class="flex items-center justify-between w-full py-2 pl-3 pr-4 relative <?= $data['title'] == 'Load Data' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">
-                        <img src="<?= BASEURL; ?>public/src/img/new-label.png" alt="Label New" width="40" class="absolute -top-3 -left-5">
-                        Load Data
-                        <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg></button>
-                    <div id="dropdownNavbar7" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
-                        <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="<?= BASEURL; ?>load/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Prodmast' ? 'bg-primary text-white' : '' ?>">Prodmast</a>
-                            </li>
-                            <li>
-                                <a href="<?= BASEURL; ?>load/table" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Table' ? 'bg-primary text-white' : '' ?>">
-                                    Data Table
+                            <!-- <li>
+                                <a href="<?= BASEURL; ?>closing/shift" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Shift' ? 'bg-primary text-white' : '' ?>">
+                                    Tutupan Shift
                                     <span class="ml-2 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">NEW!</span>
                                 </a>
-                            </li>
-                        </ul>
-                    </div>
+                            <li> -->
+                            <a href="<?= BASEURL; ?>closing/daily" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Harian' ? 'bg-primary text-white' : '' ?>">Tutupan Harian Ulang</a>
+                </li>
+                <li>
+                    <a href="<?= BASEURL; ?>closing/monthly" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Bulanan' ? 'bg-primary text-white' : '' ?>">Tutupan Bulanan Ulang</a>
+                </li>
+                <li>
+                    <a href="<?= BASEURL; ?>closing/initial" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Initial C' ? 'bg-primary text-white' : '' ?>">Initial C</a>
+                </li>
+                <li>
+                    <a href="<?= BASEURL; ?>closing/errorpbsl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Error PBSL' ? 'bg-primary text-white' : '' ?>">Error Harian PBSL</a>
                 </li>
             </ul>
         </div>
+        </li>
+        <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar2" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'Check Data' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Cek Data<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg></button>
+            <div id="dropdownNavbar2" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
+                <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
+                    <li>
+                        <a href="<?= BASEURL ?>check/mstran" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Mstran' ? 'bg-primary text-white' : '' ?>">Mstran</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL ?>check/mtran" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Mtran' ? 'bg-primary text-white' : '' ?>">Mtran</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL ?>check/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Prodmast' ? 'bg-primary text-white' : '' ?>">Prodmast</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL ?>check/stmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Stmast' ? 'bg-primary text-white' : '' ?>">Stmast</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL ?>check/supmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Supmast' ? 'bg-primary text-white' : '' ?>">Supmast</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL ?>check/passtoko" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Passtoko' ? 'bg-primary text-white' : '' ?>">Passtoko</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar3" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'Manual Query' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Manual Query<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg></button>
+            <div id="dropdownNavbar3" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
+                <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
+                    <li>
+                        <a href="<?= BASEURL; ?>manual/all" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'All Toko' ? 'bg-primary text-white' : '' ?>">Semua Toko</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>manual/part" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Part Toko' ? 'bg-primary text-white' : '' ?>">Beberapa Toko</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar4" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'PB' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">PB<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg></button>
+            <div id="dropdownNavbar4" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
+                <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
+                    <li>
+                        <a href="<?= BASEURL; ?>pb/reopenpb" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Reopen PB' ? 'bg-primary text-white' : '' ?>">Buka Ulang PB/Listing</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>pb/reopenpbx" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Reopen Cek' ? 'bg-primary text-white' : '' ?>">Buka Ulang Cek Barang</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar5" class="flex items-center justify-between w-full py-2 pl-3 pr-4 <?= $data['title'] == 'Flash' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Flash<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg></button>
+            <div id="dropdownNavbar5" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
+                <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/settingedc" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Setting EDC' ? 'bg-primary text-white' : '' ?>">EDC Setting</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/timeoutedc" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Timeout EDC' ? 'bg-primary text-white' : '' ?>">Timeout EDC</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/stationapka" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Station APKA' ? 'bg-primary text-white' : '' ?>">Setting Station APKA</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/beritaacara" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Berita Acara' ? 'bg-primary text-white' : '' ?>">Hapus Berita Acara</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/addnik" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tambah NIK' ? 'bg-primary text-white' : '' ?>">Tambah NIK Toko</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/openbkl" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Open BKL' ? 'bg-primary text-white' : '' ?>">Open BKL</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/recalculate" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Hitung Ulang Stock' ? 'bg-primary text-white' : '' ?>">Hitung Ulang Stock</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/setting24" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Setting 24' ? 'bg-primary text-white' : '' ?>">Setting 24 Jam</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>flash/custdisplay" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Customer Display' ? 'bg-primary text-white' : '' ?>">Customer Display</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar7" class="flex items-center justify-between w-full py-2 pl-3 pr-4 relative <?= $data['title'] == 'Load Data' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">
+                <img src="<?= BASEURL; ?>public/src/img/new-label.png" alt="Label New" width="40" class="absolute -top-3 -left-5">
+                Load Data
+                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg></button>
+            <div id="dropdownNavbar7" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
+                <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
+                    <li>
+                        <a href="<?= BASEURL; ?>load/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Prodmast' ? 'bg-primary text-white' : '' ?>">Prodmast</a>
+                    </li>
+                    <li>
+                        <a href="<?= BASEURL; ?>load/table" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Table' ? 'bg-primary text-white' : '' ?>">
+                            Data Table
+                            <span class="ml-2 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">NEW!</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+    </div>
     </div>
 </nav>
