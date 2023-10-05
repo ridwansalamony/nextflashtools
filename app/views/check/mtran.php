@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="w-full md:w-1/2 mx-auto">
-                    <input type="number" name="shift" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Cek berdasarkan Station" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2">
+                    <input type="number" name="station" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Cek berdasarkan Station" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2">
                 </div>
 
                 <div class="w-full md:w-1/2 mx-auto">
