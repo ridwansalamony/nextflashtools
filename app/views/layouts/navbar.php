@@ -50,10 +50,10 @@
                                     <span class="ml-2 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">NEW!</span>
                                 </a>
                             <li>
-                                <a href="<?= BASEURL; ?>closing/daily" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Harian' ? 'bg-primary text-white' : '' ?>">Tutupan Harian Ulang</a>
+                                <a href="<?= BASEURL; ?>closing/daily" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Harian' ? 'bg-primary text-white' : '' ?>">Tutupan Harian</a>
                             </li>
                             <li>
-                                <a href="<?= BASEURL; ?>closing/monthly" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Bulanan' ? 'bg-primary text-white' : '' ?>">Tutupan Bulanan Ulang</a>
+                                <a href="<?= BASEURL; ?>closing/monthly" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Bulanan' ? 'bg-primary text-white' : '' ?>">Tutupan Bulanan</a>
                             </li>
                             <li>
                                 <a href="<?= BASEURL; ?>closing/initial" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Initial C' ? 'bg-primary text-white' : '' ?>">Initial C</a>
