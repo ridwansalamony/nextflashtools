@@ -189,6 +189,8 @@ class Closing extends Controller
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                 $conn = null;
+
+                header('Location: ' . BASEURL . 'closing/daily');
             }
         } else {
             header('Location: ' . BASEURL . 'closing/monthly');
@@ -272,6 +274,8 @@ class Closing extends Controller
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                 $conn = null;
+
+                header('Location: ' . BASEURL . 'closing/daily');
             }
         } else {
             header('Location: ' . BASEURL . 'closing/initial');
