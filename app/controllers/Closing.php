@@ -190,7 +190,7 @@ class Closing extends Controller
 
                 $conn = null;
 
-                header('Location: ' . BASEURL . 'closing/daily');
+                header('Location: ' . BASEURL . 'closing/monthly');
             }
         } else {
             header('Location: ' . BASEURL . 'closing/monthly');
@@ -275,7 +275,7 @@ class Closing extends Controller
 
                 $conn = null;
 
-                header('Location: ' . BASEURL . 'closing/daily');
+                header('Location: ' . BASEURL . 'closing/initial');
             }
         } else {
             header('Location: ' . BASEURL . 'closing/initial');

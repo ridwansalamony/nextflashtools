@@ -97,13 +97,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Setting EDC';
-                $data['user'] = $_SESSION['nama'];
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/settingedc', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/settingedc');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/settingedc');
@@ -173,13 +167,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Timeout EDC';
-                $data['user'] = $_SESSION['nama'];
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/timeoutedc', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/timeoutedc');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/timeoutedc');
@@ -262,14 +250,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Station APKA';
-                $data['user'] = $_SESSION['nama'];
-                $data['result'] = $result;
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/stationapka', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/stationapka');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/stationapka');
@@ -348,13 +329,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Berita Acara';
-                $data['user'] = $_SESSION['nama'];
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/beritaacara', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/beritaacara');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/beritaacara');
@@ -431,13 +406,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Tambah NIK';
-                $data['user'] = $_SESSION['nama'];
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/addnik', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/addnik');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/addnik');
@@ -522,14 +491,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Open BKL';
-                $data['user'] = $_SESSION['nama'];
-                $data['result'] = $result;
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/openbkl', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/openbkl');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/openbkl');
@@ -601,13 +563,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Hitung Ulang Stock';
-                $data['user'] = $_SESSION['nama'];
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/recalculate', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/recalculate');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/recalculate');
@@ -680,13 +636,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Setting 24';
-                $data['user'] = $_SESSION['nama'];
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/setting24', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/setting24');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/setting24');
@@ -759,13 +709,7 @@ class Flash extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Flash';
-                $data['nav'] = 'Customer Display';
-                $data['user'] = $_SESSION['nama'];
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('flash/custdisplay', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'flash/custdisplay');
             }
         } else {
             header('Location: ' . BASEURL . 'flash/custdisplay');

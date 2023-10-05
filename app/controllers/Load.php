@@ -216,13 +216,7 @@ class Load extends Controller
 
                 $conn = null;
 
-                $data['title'] = 'Load Data';
-                $data['nav'] = 'Table';
-                $data['user'] = $_SESSION['nama'];
-                $this->view('layouts/header', $data);
-                $this->view('layouts/navbar', $data);
-                $this->view('load/table', $data);
-                $this->view('layouts/footer');
+                header('Location: ' . BASEURL . 'load/table');
             }
         } else {
             header('Location: ' . BASEURL . 'load/table');

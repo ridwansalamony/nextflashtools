@@ -86,16 +86,16 @@ class Pb extends Controller
 
                         $data['status'] = true;
                         Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Silahkan buka ulang program", 'blue');
-                        header('Location: ' . BASEURL . 'pb/reopenpb');
                     }
                 } catch (PDOException $e) {
                     $data['status'] = false;
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
-                    header('Location: ' . BASEURL . 'pb/reopenpb');
                 }
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                 $conn = null;
+
+                header('Location: ' . BASEURL . 'pb/reopenpb');
             }
         } else {
             header('Location: ' . BASEURL . 'pb/reopenpb');
@@ -172,16 +172,16 @@ class Pb extends Controller
                         $stmt2->execute();
                         $data['status'] = true;
                         Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Silahkan proses ulang PB", 'blue');
-                        header('Location: ' . BASEURL . 'pb/reopenpbx');
                     }
                 } catch (PDOException $e) {
                     $data['status'] = false;
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
-                    header('Location: ' . BASEURL . 'pb/reopenpbx');
                 }
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                 $conn = null;
+
+                header('Location: ' . BASEURL . 'pb/reopenpb');
             }
         } else {
             header('Location: ' . BASEURL . 'pb/reopenpbx');
