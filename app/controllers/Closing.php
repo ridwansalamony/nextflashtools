@@ -31,7 +31,7 @@ class Closing extends Controller
     {
         if (isset($_POST['submit'])) {
             $tanggal_action = date("Y-m-d H:i:s");
-            $kategori = "TUTUPAH SHIFT";
+            $kategori = "TUTUPAN SHIFT";
             $action = "UPDATE INITIAL RECID P";
             $tanggal_initial = $_POST['tanggal_initial'];
             $shift = $_POST['shift'];
@@ -254,16 +254,19 @@ class Closing extends Controller
                     $conn = new PDO($dsn, $user, $pass, $option);
 
                     $drop = "DROP TABLE IF EXISTS $kode$periode";
-                    $update1 = "UPDATE const SET docno='0',rdocno='0' WHERE rkey='LPB'";
+                    $update1 = "UPDATE const SET docno='0',rdocno='0' WHERE rkey in ('LPB','LPP')";
                     $update2 = "UPDATE const SET docno='$prd' WHERE rkey='PRD'";
+                    $delete = "DELETE const WHERE rkey='MCL'";
 
                     $stmt1 = $conn->prepare($drop);
                     $stmt2 = $conn->prepare($update1);
                     $stmt3 = $conn->prepare($update2);
+                    $stmt4 = $conn->prepare($delete);
 
                     $stmt1->execute();
                     $stmt2->execute();
                     $stmt3->execute();
+                    $stmt4->execute();
 
                     $data['status'] = true;
 
