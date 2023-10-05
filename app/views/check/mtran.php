@@ -28,12 +28,14 @@
                     <input type="text" name="plu" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Cek berdasarkan PLU : 20xxxx,20xxxx">
                 </div>
 
-                <div class="w-full md:w-1/2 mx-auto">
-                    <input type="number" name="shift" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Cek berdasarkan Shift" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="1">
-                </div>
+                <div class="w-full md:w-1/2 mx-auto flex gap-2">
+                    <div class="w-full">
+                        <input type="number" name="shift" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Cek berdasarkan Shift" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="1" required>
+                    </div>
 
-                <div class="w-full md:w-1/2 mx-auto">
-                    <input type="number" name="station" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Cek berdasarkan Station" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2">
+                    <div class="w-full">
+                        <input type="number" name="station" class="bg-gray-50 border border-gray-300 text-lg rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5" placeholder="Cek berdasarkan Station" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" required>
+                    </div>
                 </div>
 
                 <div class="w-full md:w-1/2 mx-auto">
