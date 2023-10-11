@@ -19,7 +19,7 @@ class Load extends Controller
     public function prodmast()
     {
         $data['title'] = 'Load Data';
-        $data['nav'] = 'Prodmast';
+        $data['nav'] = 'Update Prodmast';
         $data['user'] = $_SESSION['nama'];
         $this->view('layouts/header', $data);
         $this->view('layouts/navbar', $data);
@@ -109,7 +109,7 @@ class Load extends Controller
                 }
 
                 $data['title'] = 'Load Data';
-                $data['nav'] = 'Prodmast';
+                $data['nav'] = 'Update Prodmast';
                 $data['user'] = $_SESSION['nama'];
                 $data['result'] = $result;
                 $this->view('layouts/header', $data);

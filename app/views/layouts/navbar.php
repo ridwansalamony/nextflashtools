@@ -167,7 +167,7 @@
                     <div id="dropdownNavbar7" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-52">
                         <ul class="py-2 text-sm mt-2 text-gray-700 flex flex-col gap-1" aria-labelledby="dropdownLargeButton">
                             <li>
-                                <a href="<?= BASEURL; ?>load/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Prodmast' ? 'bg-primary text-white' : '' ?>">Prodmast</a>
+                                <a href="<?= BASEURL; ?>load/prodmast" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Update Prodmast' ? 'bg-primary text-white' : '' ?>">Prodmast</a>
                             </li>
                             <li>
                                 <a href="<?= BASEURL; ?>load/table" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Table' ? 'bg-primary text-white' : '' ?>">
