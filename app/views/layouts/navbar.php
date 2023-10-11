@@ -38,7 +38,7 @@
                 </li>
                 <li>
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar1" class="flex items-center justify-between w-full py-2 pl-3 pr-4 relative <?= $data['title'] == 'Tutupan Ulang' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">Tutupan
-                        <img src="<?= BASEURL; ?>public/src/img/new-label.png" alt="Label New" width="40" class="absolute -top-3 -left-5">
+                        <!-- <img src="<?= BASEURL; ?>public/src/img/new-label.png" alt="Label New" width="40" class="absolute -top-3 -left-5"> -->
                         <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg></button>
@@ -47,7 +47,7 @@
                             <li>
                                 <a href="<?= BASEURL; ?>closing/shift" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Shift' ? 'bg-primary text-white' : '' ?>">
                                     Tutupan Shift
-                                    <span class="ml-2 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">NEW!</span>
+                                    <!-- <span class="ml-2 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">NEW!</span> -->
                                 </a>
                             <li>
                                 <a href="<?= BASEURL; ?>closing/daily" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Tutupan Harian' ? 'bg-primary text-white' : '' ?>">Tutupan Harian</a>
@@ -159,7 +159,7 @@
                 </li>
                 <li>
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar7" class="flex items-center justify-between w-full py-2 pl-3 pr-4 relative <?= $data['title'] == 'Load Data' ? 'bg-primary text-white xl:text-primary xl:bg-transparent' : '' ?> hover:text-white rounded hover:bg-primary xl:hover:bg-transparent xl:hover:text-primary xl:p-0 xl:w-auto">
-                        <img src="<?= BASEURL; ?>public/src/img/new-label.png" alt="Label New" width="40" class="absolute -top-3 -left-5">
+                        <!-- <img src="<?= BASEURL; ?>public/src/img/new-label.png" alt="Label New" width="40" class="absolute -top-3 -left-5"> -->
                         Load Data
                         <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -172,7 +172,7 @@
                             <li>
                                 <a href="<?= BASEURL; ?>load/table" class="block px-4 py-2 hover:bg-primary hover:text-white text-base <?= $data['nav'] == 'Table' ? 'bg-primary text-white' : '' ?>">
                                     Data Table
-                                    <span class="ml-2 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">NEW!</span>
+                                    <!-- <span class="ml-2 bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">NEW!</span> -->
                                 </a>
                             </li>
                         </ul>
