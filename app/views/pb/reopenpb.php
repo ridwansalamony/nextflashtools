@@ -14,7 +14,7 @@
                 <div class="w-full md:w-1/2 mx-auto flex gap-2">
                     <div class="w-full">
                         <select name="pass" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
-                            <option value="old">Pass SQL 2023</option>
+                            <!-- <option value="old">Pass SQL 2023</option> -->
                             <option value="new">Pass SQL 2023-New</option>
                         </select>
                     </div>

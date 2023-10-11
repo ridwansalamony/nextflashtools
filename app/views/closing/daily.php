@@ -15,7 +15,7 @@
                     <div class="w-full">
                         <!-- <label for="pass" class="block text-lg font-medium text-center">Pilih Password</label> -->
                         <select name="pass" class="bg-gray-50 border text-lg border-gray-300 rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
-                            <option value="old">Pass SQL 2023</option>
+                            <!-- <option value="old">Pass SQL 2023</option> -->
                             <option value="new">Pass SQL 2023-New</option>
                         </select>
                     </div>
