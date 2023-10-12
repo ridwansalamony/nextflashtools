@@ -77,7 +77,7 @@ class Closing extends Controller
                         exit;
                     } else {
                         // Update recid C
-                        $recid = "UPDATE initial SET recid='P' WHERE tanggal='$tanggal_initial' AND shift='$shift' AND station='$station'";
+                        $recid = "UPDATE initial SET recid='P' WHERE tanggal='$tanggal_initial' AND station LIKE '%$station%' AND shift LIKE '%$shift%'";
 
                         $stmt2 = $conn->prepare($recid);
 
