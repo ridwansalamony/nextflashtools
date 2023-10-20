@@ -65,14 +65,14 @@ class Closing extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    $initial = "SELECT * FROM initial WHERE tanggal='$tanggal_initial' AND recid=''";
+                    $initial = "SELECT * FROM initial WHERE tanggal='$tanggal_initial' AND recid='' AND shift LIKE '%$shift%' AND station LIKE '%$station%'";
                     $stmt1 = $conn->prepare($initial);
                     $stmt1->execute();
 
                     $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
                     if (!$result) {
-                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Tanggal initial tidak ada!', 'Masukkan tanggal yang valid', 'red');
+                        Flasher::setFlash('<span class="font-bold">PROSES GAGAL!</span> Data Initial tidak ada!', 'Masukkan data yang valid', 'red');
                         header('Location: ' . BASEURL . 'closing/shift');
                         exit;
                     } else {
