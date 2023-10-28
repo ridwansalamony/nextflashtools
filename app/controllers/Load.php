@@ -172,7 +172,7 @@ class Load extends Controller
 
                 try {
                     // Koneksi ke toko sumber data
-                    $t9t7_conn = new PDO("mysql:host=$t9t7_ip;dbname=$name", $user, DB_PASS_TOKO_OLD, $option);
+                    $t9t7_conn = new PDO("mysql:host=$t9t7_ip;dbname=$name", $user, $pass, $option);
 
                     $query = "SELECT * FROM $table";
 
