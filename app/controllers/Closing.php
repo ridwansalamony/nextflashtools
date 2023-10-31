@@ -256,7 +256,7 @@ class Closing extends Controller
                     $drop = "DROP TABLE IF EXISTS $kode$periode";
                     $update1 = "UPDATE const SET docno='0',rdocno='0' WHERE rkey in ('LPB','LPP')";
                     $update2 = "UPDATE const SET docno='$prd' WHERE rkey='PRD'";
-                    $delete = "DELETE const WHERE rkey='MCL'";
+                    $delete = "DELETE FROM const WHERE rkey='MCL'";
 
                     $stmt1 = $conn->prepare($drop);
                     $stmt2 = $conn->prepare($update1);
@@ -268,13 +268,12 @@ class Closing extends Controller
                     $stmt3->execute();
                     $stmt4->execute();
 
-                    $data['status'] = true;
-
                     Flasher::setFlash("<span class='font-bold'>PROSES BERHASIL!</span> <span class='font-bold text-warning uppercase'>$kode</span>", "Silahkan tutupan bulanan ulang", 'blue');
                 } catch (PDOException $e) {
                     $data['status'] = false;
                     Flasher::setFlash("<span class='font-bold'>PROSES GAGAL!</span>", "Koneksi <span class='font-bold text-warning uppercase'>$kode</span> down / Pass SQL Salah!", 'red');
                 }
+
                 $this->model('SniperModel')->addSniper($kode, $kategori, $action, $tanggal_action, $data['status']);
 
                 $conn = null;
