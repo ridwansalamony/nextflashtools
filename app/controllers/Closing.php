@@ -223,7 +223,8 @@ class Closing extends Controller
             $kategori = "TUTUPAN BULANAN ULANG";
             $action = "DROP TABLE KODETOKO+PERIODE, UPDATE CONST DOCNO O RKEY LPB, UPDATE CONST DOCNO RKEY PRD";
             $periode = $_POST['periode'];
-            $prd = date('Ym') - 1;
+            $tahun = substr(date('Ym'), 0, 2);
+            $prd = $periode - 1;
 
             $toko = $this->model('StoreModel')->getStoreByCode($_POST['kode_toko']);
 
@@ -255,7 +256,7 @@ class Closing extends Controller
 
                     $drop = "DROP TABLE IF EXISTS $kode$periode";
                     $update1 = "UPDATE const SET docno='0',rdocno='0' WHERE rkey in ('LPB','LPP')";
-                    $update2 = "UPDATE const SET docno='$prd' WHERE rkey='PRD'";
+                    $update2 = "UPDATE const SET docno='$tahun$prd' WHERE rkey='PRD'";
                     $delete = "DELETE FROM const WHERE rkey='MCL'";
 
                     $stmt1 = $conn->prepare($drop);
