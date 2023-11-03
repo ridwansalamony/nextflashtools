@@ -305,7 +305,7 @@ class Flash extends Controller
                 try {
                     $conn = new PDO($dsn, $user, $pass, $option);
 
-                    $drop = "DROP TABLE TABLE IF EXIST bck_beritaacara";
+                    $drop = "DROP TABLE IF EXISTS bck_beritaacara";
                     $create = "CREATE TABLE bck_beritaacara SELECT * FROM beritaacara";
                     $delete = "DELETE FROM beritaacara WHERE YEAR(tglba) < $year";
 
